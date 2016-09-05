@@ -1,0 +1,94 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Projeto Final de Graduação
+%% Aluno: Victor Seixas Souza
+%% Orientadora: Christiane Neme Campos
+%% Tema: Teoria de Ramsey em Grafos
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Introdução}
+
+Suponha que em uma festa, seis pessoas se sentam em uma mesa para conversar. Dentre estas pessoas, algumas já se conhecem, enquanto outras estão se conhecendo pela primeira vez, nesse caso dizemos que elas são estranhas. À priori, não há muito o que se possa concluir sobre estas pessoas: todas podem se conhecer, todas podem ser estranhas entre sí, ou algumas se conhecem e outras não. De qualquer forma, podemos encontrar algo de interessante na mesa se procurarmos pela estrutura correta, como a seguinte observação que faz parte do folclore matemático:
+
+\begin{fact}
+Em uma festa com seis pessoas, três pessoas se conhecem ou três pessoas são mutualmente estranhas.
+\end{fact}
+
+\todo{reescrever paragrafo} O leitor está convidado à tentar demonstrar este fato por sí só. Vamos ver em breve que este fato pode ser modelado naturalmente com colorações de arestas de um grafos. Assim, não vamos somente provar este fato, mas também diversas generalizações dele. Para o tal, precisamos introduzir alguns conceitos e notações em Teoria de Grafos que o leitor experiente pode pular.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Noções de Grafos}
+
+Seja $V$ um conjunto finito, denotamos por $V^{(k)}$ o conjunto dos subconjuntos de $V$ com $k$ elementos. Por exemplo, $V^{(2)}$ é o conjunto de pares de elementos de $V$, isto é, elementos de $V^{(2)}$ tem a forma $\{ x,y\}$ onde $x,y\in V$ são elementos distintos. Note que se $V$ possui $n$ elementos, então $V^{(k)}$ possui $\binom{n}{k}$ elementos.
+
+Um grafo é um par $G = (V,E)$ onde $V$ é um conjunto finito e não vazio de vértices e $E$ é um subconjunto de $V^{(2)}$, cujos elementos são chamados de arestas. Na literatura de Teoria de Grafos, esta definição corresponde à definição de grafos simples e finitos.
+
+Uma aresta $\{ x,y\}$ poderá ser denotada por $xy$ ou $yx$. Dizemos que a aresta $xy$ incide nos vértices $x$ e $y$ e que $x$ e $y$ são as extremidades de $xy$.
+Se $xy$ é uma aresta, então dizemos que $x$ e $y$ são adjacentes.
+
+\missingfigure[figwidth=6cm]{Petersen Graph}
+
+A quantidade de vértices em um grafo $G$ será denotada por $v(G) = \card{V(G)}$ e comumnente será indicada por $n = v(G)$. A quantidade de arestas de $G$ é denotada por $e(G) = \card{E(G)}$ e comumente será referida por $m = e(G)$. Note que por definição temos $0 \leq e(G) \leq \binom{n}{2} = \frac{n(^2 - n)}{2}$.
+
+\begin{example}[Grafos Completos]
+Um grafo é dito completo quando possui todas as arestas possíveis. Denotamos o grafo completo com $n$ vértices por $K_n = (V,V^{(2)})$, onde $V$ é algum conjunto de vértices com $n = |V|$ elementos. O grafo $K_3$ é também chamado de triângulo.
+
+\missingfigure[figwidth=10cm]{$K_n$ para $n = 1,2,3,4,5,6$}
+\end{example}
+
+Se $v$ é um vértice de um grafo $G$, então a vizinhança $N_G(v)$ de $v$, o conjunto dos vértices adjacentes à $v$. Quando o grafo for conhecido pelo contexto, utilizaremos apenas $N(v)$. O grau de um vértice $d_G(v)$ é o tamanho de sua vizinhança, isto é, $d(v) = \card{N(v)}$.
+
+O complemento de um grafo $G$ é o grafo $\comp{G} = (V(G), V(G)^{(2)} \setminus E(G))$, isto é, o grafo com os mesmos vértices de $G$ e arestas complementares à $G$, assim, $\comp{\comp{G}} = G$.
+
+Seja $G$ um grafo, dizemos que $H$ é um subgrafo de $G$ se $H$ for um grafo tal que $V(H) \subset V(G)$ e $E(H) \subset E(G)$. Quando $H$ é subgrafo de $G$, às vezes dizemos que $G$ possui $H$, ou que existe uma cópia de $H$ em $G$.
+
+Finalmente, se $G$ é um grafo, então uma coloração de arestas de $G$ em $k$ cores é um mapa entre $E(G)$ e um conjunto de $k$ cores, isto é, uma função $c: E(G) \to \{ C_1, \dots, C_k\}$. Uma coloração de arestas em $k$ cores também é chamada de $k$-coloração de arestas. Note que se considerarmos apenas arestas de cor $C$ em uma coloração de arestas, temos um subgrafo de $G$, que será denotado por $G_C$.
+
+\missingfigure[figwidth=10cm]{Exemplo de grafo, uma 2-coloração de arestas }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Números de Ramsey}
+
+No início do capítulo, vimos o problema da festa, que nos diz que em uma festa com seis pessoas, três pessoas se conhecem ou três pessoas são mutualmente estranhas. Consideramos agora o grafo $G$ onde os vértices são as seis pessoas na festa e uma aresta está presente entre duas pessoas quando elas se conhecem. Note que $\comp{G}$ é o grafo em que duas pessoas são adjacentes quando não se conhecem. O problema da festa então nos diz que se $G$ possui 6 vértices então $G$ ou $\comp{G}$ possui um triangulo.
+
+Observar o mesmo fato em termos de colorações é ainda mais vantajoso. Novamente considere $G$ como o grafo onde os vértices são as seis pessoas na festa, mas desta vez, considere o grafo completo. Realizamos uma coloração das arestas de $G$ em duas cores, $c: E(G) \to \{ R,B \}$ ($R$ e $B$ denotam vermelho e azul respectivamente), de forma que $c(xy) = R$ se $x$ e $y$ são pessoas que se conheçem e $c(xy) = B$ se $x$ e $y$ são pessoas que não se conhecem. Assim queremos ver que $G$ possui um triângulo monocromático, isto é, $G_R$ ou $G_B$ possuem um triangulo.
+
+\begin{theorem}
+Se $G$ é um grafo com 6 vértices e $c: E(G) \to \{ R,B\}$ é uma coloração de arestas, então $G$ possui um triângulo monocromático.
+\end{theorem}
+\begin{proof}
+Seja $v \in V(G)$ um vértice qualquer e considere a sua vizinhança $N(v)$. O vértice $v$ se liga aos vértices de $N(v)$ utilizando arestas vermelhas ou azuis, logo $N(v) = N_R(v) \union N_B(v)$. Como o grau de $v$ é 5, então $d_R(v) + d_B(v) = 5$. Pelo princípio das casas dos pombos, alguma cor dentre $R$ e $B$, digamos $R$, é tal que $d_R(v) >= 3$. Agora observe que se dois vértices de $N_R(v)$ se conectam por uma aresta vermelha, unidas ao vértice $v$ eles formam um triângulo vermelho. Se isto não ocorrer, toda aresta interna à $N_R(v)$ é azul, o que garante que existe um triângulo azul em $v$. De qualquer caso, $G$ possui um triângulo monocromático.
+
+\missingfigure[figwidth=10cm]{Figura com v destacado, uma vizinhança de 3 vértices e um triangulo monocromático }
+\end{proof}
+
+Esta formulação é interessante porque não nos permitiu provar o problema da festa, mas nos permite estudar melhor generalizações do mesmo problema.
+
+Supon
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Mais de Grafos}
+
+\todo[inline]{Isomorfismos}
+
+\todo[inline]{Subgrafo}
+\todo[inline]{Subgrafo Induzido}
+
+\begin{example}[Caminhos]
+Um grafo $G$ é um caminho de comprimento $n$ se podemos ordenar os vértices $V(G) = \{ v_0, \dots, v_n\}$ de forma que as arestas de $G$ são exatamente $v_iv_{i+1}$ para $i = 0,\dots, n$. Os vértices $v_0$ e $v_n$ são os extremos do caminho e tem grau 1, os demais possuem grau 2. Denotamos um caminho de comprimento $n$ por $P_n$. Note que $v(P_n) = n+1$ e $e(P_n) = n$.
+\missingfigure[figwidth=6cm]{Alguns $P_n$}
+\end{example}
+
+\todo[inline]{Ciclos}
+
+
+\todo[inline]{Conexidade}
+\todo[inline]{Árvores}
+
+\todo[inline]{Cópia Disjunta}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
