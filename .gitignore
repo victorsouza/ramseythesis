@@ -5,3 +5,6 @@
 *.log
 *.tdo
 *.toc
+*.fls
+*.synctex.gz
+*.fdb_latexmk
