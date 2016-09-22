@@ -30,6 +30,42 @@ Este fato pode ser considerado o primeiro resultado na Teoria de Ramsey e possui
 
 \section{Noções de Grafos}
 
+Um \indef{grafo} é um par ordenado $G = (V(G), E(G))$, que consiste de um conjunto $V(G)$ de vértices, e um conjunto $E(G)$ de arestas, disjunto de $V(G)$, em conjunto com uma função de incidência $\Psi_G$ que associa as arestas de $G$ à pares de vértices $\{a,b\}$ não necessariamente distintos.
+
+Um simples exemplo nos ajuda a entender bem a definição.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\SetGraphUnit{3}
+\GraphInit[vstyle=Normal]
+\tikzset{LabelStyle/.style={opacity=0,text opacity=1}}
+\Vertex[L=$a$]{A}
+\EA[L=$b$](A){B}
+\EA[L=$c$](B){C}
+\SetGraphUnit{4}
+\NO[L=$d$](B){D}
+\Edge[label=$e$,labelstyle=left](B)(D)
+\tikzset{EdgeStyle/.append style = {bend left}}
+\Edge[label=$f$,labelstyle=above](A)(B)
+\Edge[label=$g$,labelstyle=above](B)(A)
+\Edge[label=$h$,labelstyle=above](B)(C)
+\Edge[label=$j$,labelstyle=above](C)(B)
+\Edge[label=$k$,labelstyle=left](A)(D)
+\Edge[label=$l$,labelstyle=right](D)(C)
+\Loop[dist=1.5cm,dir=EA,style=-,label=$x$,labelstyle=above](D)
+\end{tikzpicture}
+\caption{Representação gráfica do grafo $G$} \label{fig:grafo}
+\end{figure}
+
+Uma aresta $e \in E(G)$ e vértices $u, v \in V(G)$ são ditos \indef{incidentes} se $\Psi_G(e) = \{u,v\}$. Neste caso, diz-se ainda que $u$ e $v$ são as \indef{extremidades} de $e$. A incidência relaciona elementos de conjuntos distintos, neste caso, vértices e arestas.
+Uma outra relação é a de adjacência, que se aplica para elementos de mesma natureza. Dois vértices $u$ e $v$ são ditos \indef{adjacentes} em $G$ se existe uma aresta $e$ em $G$ tal que $\Psi_G(e) = \{u,v\}$. Duas arestas $e$ e $w$ são ditas \indef{adjacentes} em $G$ se existe um vértice $v$ em $G$ tal que $v = \Psi_G(e) \cap \Psi_G(w)$, isto é, se existe um vértice $v$ que incide simultaneamente à $e$ e $w$.
+
+Esta definição de grafos é bastante abrangente e permite algumas situações que não gostariamos de considerar em nosso estudo. A primeira situação especial ocorre quando duas arestas $e$ e $w$ incidem nos mesmos vértices, isto é, $\Psi_G(e) = \Psi_G(w)$, e dizemos que essas arestas são \indef{paralelas}. A segunda situação é quando $e$ incide em apenas um vértice $v$, isto é, $\Psi_G(e) = \{v\}$, e dizemos que $e$ é um \indef{laço}. Um grafo no qual não existem arestas paralelas ou laços é dito um \indef{grafo simples}, e ele será o objeto de nosso estudo.
+
+Seja $G$ um grafo simples e $u$ e $v$ dois vértices de $G$. Se $u$ e $v$ forem adjacentes, então existe uma única aresta $e$ em $G$ com $\Psi_G(e) = \{e,v\}$, portanto podemos identificar $e$ por $\{e,v\}$. De fato, quando $G$ é simples, a função de incidência $\Psi_G$ é redundante.
+
+
 
 \begin{enumerate}
 \item Definição de grafo com função de incidência
