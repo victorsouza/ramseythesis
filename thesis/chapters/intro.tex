@@ -32,19 +32,34 @@ Este fato pode ser considerado o primeiro resultado na Teoria de Ramsey e possui
 
 Um \indef{grafo} é um par ordenado $G = (V(G), E(G))$, que consiste de um conjunto $V(G)$ de vértices, e um conjunto $E(G)$ de arestas, disjunto de $V(G)$, em conjunto com uma função de incidência $\Psi_G$ que associa as arestas de $G$ à pares de vértices $\{a,b\}$ não necessariamente distintos.
 
-Um simples exemplo nos ajuda a entender bem a definição.
+Uma aresta $e \in E(G)$ e vértices $u, v \in V(G)$ são ditos \indef{incidentes} se $\Psi_G(e) = \{u,v\}$. Neste caso, diz-se ainda que $u$ e $v$ são as \indef{extremidades} de $e$. A incidência relaciona elementos de conjuntos distintos, neste caso, vértices e arestas.
+Uma outra relação é a de adjacência, que se aplica para elementos de mesma natureza. Dois vértices $u$ e $v$ são ditos \indef{adjacentes} em $G$ se existe uma aresta $e$ em $G$ tal que $\Psi_G(e) = \{u,v\}$. Duas arestas $e$ e $w$ são ditas \indef{adjacentes} em $G$ se existe um vértice $v$ em $G$ tal que $v = \Psi_G(e) \cap \Psi_G(w)$, isto é, se existe um vértice $v$ que incide simultaneamente à $e$ e $w$.
 
-\begin{figure}
+Vamos construir um grafo $G = (V(G), E(G))$ para clarificar as definições. O conjunto de vértices será $V(G) = \{u,v,w,x\}$ e o conjunto de arestas será $E(G) = \{e, f, g, h, j, k, l, s\}$. Falta definir a função de incidência $\Psi_G$, que associa as arestas aos vértices:
+\begin{align*}
+\Psi_G(e) = \{v,x\} & &
+\Psi_G(f) = \{u,v\} & &
+\Psi_G(g) = \{u,v\} & &
+\Psi_G(h) = \{v,w\} \\
+\Psi_G(j) = \{v,w\} & &
+\Psi_G(k) = \{u,x\} & &
+\Psi_G(l) = \{w,x\} & &
+\Psi_G(s) = \{x\}
+\end{align*}
+
+Isto completa a definição do grafo $G$. Uma maneira interessante de representar grafos é através de um desenho. A Figura \ref{fig:grafo} representa o grafo $G$ da seguinte maneira. Os vértices são indicados por círculos e as arestas são indicadas por linhas que unem os círculos que correspondem aos vértices que a aresta incide. A representação gráfica é muito importante pois nos permite criar uma intuição sobre os conceitos sobre grafos. Vale a pena notar que não existe um único desenho para um grafo: a posição dos vértices e das arestas não é importante.
+
+\begin{figure}[h!]
 \centering
 \begin{tikzpicture}
-\SetGraphUnit{3}
+\SetGraphUnit{2}
 \GraphInit[vstyle=Normal]
 \tikzset{LabelStyle/.style={opacity=0,text opacity=1}}
-\Vertex[L=$a$]{A}
-\EA[L=$b$](A){B}
-\EA[L=$c$](B){C}
-\SetGraphUnit{4}
-\NO[L=$d$](B){D}
+\Vertex[L=$u$]{A}
+\EA[L=$v$](A){B}
+\EA[L=$w$](B){C}
+\SetGraphUnit{3}
+\NO[L=$x$](B){D}
 \Edge[label=$e$,labelstyle=left](B)(D)
 \tikzset{EdgeStyle/.append style = {bend left}}
 \Edge[label=$f$,labelstyle=above](A)(B)
@@ -53,29 +68,49 @@ Um simples exemplo nos ajuda a entender bem a definição.
 \Edge[label=$j$,labelstyle=above](C)(B)
 \Edge[label=$k$,labelstyle=left](A)(D)
 \Edge[label=$l$,labelstyle=right](D)(C)
-\Loop[dist=1.5cm,dir=EA,style=-,label=$x$,labelstyle=above](D)
+\Loop[dist=1cm,dir=EA,style=-,label=$s$,labelstyle=above](D)
 \end{tikzpicture}
-\caption{Representação gráfica do grafo $G$} \label{fig:grafo}
+\caption{Representação gráfica do grafo $G$}
+\label{fig:grafo}
 \end{figure}
 
-Uma aresta $e \in E(G)$ e vértices $u, v \in V(G)$ são ditos \indef{incidentes} se $\Psi_G(e) = \{u,v\}$. Neste caso, diz-se ainda que $u$ e $v$ são as \indef{extremidades} de $e$. A incidência relaciona elementos de conjuntos distintos, neste caso, vértices e arestas.
-Uma outra relação é a de adjacência, que se aplica para elementos de mesma natureza. Dois vértices $u$ e $v$ são ditos \indef{adjacentes} em $G$ se existe uma aresta $e$ em $G$ tal que $\Psi_G(e) = \{u,v\}$. Duas arestas $e$ e $w$ são ditas \indef{adjacentes} em $G$ se existe um vértice $v$ em $G$ tal que $v = \Psi_G(e) \cap \Psi_G(w)$, isto é, se existe um vértice $v$ que incide simultaneamente à $e$ e $w$.
+O desenho de um grafo pode ser um bom representativo da estrutura do grafo, mas até mesmo grafos que tem o mesmo desenho podem ser diferentes. Dois grafos $G$ e $H$ são idênticos quando $G = H$ no sentido da Teoria de Conjuntos, isto é, $V(G)$ e $V(H)$ são o mesmo conjunto, $E(G)$ e $E(H)$ são o mesmo conjunto e $\Psi_G$ e $\Psi_H$ são a mesma função. Essa noção de igualdade é restritiva demais pois até grafos que possuem mesmo desenhos podem ser diferentes se os rótulos utilizados forem diferentes. Por exemplo, os grafos $G$ e $H$ da Figura \ref{fig:iso} não são identicos pois $V(G) \neq V(H)$, no entanto, eles possuem efetivamente a mesma estrutura.
 
-Esta definição de grafos é bastante abrangente e permite algumas situações que não gostariamos de considerar em nosso estudo. A primeira situação especial ocorre quando duas arestas $e$ e $w$ incidem nos mesmos vértices, isto é, $\Psi_G(e) = \Psi_G(w)$, e dizemos que essas arestas são \indef{paralelas}. A segunda situação é quando $e$ incide em apenas um vértice $v$, isto é, $\Psi_G(e) = \{v\}$, e dizemos que $e$ é um \indef{laço}. Um grafo no qual não existem arestas paralelas ou laços é dito um \indef{grafo simples}, e ele será o objeto de nosso estudo.
+Para capturar a noção de que dois grafos diferentes podem ter a mesma estrutura, definimos um \indef{isomorfismo} entre dois grafos $G$ e $H$ como um par de bijeções $\theta : V(G) \to V(H)$ e $\phi : E(G) \to E(G)$ tais que elas presvem a relação de incidência, isto é, $\Psi_G(e) = \{u,v\}$ implica que $\Psi_H(\phi(e)) = \{\theta(u),\theta(v)\}$. Quando existe um isomorfismo entre dois grafos $G$ e $H$, dizemos que eles são \indef{isomorficos}, e escrevemos $G \iso H$.
 
-Seja $G$ um grafo simples e $u$ e $v$ dois vértices de $G$. Se $u$ e $v$ forem adjacentes, então existe uma única aresta $e$ em $G$ com $\Psi_G(e) = \{e,v\}$, portanto podemos identificar $e$ por $\{e,v\}$. De fato, quando $G$ é simples, a função de incidência $\Psi_G$ é redundante.
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\GraphInit[vstyle=Normal]
+\SetVertexMath
+\begin{scope}[rotate=90]
+  \grComplete[prefix=a,RA=2.3]{5}
+\end{scope}
+\begin{scope}[xshift=6cm, rotate=90]
+  \grComplete[prefix=b,RA=2.3]{5}
+\end{scope}
+\draw (0,-2.5) node [below]{$G$};
+\draw (6,-2.5) node [below]{$H$};
+\end{tikzpicture}
+\caption{Dois grafos não identicos $G$ e $H$ que são isomorficos}
+\label{fig:iso}
+\end{figure}
 
+Grafos isomorficos possuem essencialmente a mesma estrutura e são considerados como iguais para todos os efeitos práticos. Com efeito, muitas vezes, os nomes que os vértices possuem não tem nenhuma importância. Quando abrimos mão de definir os nomes dos vértices, temos um \indef{grafo não rotulado}, em contrapartida com os \indef{grafos rotulados}. Muitas vezes, apenas nos interessa a interconectividade dos vértices, então a maioria das vezes consideraremos grafos não rotulados e daremos nomes aos vértices conforme necessário.
 
+Formalmente, a relação de isomorfismo $\iso$ é uma relação de equivalência e as classes de equivalência são os grafos não rotulados. A medida que necessitamos por rótulos em alguns vértices, estamos escolhendo algum representante dentro desta classe de equivalência que seja mais conveniente para nossos propósitos.
+
+% TOO MUCH BREAK
+
+Até agora, a definição de grafos que temos é bastante abrangente e permite algumas situações que não gostariamos de considerar em nosso estudo. A primeira situação especial ocorre quando duas arestas $e$ e $w$ incidem nos mesmos vértices, isto é, $\Psi_G(e) = \Psi_G(w)$, e dizemos que essas arestas são \indef{paralelas}. No grafo exemplificado na Figura \ref{fig:grafo}, $f$ e $g$ são arestas paralelas. A segunda situação é quando $e$ incide em apenas um vértice $v$, isto é, $\Psi_G(e) = \{v\}$, e dizemos que $e$ é um \indef{laço}, e no grafo da Figura \ref{fig:grafo}, $s$ é um laço. Um grafo no qual não existem arestas paralelas ou laços é dito um \indef{grafo simples}, e ele será o objeto de nosso estudo.
+
+Seja $G$ um grafo simples e $u$ e $v$ dois vértices de $G$. Se $u$ e $v$ forem adjacentes, então existe uma única aresta $e$ em $G$ com $\Psi_G(e) = \{u,v\}$, portanto podemos identificar $e$ por $\{u,v\}$. De fato, quando $G$ é simples, a função de incidência $\Psi_G$ é redundante. Portanto, ao definir grafos simples, pode-se omitir a função de incidência $\Psi$ definindo o conjunto das arestas $E(G)$ como um subconjunto de pares de vertices. Para tal propósito, para um conjunto $S$, definimos o conjunto de pares de elementos de $S$ por $S^{(2)}$, assim, podemos ver um grafo como um par $G = (V(G),E(G))$ onde $E(G) \subset V(G)^{(2)}$.
+
+Para simplificar a notação, quando não houver ambiguidade, podemos nos referir ao conjunto de vértices apenas por $V$ e o conjunto de arestas por $E$ em um grafo $G = (V,E)$. A quantidade de vértices de um garfo é chamada de \indef{ordem} do grafo, costuma ser denotada por $n$ ou $v(G)$. Já a quantidade de arestas em um grafo é chamada de \indef{tamanho} do grafo, e é denotado por $m$ ou $e(G)$. Se $G$ é um grafo simples, observamos que $E \subset V^{(2)}$ implica que $m \leq \binom{n}{2} = O(n^2)$, isto é, um grafo simples tem uma quantidade de arestas limitada ao quadrado do número de vértices em ordem.
+
+Se $v$ é um vértice de um grafo $G$, então a vizinhança $N_G(v)$ de $v$ é o conjunto dos vértices adjacentes à $v$. O grau de um vértice $d_G(v)$ é o tamanho de sua vizinhança, isto é, $d_G(v) = \card{N_G(v)}$. Quando o grafo for conhecido pelo contexto, utilizaremos apenas $N(v)$ e $d(G)$.
 
 \begin{enumerate}
-\item Definição de grafo com função de incidência
-\item Representação de grafos como desenhos
-\item Incidencia vs Adjacencia
-\item Laços e arestas multiplas
-\item Vizinhança e grau
-\item Grafos simples
-\item Isomorfismos de grafos
-\item Grafos não-rotulados
 \item Famílias de grafos
 \item Grafos completos
 \item Complementar de grafos
