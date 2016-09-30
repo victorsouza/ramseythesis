@@ -9,33 +9,32 @@
 
 \chapter{Introdução}
 
-No primeiro dia de aula em uma escolinha de matemática, a professora preparou uma gincana para entrosar os alunos. Ela os sorteou em grupos de seis, e cada grupo deveria se sentar em mesas separadas. O objetivo era que os alunos conversasem entre sí sobre o que fizeram durante as férias e potencialmente formassem novas amizades. Alguns alunos haviam sido colegas nos anos anteriores, e portanto já se conheciam. Outros alunos vieram de turmas diferentes, então não conheciam à todos. Além disso, novos alunos entram na escolinha todo ano para aprender matemática!
+No primeiro dia de aula em uma escolinha de matemática, a professora preparou uma gincana para entrosar os alunos. Ela os sorteou em grupos de seis, e cada grupo deveria sentar-se em mesas separadas. O objetivo era que os alunos conversasem entre si sobre o que fizeram durante as férias e potencialmente criassem novas amizades. Alguns alunos haviam sido colegas nos anos anteriores e, portanto, já se conheciam; outros alunos vieram de turmas diferentes, então não conheciam a todos. Além disso, novos alunos entram na escola todo ano para aprender matemática!
 
-Após o sorteio, a professora supervisionou atentamente os grupos, e observou que em algumas mesas, três alunos já se conheciam. Em algumas mesas, até quatro alunos já se conheciam. Preocupada se a gincana teria o efeito desejado, ela adotou outra estratégia e focou apenas nos alunos que ainda não se conhecem. Em algumas mesas, haviam três alunos que ainda não se conheciam, mas em outras pareciam menos promissoras, não havendo nem três alunos que não se conhecem. Curioso que estas mesas haviam três alunos que se conheciam. Sendo uma professora de matemática, ela se perguntou se existe algum motivo para isto acontecer. Será que se ela fizesse outro sorteio, poderia haver uma mesa em que nenhum grupo de três alunos se conheçem e nenhum grupo de três alunos não se conheçam? Por sorte, a professora havia estudado Teoria de Grafos, e conseguiu verificar o seguinte fato:
+Após o sorteio, a professora supervisionou atentamente os grupos, e observou que em algumas mesas, três alunos já se conheciam. Já em outras mesas, até quatro alunos já se conheciam. Preocupada se a gincana teria o efeito desejado, ela adotou outra estratégia e focou apenas nos alunos que ainda não se conheciam. Em algumas mesas, havia três alunos que ainda não se conheciam, mas outras pareciam menos promissoras, não havendo nem três alunos que não se conheciam. Curioso que nestas mesas haviam três alunos que se conheciam. Sendo uma professora de matemática, ela se perguntou se existia algum motivo para isto acontecer. Será que se ela fizesse outro sorteio, poderia haver uma mesa em que nenhum grupo de três alunos se conhecessem e nenhum grupo de três alunos não se conhecessem? Por sorte, a professora havia estudado Teoria de Grafos, e conseguiu verificar o seguinte fato:
 
 % Suponha que em uma festa, seis pessoas se sentam em uma mesa para conversar. Dentre estas pessoas, algumas já se conhecem, enquanto outras estão se encontrando pela primeira vez, nesse caso dizemos que elas são estranhas. A priori, não há muito o que se possa concluir sobre estas pessoas: todas podem se conhecer, todas podem ser estranhas entre si, ou algumas se conheçam e outras não. De qualquer forma, podemos encontrar algo de interessante na mesa se procurarmos pela estrutura correta, como a seguinte observação que faz parte do folclore matemático:
 
-\begin{fact}
+\begin{fact} \label{fact:ramsey}
 Em uma mesa com seis alunos, três alunos se conhecem ou três alunos não se conhecem.
 \end{fact}
 
-Vamos agora como que a professora percebeu este fato. Considere que você seja um dos seis alunos da mesa. Dos cinco restantes, você conhece uma quantidade, digamos $C$, e também não conhece uma quantidade $N$. Sabemos que $C + N = 5$. Isto nos dá que ou $C \geq 3$ ou $N \geq 3$. De fato, se $C \geq 2$ e $N \geq 2$ occorrerem simultaneamente, $5 = C + N \geq 4$, o que é absurdo. Suponha que $C \geq 3$, isto significa que você conhece pelo menos três dos outros alunos, digamos Alberto, Bruna e Carlos Se existe alguma amizade entre eles, digamos, Alberto e Carlos são amigos, então a mesa possui um grupo de três alunos que se conhece, você, Alberto e Carlos. Caso isto não ocorra, então Alberto, Bruna e Carlos formam um grupo de seis alunos que não se conhecem. Analogamente, temos o mesmo raciocínio quando $N \geq 3$.
+Vamos ver agora como que a professora percebeu este fato. Considere que você seja um dos seis alunos da mesa. Dos cinco restantes, você conhece uma quantidade, digamos $c$, e também não conhece uma quantidade $n$. Sabemos que $c + n = 5$. Isto nos dá que, ou $c \geq 3$, ou $n \geq 3$. De fato, se $c \leq 2$ e $n \leq 2$ occorrerem simultaneamente, $5 = c + n \leq 4$, o que é absurdo. Suponha $c \geq 3$, isto significa que você conhece pelo menos três dos outros alunos, digamos Alberto, Bruna e Carlos. Se existe alguma amizade entre eles, digamos, Alberto e Carlos são amigos, então a mesa possui um grupo de três alunos que se conhece, você, Alberto e Carlos. Caso isto não ocorra, então Alberto, Bruna e Carlos formam um grupo de três alunos que não se conhecem. O caso $n \geq 3$ segue do mesmo raciocínio.
 
-Este fato pode ser considerado o primeiro resultado na Teoria de Ramsey e possui generalizações interessantes. Além disso, ele possui uma formulação mais clara em termos de coloração de grafos. Na próxima seção, introduziremos os conceitos da Teoria de Grafos que serão necessários para adentrar o universo da Teoria de Ramsey em grafos. Um leitor familiarizado com Grafos é convidado a fazer uma leitura rápida da seção para atentar à notação utilizada neste texto.
+O Fato \ref{fact:ramsey} pode ser considerado o primeiro resultado na Teoria de Ramsey e possui generalizações interessantes. Além disso, ele possui uma formulação mais clara em termos de coloração de grafos. Na próxima seção, introduziremos os conceitos da Teoria de Grafos que serão necessários para adentrar o universo da Teoria de Ramsey em grafos. Um leitor familiarizado com Grafos é convidado a fazer uma leitura rápida da seção para se familiarizar à notação utilizada neste texto.
 
 %\todo{reescrever paragrafo} O leitor está convidado à tentar demonstrar este fato por sí só. Vamos ver em breve que este fato pode ser modelado naturalmente com colorações de arestas de um grafos. Assim, não vamos somente provar este fato, mas também diversas generalizações dele. Para o tal, precisamos introduzir alguns conceitos e notações em Teoria de Grafos que o leitor experiente pode pular.
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Noções de Grafos}
 
-Um \indef{grafo} é um par ordenado $G = (V(G), E(G))$, que consiste de um conjunto $V(G)$ de vértices, e um conjunto $E(G)$ de arestas, disjunto de $V(G)$, em conjunto com uma função de incidência $\Psi_G$ que associa as arestas de $G$ à pares de vértices $\{a,b\}$ não necessariamente distintos.
+Um \indef{grafo} $G$ é um par ordenado $(V(G), E(G))$, que consiste em um conjunto $V(G)$ de \indef{vértices} e um conjunto $E(G)$ de \indef{arestas}, disjunto de $V(G)$, em conjunto com uma função de incidência $\Psi_G$ que associa as arestas de $G$ à pares de vértices $a,b \in V(G)$ não necessariamente distintos.
 
 Uma aresta $e \in E(G)$ e vértices $u, v \in V(G)$ são ditos \indef{incidentes} se $\Psi_G(e) = \{u,v\}$. Neste caso, diz-se ainda que $u$ e $v$ são as \indef{extremidades} de $e$. A incidência relaciona elementos de conjuntos distintos, neste caso, vértices e arestas.
-Uma outra relação é a de adjacência, que se aplica para elementos de mesma natureza. Dois vértices $u$ e $v$ são ditos \indef{adjacentes} em $G$ se existe uma aresta $e$ em $G$ tal que $\Psi_G(e) = \{u,v\}$. Duas arestas $e$ e $w$ são ditas \indef{adjacentes} em $G$ se existe um vértice $v$ em $G$ tal que $v = \Psi_G(e) \cap \Psi_G(w)$, isto é, se existe um vértice $v$ que incide simultaneamente à $e$ e $w$.
+Uma outra relação é a de adjacência, que se aplica para elementos de mesma natureza. Dois vértices $u$ e $v$ são ditos \indef{adjacentes} em $G$ se existe uma aresta $e$ em $G$ tal que $\Psi_G(e) = \{u,v\}$. Duas arestas $e$ e $f$ são ditas \indef{adjacentes} em $G$ se existe um vértice $v$ em $G$ tal que $v = \Psi_G(e) \cap \Psi_G(f)$, isto é, se existe um vértice $v$ que incide simultaneamente em $e$ e $f$.
 
-Vamos construir um grafo $G = (V(G), E(G))$ para clarificar as definições. O conjunto de vértices será $V(G) = \{u,v,w,x\}$ e o conjunto de arestas será $E(G) = \{e, f, g, h, j, k, l, s\}$. Falta definir a função de incidência $\Psi_G$, que associa as arestas aos vértices:
+Vamos construir um grafo $G = (V(G), E(G))$ para ilustrar as definições. O conjunto de vértices será $V(G) = \{u,v,w,x\}$ e o conjunto de arestas será $E(G) = \{e, f, g, h, j, k, l, s\}$. Falta definir a função de incidência $\Psi_G$, que associa as arestas aos vértices:
 \begin{align*}
 \Psi_G(e) = \{v,x\} & &
 \Psi_G(f) = \{u,v\} & &
@@ -47,7 +46,7 @@ Vamos construir um grafo $G = (V(G), E(G))$ para clarificar as definições. O c
 \Psi_G(s) = \{x\}
 \end{align*}
 
-Isto completa a definição do grafo $G$. Uma maneira interessante de representar grafos é através de um desenho. A Figura \ref{fig:grafo} representa o grafo $G$ da seguinte maneira. Os vértices são indicados por círculos e as arestas são indicadas por linhas que unem os círculos que correspondem aos vértices que a aresta incide. A representação gráfica é muito importante pois nos permite criar uma intuição sobre os conceitos sobre grafos. Vale a pena notar que não existe um único desenho para um grafo: a posição dos vértices e das arestas não é importante.
+Isto completa a definição do grafo $G$. Uma maneira interessante de representar grafos é por meio de um desenho. A Figura \ref{fig:grafo} representa o grafo $G$ da seguinte maneira. Os vértices são indicados por círculos e as arestas são indicadas por linhas que unem os círculos que correspondem aos vértices nos quais a aresta incide. A representação gráfica é muito importante pois nos permite criar uma intuição a estrutura de grafos. Vale a pena notar que não existe um único desenho para um grafo: a posição dos vértices e das arestas não é importante. A relação entre os vértices e as arestas é que caracteriza a estrutura do grafo.
 
 \begin{figure}[h!]
 \centering
@@ -68,35 +67,36 @@ Isto completa a definição do grafo $G$. Uma maneira interessante de representa
 \Edge[label=$j$,labelstyle=above](C)(B)
 \Edge[label=$k$,labelstyle=left](A)(D)
 \Edge[label=$l$,labelstyle=right](D)(C)
-\Loop[dist=1cm,dir=EA,style=-,label=$s$,labelstyle=above](D)
+\Loop[dist=1cm,dir=EA,style={thick,-},label=$s$,labelstyle=above](D)
 \end{tikzpicture}
 \caption{Representação gráfica do grafo $G$}
 \label{fig:grafo}
 \end{figure}
 
-O desenho de um grafo pode ser um bom representativo da estrutura do grafo, mas até mesmo grafos que tem o mesmo desenho podem ser diferentes. Dois grafos $G$ e $H$ são idênticos quando $G = H$ no sentido da Teoria de Conjuntos, isto é, $V(G)$ e $V(H)$ são o mesmo conjunto, $E(G)$ e $E(H)$ são o mesmo conjunto e $\Psi_G$ e $\Psi_H$ são a mesma função. Essa noção de igualdade é restritiva demais pois até grafos que possuem mesmo desenhos podem ser diferentes se os rótulos utilizados forem diferentes. Por exemplo, os grafos $G$ e $H$ da Figura \ref{fig:iso} não são identicos pois $V(G) \neq V(H)$, no entanto, eles possuem efetivamente a mesma estrutura.
+O desenho de um grafo pode ser um bom representante da estrutura, mas dois grafos com o mesmo desenho não são necessariamente iguais. Do ponto de vista formal, dois grafos $G$ e $H$ são idênticos quando $G = H$ no sentido da Teoria de Conjuntos, isto é, $V(G)$ e $V(H)$ são o mesmo conjunto, $E(G)$ e $E(H)$ são o mesmo conjunto e $\Psi_G$ e $\Psi_H$ são a mesma função. Por exemplo, os grafos $G$ e $H$ da Figura \ref{fig:iso} não são identicos pois $V(G) \neq V(H)$, no entanto, eles possuem efetivamente a mesma estrutura.
 
-Para capturar a noção de que dois grafos diferentes podem ter a mesma estrutura, definimos um \indef{isomorfismo} entre dois grafos $G$ e $H$ como um par de bijeções $\theta : V(G) \to V(H)$ e $\phi : E(G) \to E(G)$ tais que elas presvem a relação de incidência, isto é, $\Psi_G(e) = \{u,v\}$ implica que $\Psi_H(\phi(e)) = \{\theta(u),\theta(v)\}$. Quando existe um isomorfismo entre dois grafos $G$ e $H$, dizemos que eles são \indef{isomorficos}, e escrevemos $G \iso H$.
+Esta noção de igualdade de grafos é, como vimos, muito restritiva. Para capturar a noção de que dois grafos diferentes podem ter a mesma estrutura, definimos um \indef{isomorfismo} entre dois grafos $G$ e $H$ como um par de bijeções $\theta : V(G) \to V(H)$ e $\phi : E(G) \to E(G)$ tais que elas preservem a relação de incidência, isto é, $\Psi_G(e) = \{u,v\}$ implica que $\Psi_H(\phi(e)) = \{\theta(u),\theta(v)\}$. Quando existe um isomorfismo entre dois grafos $G$ e $H$, dizemos que eles são \indef{isomorfos}, e escrevemos $G \iso H$.
 
 \begin{figure}[h!]
 \centering
 \begin{tikzpicture}
 \GraphInit[vstyle=Normal]
 \SetVertexMath
-\begin{scope}[rotate=90]
+\begin{scope}[rotate=90+(72*3)]
   \grComplete[prefix=a,RA=2.3]{5}
 \end{scope}
-\begin{scope}[xshift=6cm, rotate=90]
+\tikzset{EdgeStyle/.append style = {bend right}}
+\begin{scope}[xshift=6cm, rotate=90+(72*3)]
   \grComplete[prefix=b,RA=2.3]{5}
 \end{scope}
 \draw (0,-2.5) node [below]{$G$};
 \draw (6,-2.5) node [below]{$H$};
 \end{tikzpicture}
-\caption{Dois grafos não identicos $G$ e $H$ que são isomorficos}
+\caption{Dois grafos não identicos $G$ e $H$ que são isomorfos}
 \label{fig:iso}
 \end{figure}
 
-Grafos isomorficos possuem essencialmente a mesma estrutura e são considerados como iguais para todos os efeitos práticos. Com efeito, muitas vezes, os nomes que os vértices possuem não tem nenhuma importância. Quando abrimos mão de definir os nomes dos vértices, temos um \indef{grafo não rotulado}, em contrapartida com os \indef{grafos rotulados}. Muitas vezes, apenas nos interessa a interconectividade dos vértices, então a maioria das vezes consideraremos grafos não rotulados e daremos nomes aos vértices conforme necessário.
+Grafos isomorfos possuem essencialmente a mesma estrutura e são considerados como iguais para todos os efeitos práticos. Com efeito, muitas vezes, os nomes que os vértices possuem não tem nenhuma importância. Quando abrimos mão de definir os nomes dos vértices, temos um \indef{grafo não rotulado}, em contrapartida com os \indef{grafos rotulados}. Muitas vezes, apenas nos interessa a interconectividade dos vértices, então a maioria das vezes consideraremos grafos não rotulados e daremos nomes aos vértices conforme necessário.
 
 Formalmente, a relação de isomorfismo $\iso$ é uma relação de equivalência e as classes de equivalência são os grafos não rotulados. A medida que necessitamos por rótulos em alguns vértices, estamos escolhendo algum representante dentro desta classe de equivalência que seja mais conveniente para nossos propósitos.
 
