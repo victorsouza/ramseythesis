@@ -100,47 +100,76 @@ Grafos isomorfos possuem essencialmente a mesma estrutura e são considerados co
 
 Formalmente, a relação de isomorfismo $\iso$ é uma relação de equivalência e as classes de equivalência são os grafos não rotulados. A medida que necessitamos por rótulos em alguns vértices, estamos escolhendo algum representante dentro desta classe de equivalência que seja mais conveniente para nossos propósitos.
 
-% TOO MUCH BREAK
+Uma outra noção fundamental na Teoria de Grafos é a de \indef{subgrafo}. Seja $G$ um grafo, dizemos que $H$ é um subgrafo de $G$ se $H$ for um grafo tal que $V(H) \subset V(G)$ e $E(H) \subset E(G)$. Quando $H$ é subgrafo de $G$, as vezes dizemos que $G$ possui $H$, ou que existe uma cópia de $H$ em $G$. Comumente diremos que $H$ é um subgrafo de $G$ quando existir subgrafo de $G$ isomorfo a $H$.
 
 Até agora, a definição de grafos que temos é bastante abrangente e permite algumas situações que não gostariamos de considerar em nosso estudo. A primeira situação especial ocorre quando duas arestas $e$ e $w$ incidem nos mesmos vértices, isto é, $\Psi_G(e) = \Psi_G(w)$, e dizemos que essas arestas são \indef{paralelas}. No grafo exemplificado na Figura \ref{fig:grafo}, $f$ e $g$ são arestas paralelas. A segunda situação é quando $e$ incide em apenas um vértice $v$, isto é, $\Psi_G(e) = \{v\}$, e dizemos que $e$ é um \indef{laço}, e no grafo da Figura \ref{fig:grafo}, $s$ é um laço. Um grafo no qual não existem arestas paralelas ou laços é dito um \indef{grafo simples}, e ele será o objeto de nosso estudo.
+
 
 Seja $G$ um grafo simples e $u$ e $v$ dois vértices de $G$. Se $u$ e $v$ forem adjacentes, então existe uma única aresta $e$ em $G$ com $\Psi_G(e) = \{u,v\}$, portanto podemos identificar $e$ por $\{u,v\}$. De fato, quando $G$ é simples, a função de incidência $\Psi_G$ é redundante. Portanto, ao definir grafos simples, pode-se omitir a função de incidência $\Psi$ definindo o conjunto das arestas $E(G)$ como um subconjunto de pares de vertices. Para tal propósito, para um conjunto $S$, definimos o conjunto de pares de elementos de $S$ por $S^{(2)}$, assim, podemos ver um grafo como um par $G = (V(G),E(G))$ onde $E(G) \subset V(G)^{(2)}$.
 
 Para simplificar a notação, quando não houver ambiguidade, podemos nos referir ao conjunto de vértices apenas por $V$ e o conjunto de arestas por $E$ em um grafo $G = (V,E)$. A quantidade de vértices de um garfo é chamada de \indef{ordem} do grafo, costuma ser denotada por $n$ ou $v(G)$. Já a quantidade de arestas em um grafo é chamada de \indef{tamanho} do grafo, e é denotado por $m$ ou $e(G)$. Se $G$ é um grafo simples, observamos que $E \subset V^{(2)}$ implica que $m \leq \binom{n}{2} = O(n^2)$, isto é, um grafo simples tem uma quantidade de arestas limitada ao quadrado do número de vértices em ordem.
 
-Se $v$ é um vértice de um grafo $G$, então a vizinhança $N_G(v)$ de $v$ é o conjunto dos vértices adjacentes à $v$. O grau de um vértice $d_G(v)$ é o tamanho de sua vizinhança, isto é, $d_G(v) = \card{N_G(v)}$. Quando o grafo for conhecido pelo contexto, utilizaremos apenas $N(v)$ e $d(G)$.
+Se $v$ é um vértice de um grafo $G$, então a \indef{vizinhança} $N_G(v)$ de $v$ é o conjunto dos vértices adjacentes à $v$. O \indef{grau} de um vértice $d_G(v)$ é o tamanho de sua vizinhança, isto é, $d_G(v) = \card{N_G(v)}$. Quando o grafo for conhecido pelo contexto, utilizaremos apenas $N(v)$ e $d(G)$.
 
-\begin{enumerate}
-\item Famílias de grafos
-\item Grafos completos
-\item Complementar de grafos
-\item Coloração de arestas
-\end{enumerate}
+Algumas vezes, grafos que possuem algum tipo de estrutura em comum são agrupados em \indef{famílias} e recebem um nome que é inspirado por suas propriedades ou em homenagem ao matemático que primeiro as estudou. Um aspecto importante da Teoria de Grafos é que ela se trata essencialmente do estudo de estruturas, e portanto, é importante que se tenha a disposição um grande arsenal de famílias de grafos bem conhecidas e estudadas.
 
-%Seja $V$ um conjunto finito, denotamos por $V^{(k)}$ o conjunto dos subconjuntos de $V$ com $k$ elementos. Por exemplo, $V^{(2)}$ é o conjunto de pares de elementos de $V$, isto é, elementos de $V^{(2)}$ tem a forma $\{ x,y\}$ onde $x,y\in V$ são elementos distintos. Note que se $V$ possui $n$ elementos, então $V^{(k)}$ possui $\binom{n}{k}$ elementos.
+A primeira família de grafos a ser estudada é a dos \indef{grafos completos}. Um grafo $G$ tido como completo quando ele é um grafo simples onde todos os vértices são adjacentes. Denotaremos por $K_n$ o grafo completo com $n$ vértices. Ao definir uma família de grafos, é comum estudar um pouco de suas propriedades. Por exemplo, podemos ver que $e(K_n) = \binom{n}{2}$, pois $K_n$ é um grafo simples e qualquer par de vértices possui uma aresta que é incidente neles. Em Teoria de Ramsey é comum designar um grafos completos por \indef{clique}. Diz-se um $n$-clique quando deseja-se especificar o número de vértices.
 
-%Um grafo é um par $G = (V,E)$ onde $V$ é um conjunto finito e não vazio de vértices e $E$ é um subconjunto de $V^{(2)}$, cujos elementos são chamados de arestas. Na literatura de Teoria de Grafos, esta definição corresponde à definição de grafos simples e finitos.
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\GraphInit[vstyle=Simple]
+\tikzset{VertexStyle/.style = {
+shape = circle,
+fill = black,
+inner sep = 0pt,
+outer sep = 0pt,
+minimum size = 5pt,
+draw}}
+\SetVertexMath
+\begin{scope}[yshift=-0.8cm, rotate=90+((360/1)*3)]
+  \grComplete[RA=0]{1}
+\end{scope}
+\begin{scope}[yshift=-0.8cm, xshift=3cm, rotate=0]
+  \grComplete[RA=0.7]{2}
+\end{scope}
+\begin{scope}[yshift=-0.32cm, xshift=6cm, rotate=90+((360/3)*3)]
+  \grComplete[RA=0.9]{3}
+\end{scope}
+\begin{scope}[xshift=9cm, rotate=90+((360/8)*4)]
+  \grComplete[RA=1]{4}
+\end{scope}
+\begin{scope}[yshift=3cm, rotate=90+((360/5)*3)]
+  \grComplete[RA=1]{5}
+\end{scope}
+\begin{scope}[yshift=3cm, xshift=3cm, rotate=90+((360/6)*3)]
+  \grComplete[RA=1]{6}
+\end{scope}
+\begin{scope}[yshift=3cm, xshift=6cm, rotate=90+((360/7)*3)]
+  \grComplete[RA=1]{7}
+\end{scope}
+\begin{scope}[yshift=3cm, xshift=9cm, rotate=90+((360/8)*3)]
+  \grComplete[RA=1]{8}
+\end{scope}
+\draw (0,-1.2) node [below]{$K_1$};
+\draw (3,-1.2) node [below]{$K_2$};
+\draw (6,-1.2) node [below]{$K_3$};
+\draw (9,-1.2) node [below]{$K_4$};
+\draw (0, 1.8) node [below]{$K_5$};
+\draw (3, 1.8) node [below]{$K_6$};
+\draw (6, 1.8) node [below]{$K_7$};
+\draw (9, 1.8) node [below]{$K_8$};
+\end{tikzpicture}
+\caption{Grafos completos de ordem 1 até 8}
+\label{fig:iso}
+\end{figure}
 
-%Uma aresta $\{ x,y\}$ poderá ser denotada por $xy$ ou $yx$. Dizemos que a aresta $xy$ incide nos vértices $x$ e $y$ e que $x$ e $y$ são as extremidades de $xy$.
-%Se $xy$ é uma aresta, então dizemos que $x$ e $y$ são adjacentes.
+Uma outra família de grafos importante na Teoria de Ramsey é, surpreendentemente, a família dos \indef{grafos vazios}, ou \indef{anti-cliques}. Um grafo $G$ é vazio quando ele não possui nenhuma aresta. É importante notar que um grafo vazio ainda pode ter vértices, e denotamos grafos vazios com $n$ vértices por $E_n$.
 
-%\missingfigure[figwidth=6cm]{Petersepessoasn Graph}
+Uma maneira de relacionar os grafos completos e vazios é através da operação de complementação. Seja $G = (V,E)$ um grafo simples. O \indef{complemento} de $G$ é um grafo $\comp{G}$ com o mesmo conjunto de vértices $V$ no qual dois vértices são adjacentes em $\comp{G}$ se e somente se eles não são adjacentes em $G$. Em outras palavaras, o conjunto de de arestas de $\comp{G}$ é o complemento de $E$ em relação à $V^{(2)}$. Portanto, podemos escrever apenas $\comp{G} = (V,\comp{E})$ e notemos que para todo grafo simples $G$, $\comp{\comp{G}} = G$. Temos então que $\comp{K_n} = E_n$.
 
-%A quantidade de vértices em um grafo $G$ será denotada por $v(G) = \card{V(G)}$ e comumnente será indicada por $n = v(G)$. A quantidade de arestas de $G$ é denotada por $e(G) = \card{E(G)}$ e comumente será referida por $m = e(G)$. Note que por definição temos $0 \leq e(G) \leq \binom{n}{2} = \frac{n(^2 - n)}{2}$.
 
-%\begin{example}[Grafos Completos]
-%Um grafo é dito completo quando possui todas as arestas possíveis. Denotamos o grafo completo com $n$ vértices por $K_n = (V,V^{(2)})$, onde $V$ é algum conjunto de vértices com $n = |V|$ elementos. O grafo $K_3$ é também chamado de triângulo.
-
-%\missingfigure[figwidth=10cm]{$K_n$ para $n = 1,2,3,4,5,6$}
-%\end{example}
-
-%Se $v$ é um vértice de um grafo $G$, então a vizinhança $N_G(v)$ de $v$, o conjunto dos vértices adjacentes à $v$. Quando o grafo for conhecido pelo contexto, utilizaremos apenas $N(v)$. O grau de um vértice $d_G(v)$ é o tamanho de sua vizinhança, isto é, $d(v) = \card{N(v)}$.
-
-%O complemento de um grafo $G$ é o grafo $\comp{G} = (V(G), V(G)^{(2)} \setminus E(G))$, isto é, o grafo com os mesmos vértices de $G$ e arestas complementares à $G$, assim, $\comp{\comp{G}} = G$.
-
-%Seja $G$ um grafo, dizemos que $H$ é um subgrafo de $G$ se $H$ for um grafo tal que $V(H) \subset V(G)$ e $E(H) \subset E(G)$. Quando $H$ é subgrafo de $G$, às vezes dizemos que $G$ possui $H$, ou que existe uma cópia de $H$ em $G$.
-
-%Finalmente, se $G$ é um grafo, então uma coloração de arestas de $G$ em $k$ cores é um mapa entre $E(G)$ e um conjunto de $k$ cores, isto é, uma função $c: E(G) \to \{ C_1, \dots, C_k\}$. Uma coloração de arestas em $k$ cores também é chamada de $k$-coloração de arestas. Note que se considerarmos apenas arestas de cor $C$ em uma coloração de arestas, temos um subgrafo de $G$, que será denotado por $G_C$.
+Finalmente, o ultimo conceito necessário nesta introdução é o de \indef{coloração de arestas}. Seja $G$ é um grafo, então uma coloração de arestas de $G$ em $k$ cores é um mapa entre $E(G)$ e um conjunto de $k$ cores, isto é, uma função $c: E(G) \to \{ C_1, \dots, C_k\}$. Uma coloração de arestas em $k$ cores também é chamada de $k$-coloração de arestas. Note que se considerarmos apenas arestas de cor $C$ em uma coloração de arestas, temos um subgrafo de $G$, que será denotado por $G_C$.
 
 %\missingfigure[figwidth=10cm]{Exemplo de grafo, uma 2-coloração de arestas }
 
