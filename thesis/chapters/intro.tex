@@ -13,8 +13,6 @@ No primeiro dia de aula em uma escolinha de matemática, a professora preparou u
 
 Após o sorteio, a professora supervisionou atentamente os grupos, e observou que em algumas mesas, três alunos já se conheciam. Já em outras mesas, até quatro alunos já se conheciam. Preocupada se a gincana teria o efeito desejado, ela adotou outra estratégia e focou apenas nos alunos que ainda não se conheciam. Em algumas mesas, havia três alunos que ainda não se conheciam, mas outras pareciam menos promissoras, não havendo nem três alunos que não se conheciam. Curioso que nestas mesas haviam três alunos que se conheciam. Sendo uma professora de matemática, ela se perguntou se existia algum motivo para isto acontecer. Será que se ela fizesse outro sorteio, poderia haver uma mesa em que nenhum grupo de três alunos se conhecessem e nenhum grupo de três alunos não se conhecessem? Por sorte, a professora havia estudado Teoria de Grafos, e conseguiu verificar o seguinte fato:
 
-% Suponha que em uma festa, seis pessoas se sentam em uma mesa para conversar. Dentre estas pessoas, algumas já se conhecem, enquanto outras estão se encontrando pela primeira vez, nesse caso dizemos que elas são estranhas. A priori, não há muito o que se possa concluir sobre estas pessoas: todas podem se conhecer, todas podem ser estranhas entre si, ou algumas se conheçam e outras não. De qualquer forma, podemos encontrar algo de interessante na mesa se procurarmos pela estrutura correta, como a seguinte observação que faz parte do folclore matemático:
-
 \begin{fact} \label{fact:ramsey}
 Em uma mesa com seis alunos, três alunos se conhecem ou três alunos não se conhecem.
 \end{fact}
@@ -23,18 +21,15 @@ Vamos ver agora como que a professora percebeu este fato. Considere que você se
 
 O Fato \ref{fact:ramsey} pode ser considerado o primeiro resultado na Teoria de Ramsey e possui generalizações interessantes. Além disso, ele possui uma formulação mais clara em termos de coloração de grafos. Na próxima seção, introduziremos os conceitos da Teoria de Grafos que serão necessários para adentrar o universo da Teoria de Ramsey em grafos. Um leitor familiarizado com Grafos é convidado a fazer uma leitura rápida da seção para se familiarizar à notação utilizada neste texto.
 
-%\todo{reescrever paragrafo} O leitor está convidado à tentar demonstrar este fato por sí só. Vamos ver em breve que este fato pode ser modelado naturalmente com colorações de arestas de um grafos. Assim, não vamos somente provar este fato, mas também diversas generalizações dele. Para o tal, precisamos introduzir alguns conceitos e notações em Teoria de Grafos que o leitor experiente pode pular.
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Noções de Grafos}
 
-Um \indef{grafo} $G$ é um par ordenado $(V(G), E(G))$, que consiste em um conjunto $V(G)$ de \indef{vértices} e um conjunto $E(G)$ de \indef{arestas}, disjunto de $V(G)$, em conjunto com uma função de incidência $\Psi_G$ que associa as arestas de $G$ à pares de vértices $a,b \in V(G)$ não necessariamente distintos.
-
+Um \indef{grafo} $G$ é um par ordenado $(V(G), E(G))$, que consiste em um conjunto $V(G)$ de \indef{vértices} e um conjunto $E(G)$ de \indef{arestas}, disjunto de $V(G)$, em conjunto com uma função de incidência $\Psi_G$ que associa cada aresta de $G$ a um par de vértices de $G$, não necessariamente distintos.
 Uma aresta $e \in E(G)$ e vértices $u, v \in V(G)$ são ditos \indef{incidentes} se $\Psi_G(e) = \{u,v\}$. Neste caso, diz-se ainda que $u$ e $v$ são as \indef{extremidades} de $e$. A incidência relaciona elementos de conjuntos distintos, neste caso, vértices e arestas.
-Uma outra relação é a de adjacência, que se aplica para elementos de mesma natureza. Dois vértices $u$ e $v$ são ditos \indef{adjacentes} em $G$ se existe uma aresta $e$ em $G$ tal que $\Psi_G(e) = \{u,v\}$. Duas arestas $e$ e $f$ são ditas \indef{adjacentes} em $G$ se existe um vértice $v$ em $G$ tal que $v = \Psi_G(e) \cap \Psi_G(f)$, isto é, se existe um vértice $v$ que incide simultaneamente em $e$ e $f$.
+Uma outra relação é a de adjacência, que se aplica para elementos de mesma natureza. Dois vértices $u$ e $v$ são ditos \indef{adjacentes} em $G$ se existe uma aresta $e$ em $G$ tal que $\Psi_G(e) = \{u,v\}$. Duas arestas $e$ e $f$ são ditas \indef{adjacentes} em $G$ se existe um vértice $v$ em $G$ tal que $\{v\} = \Psi_G(e) \cap \Psi_G(f)$, isto é, se existe um vértice $v$ que incide simultaneamente em $e$ e $f$.
 
-Vamos construir um grafo $G = (V(G), E(G))$ para ilustrar as definições. O conjunto de vértices será $V(G) = \{u,v,w,x\}$ e o conjunto de arestas será $E(G) = \{e, f, g, h, j, k, l, s\}$. Falta definir a função de incidência $\Psi_G$, que associa as arestas aos vértices:
+Vamos construir um grafo $G = (V(G), E(G))$ para ilustrar estas definições. O conjunto de vértices será $V(G) = \{u,v,w,x\}$ e o conjunto de arestas será $E(G) = \{e, f, g, h, j, k, l, s\}$. Falta definir a função de incidência $\Psi_G$, que associa as arestas aos vértices:
 \begin{align*}
 \Psi_G(e) = \{v,x\} & &
 \Psi_G(f) = \{u,v\} & &
@@ -46,7 +41,7 @@ Vamos construir um grafo $G = (V(G), E(G))$ para ilustrar as definições. O con
 \Psi_G(s) = \{x\}
 \end{align*}
 
-Isto completa a definição do grafo $G$. Uma maneira interessante de representar grafos é por meio de um desenho. A Figura \ref{fig:grafo} representa o grafo $G$ da seguinte maneira. Os vértices são indicados por círculos e as arestas são indicadas por linhas que unem os círculos que correspondem aos vértices nos quais a aresta incide. A representação gráfica é muito importante pois nos permite criar uma intuição a estrutura de grafos. Vale a pena notar que não existe um único desenho para um grafo: a posição dos vértices e das arestas não é importante. A relação entre os vértices e as arestas é que caracteriza a estrutura do grafo.
+Isto completa a definição do grafo $G$. Uma maneira interessante de representar grafos é por meio de um desenho. A Figura \ref{fig:grafo} representa o grafo $G$ da seguinte maneira: os vértices são indicados por círculos e as arestas são indicadas por linhas que unem os círculos que correspondem aos vértices nos quais a aresta incide. A representação gráfica é muito importante pois nos permite criar uma intuição sobre a estrutura de grafos. Vale a pena notar que um mesmo grafo pode possuir mais de um desenho: basta desenhar os vértices em posições diferentes do plano. De fato, a posição dos vértices e das arestas não é importante, é a relação entre os vértices e as arestas que caracteriza a estrutura do grafo.
 
 \begin{figure}[h!]
 \centering
@@ -69,13 +64,13 @@ Isto completa a definição do grafo $G$. Uma maneira interessante de representa
 \Edge[label=$l$,labelstyle=right](D)(C)
 \Loop[dist=1cm,dir=EA,style={thick,-},label=$s$,labelstyle=above](D)
 \end{tikzpicture}
-\caption{Representação gráfica do grafo $G$}
+\caption{Representação gráfica do grafo $G$.}
 \label{fig:grafo}
 \end{figure}
 
-O desenho de um grafo pode ser um bom representante da estrutura, mas dois grafos com o mesmo desenho não são necessariamente iguais. Do ponto de vista formal, dois grafos $G$ e $H$ são idênticos quando $G = H$ no sentido da Teoria de Conjuntos, isto é, $V(G)$ e $V(H)$ são o mesmo conjunto, $E(G)$ e $E(H)$ são o mesmo conjunto e $\Psi_G$ e $\Psi_H$ são a mesma função. Por exemplo, os grafos $G$ e $H$ da Figura \ref{fig:iso} não são identicos pois $V(G) \neq V(H)$, no entanto, eles possuem efetivamente a mesma estrutura.
+O desenho de um grafo pode ser um bom representante da estrutura, mas dois grafos com o mesmo desenho não são necessariamente iguais. Do ponto de vista formal, dois grafos $G$ e $H$ são idênticos quando $G = H$ no sentido da Teoria de Conjuntos, isto é, $V(G)$ e $V(H)$ são o mesmo conjunto, $E(G)$ e $E(H)$ são o mesmo conjunto e $\Psi_G$ e $\Psi_H$ são a mesma função. Por exemplo, os grafos $G$ e $H$ da Figura \ref{fig:iso} não são idênticos pois $V(G) \neq V(H)$, no entanto, eles possuem efetivamente a mesma estrutura.
 
-Esta noção de igualdade de grafos é, como vimos, muito restritiva. Para capturar a noção de que dois grafos diferentes podem ter a mesma estrutura, definimos um \indef{isomorfismo} entre dois grafos $G$ e $H$ como um par de bijeções $\theta : V(G) \to V(H)$ e $\phi : E(G) \to E(G)$ tais que elas preservem a relação de incidência, isto é, $\Psi_G(e) = \{u,v\}$ implica que $\Psi_H(\phi(e)) = \{\theta(u),\theta(v)\}$. Quando existe um isomorfismo entre dois grafos $G$ e $H$, dizemos que eles são \indef{isomorfos}, e escrevemos $G \iso H$.
+Esta noção de igualdade de grafos é, como vimos, muito restritiva. Para capturar a noção de que dois grafos diferentes podem ter a mesma estrutura, definimos um \indef{isomorfismo} entre dois grafos $G$ e $H$ como um par de bijeções $\theta : V(G) \to V(H)$ e $\phi : E(G) \to E(G)$ tais que elas preservam a relação de incidência, isto é, $\Psi_G(e) = \{u,v\}$ se e somente se $\Psi_H(\phi(e)) = \{\theta(u),\theta(v)\}$. Quando existe um isomorfismo entre dois grafos $G$ e $H$, dizemos que eles são \indef{isomorfos}, e escrevemos $G \iso H$.
 
 \begin{figure}[h!]
 \centering
@@ -83,37 +78,45 @@ Esta noção de igualdade de grafos é, como vimos, muito restritiva. Para captu
 \GraphInit[vstyle=Normal]
 \SetVertexMath
 \begin{scope}[rotate=90+(72*3)]
-  \grComplete[prefix=a,RA=2.3]{5}
+  \grComplete[prefix=a,RA=1.6]{5}
 \end{scope}
 \tikzset{EdgeStyle/.append style = {bend right}}
 \begin{scope}[xshift=6cm, rotate=90+(72*3)]
-  \grComplete[prefix=b,RA=2.3]{5}
+  \grComplete[prefix=b,RA=1.6]{5}
 \end{scope}
-\draw (0,-2.5) node [below]{$G$};
-\draw (6,-2.5) node [below]{$H$};
+\draw (0,-1.8) node [below]{$G$};
+\draw (6,-1.8) node [below]{$H$};
 \end{tikzpicture}
-\caption{Dois grafos não identicos $G$ e $H$ que são isomorfos}
+\caption{Dois grafos não idênticos $G$ e $H$ que são isomorfos.}
 \label{fig:iso}
 \end{figure}
 
-Grafos isomorfos possuem essencialmente a mesma estrutura e são considerados como iguais para todos os efeitos práticos. Com efeito, muitas vezes, os nomes que os vértices possuem não tem nenhuma importância. Quando abrimos mão de definir os nomes dos vértices, temos um \indef{grafo não rotulado}, em contrapartida com os \indef{grafos rotulados}. Muitas vezes, apenas nos interessa a interconectividade dos vértices, então a maioria das vezes consideraremos grafos não rotulados e daremos nomes aos vértices conforme necessário.
+Grafos isomorfos possuem essencialmente a mesma estrutura e são considerados como iguais para todos os efeitos práticos. Com efeito, muitas vezes, os nomes que os vértices possuem não tem nenhuma importância. Quando abrimos mão de definir os nomes dos vértices, temos um \indef{grafo não rotulado}, em contrapartida com os \indef{grafos rotulados}. Muitas vezes, apenas nos interessa a interconectividade dos vértices, então consideramos grafos não rotulados e nomeamos os vértices e arestas conforme necessário.
 
-Formalmente, a relação de isomorfismo $\iso$ é uma relação de equivalência e as classes de equivalência são os grafos não rotulados. A medida que necessitamos por rótulos em alguns vértices, estamos escolhendo algum representante dentro desta classe de equivalência que seja mais conveniente para nossos propósitos.
+(READ-ME)
+Formalmente, a relação de isomorfismo $\iso$ é uma relação de equivalência na classe de todos os grafos. As classes de equivalência são compostas por grafos rotulados que são equivalentes sob a relação de isomorfismo. Grafo não rotulado é um nome que damos à uma destas classes de equivalência, não sendo um grafo propriamente dito, e sim uma entidade abstrata que carrega em si a estrutura de um grafo sem incluir os rótulos dos vértices e das arestas.
 
-Uma outra noção fundamental na Teoria de Grafos é a de \indef{subgrafo}. Seja $G$ um grafo, dizemos que $H$ é um subgrafo de $G$ se $H$ for um grafo tal que $V(H) \subset V(G)$ e $E(H) \subset E(G)$. Quando $H$ é subgrafo de $G$, as vezes dizemos que $G$ possui $H$, ou que existe uma cópia de $H$ em $G$. Comumente diremos que $H$ é um subgrafo de $G$ quando existir subgrafo de $G$ isomorfo a $H$.
+O que nos permite escolher um representante dentro desta classe sem perda de generalidade é o fato de que a maioria das propriedades estudada pela Teoria de Grafos é invariante por isomorfismo, isto é, se um grafo tem determinada propriedade, qualquer grafo isomorfo a ele possui a mesma propriedade. Portanto, ao rotular vértices e arestas de um grafo não rotulado, podemos fazer o mesmo de forma arbitrária e sem perda de generalidade.
+(FIM DO READ-ME)
 
-Até agora, a definição de grafos que temos é bastante abrangente e permite algumas situações que não gostariamos de considerar em nosso estudo. A primeira situação especial ocorre quando duas arestas $e$ e $w$ incidem nos mesmos vértices, isto é, $\Psi_G(e) = \Psi_G(w)$, e dizemos que essas arestas são \indef{paralelas}. No grafo exemplificado na Figura \ref{fig:grafo}, $f$ e $g$ são arestas paralelas. A segunda situação é quando $e$ incide em apenas um vértice $v$, isto é, $\Psi_G(e) = \{v\}$, e dizemos que $e$ é um \indef{laço}, e no grafo da Figura \ref{fig:grafo}, $s$ é um laço. Um grafo no qual não existem arestas paralelas ou laços é dito um \indef{grafo simples}, e ele será o objeto de nosso estudo.
+Uma outra noção fundamental na Teoria de Grafos é a de \indef{subgrafo}. Seja $G$ um grafo, dizemos que $H$ é um subgrafo de $G$ se $H$ for um grafo tal que $V(H) \subset V(G)$, $E(H) \subset E(G)$ e $\Psi_H$ é restrição de $\Psi_G$. Quando $H$ é subgrafo de $G$, também dizemos que $G$ possui $H$, ou que existe uma cópia de $H$ em $G$. Em geral, diremos que $H$ é um subgrafo de $G$ quando existir subgrafo de $G$ isomorfo a $H$.
 
+(NOVO)
+Uma noção ligeiramente distinta de subgrafo é a de \indef{subgrafo induzido}. Seja $G = (V,E)$ um grafo e $S \subset V$ um subconjunto de vértices. O grafo $G[S]$ é o grafo cujo conjunto de vértices é $S$ e o conjunto de arestas consiste nas arestas de $G$ com todas extremidades em $S$. Dizemos que $G[S]$ é um subgrafo de $G$ \indef{induzido} pelo conjunto $S$.
+(NOVO)
 
-Seja $G$ um grafo simples e $u$ e $v$ dois vértices de $G$. Se $u$ e $v$ forem adjacentes, então existe uma única aresta $e$ em $G$ com $\Psi_G(e) = \{u,v\}$, portanto podemos identificar $e$ por $\{u,v\}$. De fato, quando $G$ é simples, a função de incidência $\Psi_G$ é redundante. Portanto, ao definir grafos simples, pode-se omitir a função de incidência $\Psi$ definindo o conjunto das arestas $E(G)$ como um subconjunto de pares de vertices. Para tal propósito, para um conjunto $S$, definimos o conjunto de pares de elementos de $S$ por $S^{(2)}$, assim, podemos ver um grafo como um par $G = (V(G),E(G))$ onde $E(G) \subset V(G)^{(2)}$.
+Até agora, a definição de grafos que temos é bastante abrangente e permite algumas situações que não gostaríamos de considerar em nosso estudo. A primeira situação especial ocorre quando duas arestas $e$ e $f$ incidem nos mesmos vértices, isto é, $\Psi_G(e) = \Psi_G(f)$, neste caso dizemos que $e$ e $f$ são \indef{arestas paralelas}. No grafo exemplificado na Figura \ref{fig:grafo}, $f$ e $g$ são arestas paralelas. A segunda situação é quando $e$ incide em apenas um vértice $v$, isto é, $\Psi_G(e) = \{v\}$, como é o caso do vértice $x$ da Figura \ref{fig:grafo}, e dizemos que a aresta $s$ é um laço. Um grafo no qual não existem arestas paralelas ou laços é dito um \indef{grafo simples}. Neste estudo, consideraremos apenas grafos simples.
 
-Para simplificar a notação, quando não houver ambiguidade, podemos nos referir ao conjunto de vértices apenas por $V$ e o conjunto de arestas por $E$ em um grafo $G = (V,E)$. A quantidade de vértices de um garfo é chamada de \indef{ordem} do grafo, costuma ser denotada por $n$ ou $v(G)$. Já a quantidade de arestas em um grafo é chamada de \indef{tamanho} do grafo, e é denotado por $m$ ou $e(G)$. Se $G$ é um grafo simples, observamos que $E \subset V^{(2)}$ implica que $m \leq \binom{n}{2} = O(n^2)$, isto é, um grafo simples tem uma quantidade de arestas limitada ao quadrado do número de vértices em ordem.
+Seja $G$ um grafo simples e $u$ e $v$ dois vértices de $G$. Se $u$ e $v$ forem adjacentes, então existe uma única aresta $e$ em $G$ com $\Psi_G(e) = \{u,v\}$, portanto podemos identificar $e$ por $\{u,v\}$. De fato, quando $G$ é simples, a função de incidência $\Psi_G$ fica definida implicitamente e nomeamos as arestas por suas extremidades. Portanto, ao definir grafos simples, pode-se omitir a função de incidência $\Psi$ definindo o conjunto das arestas $E(G)$ como um subconjunto de pares de vertices. Para tal propósito, para um conjunto $S$, definimos o conjunto de pares de elementos de $S$ por $S^{(2)}$, assim, podemos ver um grafo como um par $G = (V(G),E(G))$ no qual $E(G) \subset V(G)^{(2)}$.
 
-Se $v$ é um vértice de um grafo $G$, então a \indef{vizinhança} $N_G(v)$ de $v$ é o conjunto dos vértices adjacentes à $v$. O \indef{grau} de um vértice $d_G(v)$ é o tamanho de sua vizinhança, isto é, $d_G(v) = \card{N_G(v)}$. Quando o grafo for conhecido pelo contexto, utilizaremos apenas $N(v)$ e $d(G)$.
+Para simplificar a notação, quando não houver ambiguidade, podemos nos referir ao conjunto de vértices apenas por $V$ e o conjunto de arestas por $E$ em um grafo $G = (V,E)$. A quantidade de vértices de um grafo é chamada de \indef{ordem} do grafo e costuma ser denotada por $n$ ou $v(G)$. Já a quantidade de arestas em um grafo é chamada de \indef{tamanho} do grafo, e é denotada por $m$ ou $e(G)$. Se $G$ é um grafo simples, observamos que $E \subset V^{(2)}$ implica que $m \leq \binom{n}{2} = O(n^2)$, isto é, um grafo simples tem uma quantidade de arestas limitada ao quadrado do seu número de vértices.
+
+Se $v$ é um vértice de um grafo $G$ simples, então a \indef{vizinhança} $N_G(v)$ de $v$ é o conjunto dos vértices adjacentes a $v$. O \indef{grau} de um vértice $d_G(v)$ é o tamanho de sua vizinhança\footnote{Esta definição de grau de um vértice está restrita a grafos simples. No caso geral, um grau de um vértice $v$ é a quantidade de vezes que arestas incidem nele, isto é, o o número de arestas que incidem em $v$ com os laços contados duas vezes}, isto é, $d_G(v) = \card{N_G(v)}$. Quando o grafo for conhecido pelo contexto, utilizaremos apenas $N(v)$ e $d(G)$.
 
 Algumas vezes, grafos que possuem algum tipo de estrutura em comum são agrupados em \indef{famílias} e recebem um nome que é inspirado por suas propriedades ou em homenagem ao matemático que primeiro as estudou. Um aspecto importante da Teoria de Grafos é que ela se trata essencialmente do estudo de estruturas, e portanto, é importante que se tenha a disposição um grande arsenal de famílias de grafos bem conhecidas e estudadas.
 
-A primeira família de grafos a ser estudada é a dos \indef{grafos completos}. Um grafo $G$ tido como completo quando ele é um grafo simples onde todos os vértices são adjacentes. Denotaremos por $K_n$ o grafo completo com $n$ vértices. Ao definir uma família de grafos, é comum estudar um pouco de suas propriedades. Por exemplo, podemos ver que $e(K_n) = \binom{n}{2}$, pois $K_n$ é um grafo simples e qualquer par de vértices possui uma aresta que é incidente neles. Em Teoria de Ramsey é comum designar um grafos completos por \indef{clique}. Diz-se um $n$-clique quando deseja-se especificar o número de vértices.
+A primeira família de grafos a ser estudada é a dos \indef{grafos completos}. Um grafo $G$ é dito um grafo ompleto quando ele é um grafo simples no qual todos os vértices são adjacentes. Denota-se por $K_n$ o grafo completo com $n$ vértices. A Figura \ref{fig:complete} contém desenhos de alguns grafos completos pequenos. Ao definir uma família de grafos, é comum estudar um pouco de suas propriedades. Por exemplo, podemos ver que $e(K_n) = \binom{n}{2}$, pois $K_n$ é um grafo simples e qualquer par de vértices possui uma aresta que é incidente neles. Além disso, é comum designar um grafo completos por \indef{clique} quando ele é um subgrafo induzido. Diz-se um $n$-clique quando deseja-se especificar o número de vértices.
+
 
 \begin{figure}[h!]
 \centering
@@ -127,49 +130,40 @@ outer sep = 0pt,
 minimum size = 5pt,
 draw}}
 \SetVertexMath
-\begin{scope}[yshift=-0.8cm, rotate=90+((360/1)*3)]
+\begin{scope}[yshift=2.5cm, rotate=90+((360/1)*3)]
   \grComplete[RA=0]{1}
 \end{scope}
-\begin{scope}[yshift=-0.8cm, xshift=3cm, rotate=0]
+\begin{scope}[yshift=2.5cm, xshift=3cm, rotate=0]
   \grComplete[RA=0.7]{2}
 \end{scope}
-\begin{scope}[yshift=-0.32cm, xshift=6cm, rotate=90+((360/3)*3)]
+\begin{scope}[yshift=2.5cm, xshift=6cm, rotate=90+((360/3)*3)]
   \grComplete[RA=0.9]{3}
 \end{scope}
-\begin{scope}[xshift=9cm, rotate=90+((360/8)*4)]
+\begin{scope}[yshift=0cm, rotate=90+((360/8)*4)]
   \grComplete[RA=1]{4}
 \end{scope}
-\begin{scope}[yshift=3cm, rotate=90+((360/5)*3)]
+\begin{scope}[yshift=0cm, xshift=3cm, rotate=90+((360/5)*3)]
   \grComplete[RA=1]{5}
 \end{scope}
-\begin{scope}[yshift=3cm, xshift=3cm, rotate=90+((360/6)*3)]
+\begin{scope}[yshift=0cm, xshift=6cm, rotate=90+((360/6)*3)]
   \grComplete[RA=1]{6}
 \end{scope}
-\begin{scope}[yshift=3cm, xshift=6cm, rotate=90+((360/7)*3)]
-  \grComplete[RA=1]{7}
-\end{scope}
-\begin{scope}[yshift=3cm, xshift=9cm, rotate=90+((360/8)*3)]
-  \grComplete[RA=1]{8}
-\end{scope}
-\draw (0,-1.2) node [below]{$K_1$};
-\draw (3,-1.2) node [below]{$K_2$};
-\draw (6,-1.2) node [below]{$K_3$};
-\draw (9,-1.2) node [below]{$K_4$};
-\draw (0, 1.8) node [below]{$K_5$};
-\draw (3, 1.8) node [below]{$K_6$};
-\draw (6, 1.8) node [below]{$K_7$};
-\draw (9, 1.8) node [below]{$K_8$};
+\draw (0, 1.8) node [below]{$K_1$};
+\draw (3, 1.8) node [below]{$K_2$};
+\draw (6, 1.8) node [below]{$K_3$};
+\draw (0,-1.2) node [below]{$K_4$};
+\draw (3,-1.2) node [below]{$K_5$};
+\draw (6,-1.2) node [below]{$K_6$};\
 \end{tikzpicture}
-\caption{Grafos completos de ordem 1 até 8}
-\label{fig:iso}
+\caption{Grafos completos de ordem 1 até 6.}
+\label{fig:complete}
 \end{figure}
 
-Uma outra família de grafos importante na Teoria de Ramsey é, surpreendentemente, a família dos \indef{grafos vazios}, ou \indef{anti-cliques}. Um grafo $G$ é vazio quando ele não possui nenhuma aresta. É importante notar que um grafo vazio ainda pode ter vértices, e denotamos grafos vazios com $n$ vértices por $E_n$.
+Uma outra família de grafos importante na Teoria de Ramsey é, surpreendentemente, a família dos \indef{grafos vazios}. Um grafo $G$ é vazio quando ele não possui nenhuma aresta. É importante notar que um grafo vazio ainda pode ter vértices, e denotamos grafos vazios com $n$ vértices por $E_n$. Novamente, denota-se por \indef{anti-clique} um grafo vazio que é subgrafo induzido.
 
-Uma maneira de relacionar os grafos completos e vazios é através da operação de complementação. Seja $G = (V,E)$ um grafo simples. O \indef{complemento} de $G$ é um grafo $\comp{G}$ com o mesmo conjunto de vértices $V$ no qual dois vértices são adjacentes em $\comp{G}$ se e somente se eles não são adjacentes em $G$. Em outras palavaras, o conjunto de de arestas de $\comp{G}$ é o complemento de $E$ em relação à $V^{(2)}$. Portanto, podemos escrever apenas $\comp{G} = (V,\comp{E})$ e notemos que para todo grafo simples $G$, $\comp{\comp{G}} = G$. Temos então que $\comp{K_n} = E_n$.
+Uma maneira de relacionar os grafos completos e vazios é por meio da operação de complementação. Seja $G = (V,E)$ um grafo simples. O \indef{complemento} de $G$ é um grafo $\comp{G}$ com o mesmo conjunto de vértices $V$, no qual dois vértices são adjacentes em $\comp{G}$ se e somente se eles não são adjacentes em $G$. Em outras palavras, o conjunto de arestas de $\comp{G}$ é o complemento de $E$ em relação à $V^{(2)}$. Portanto, podemos escrever apenas $\comp{G} = (V,\comp{E})$ e notamos que para todo grafo simples $G$, $\comp{\comp{G}} = G$. Temos então que $\comp{K_n} = E_n$.
 
-
-Finalmente, o ultimo conceito necessário nesta introdução é o de \indef{coloração de arestas}. Seja $G$ é um grafo, então uma coloração de arestas de $G$ em $k$ cores é um mapa entre $E(G)$ e um conjunto de $k$ cores, isto é, uma função $c: E(G) \to \{ C_1, \dots, C_k\}$. Uma coloração de arestas em $k$ cores também é chamada de $k$-coloração de arestas. Note que se considerarmos apenas arestas de cor $C$ em uma coloração de arestas, temos um subgrafo de $G$, que será denotado por $G_C$.
+Finalmente, o ultimo conceito necessário nesta introdução é o de \indef{coloração de arestas}. A noção de coloração é muito importante em Teoria de Grafos, sendo intimamente relacionada ao surgimento da mesma. A idéia principal de colorações é mapear o conjunto de vértices ou de arestas a um conjunto de cores $C$. Utiliza-se cores no lugar de índices ou números para enfatizar a ausência de estrutura no conjunto. Então, se $G = (V,E)$ é um grafo, então uma coloração de arestas de $G$ em $k$ cores é um mapa entre $E$ e um conjunto de $k$ cores, isto é, uma função $c: E(G) \to C$, no qual $C = \{ C_1, \dots, C_k\}$ é um conjunto de $k$ cores. Uma coloração de arestas em $k$ cores também é chamada de $k$-coloração de arestas. Note que se considerarmos apenas arestas de cor $C$ em uma coloração de arestas, temos um subgrafo de $G$, que será denotado por $G_C$. Note que uma coloração de arestas pode ser vista como uma partição do conjunto de arestas nas partes $c^{-1}(C_i)$.
 
 %\missingfigure[figwidth=10cm]{Exemplo de grafo, uma 2-coloração de arestas }
 
