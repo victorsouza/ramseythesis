@@ -9,14 +9,203 @@
 
 \chapter{Resultados Preliminares}
 
-Neste capítulo, estão os resultados preliminares e definições de teoria de grafos.
+Antes de estudar os valores de $R(k)$ para valores maiores de $k$, é conveniente generalizar nossas definições. Até agora, definimos os números de Ramsey da seguinte maneira: $R(k)$ é o menor inteiro positivo $n$ tal que qualquer coloração de arestas em duas cores de $K_n$ possui um $K_k$ monocromático. Existem diversas maneiras de generalizar esta definição, a primeira será permitindo tamanhos diferentes para os subgrafos monocromático nas duas cores. Temos assim a seguinte definição:
+
+\begin{definition}
+$R(k,s)$ é o menor inteiro positivo $n$ tal que qualquer coloração de arestas em duas cores do grafo $K_n$ possui um $K_k$ da primeira cor ou um $K_s$ da segunda cor.
+\end{definition}
+
+Desta forma, englobamos a definição antiga pois $R(k) = R(k,k)$, que são chamados de \indef{números de Ramsey diagonais}. Notemos que não precisamos demonstrar novamente que estes números estão bem definidos, uma vez que segue da definição que $R(k,s) \leq R(\max\{k,s\}) < \infty$.
+
+Notemos que estes números possui alguns valores triviais. Por exemplo $R(1,k) = 1$ para qualquer valor de $k$, uma vez que é impossível evitar um $K_1$ monocromático em qualquer cor quando o grafo possui vértices. Além disso, temos $R(2,k) = k$, que pode-se ver que não possuir $K_2$ em alguma cor significa que ela não está presente na coloração. Como temos a simetria $R(k,s) = R(s,k)$, os valores realmente interessantes são obtidos colocando $k,s \geq 3$, o primeiro deles, $R(3,3) = 6$, já obtemos.
+
+Vamos agora estudar o número $R(3,4)$, no qual utilizamos um argumento semelhante ao do $R(3,3)$, embora ele seja ligeiramente mais sofisticado. Este resultado surgiu em 1955 por Greenwood e Gleason \cite{greenwood}, em conjunto com outras proposições que vamos estudar em seguida.
+
+\begin{proposition}[Greenwood e Gleason]
+\label{thm:r34}
+$R(3,4) \leq 9$.
+\end{proposition}
+\begin{proof}
+Seja $G$ um grafo completo com 9 vértices e $c$ uma coloração de arestas em duas cores, $R$ (vermelho) e $B$ (azul) e suponha que não exista $K_3$ vermelho e $K_4$ azul. Seja $v \in V(G)$ um vértice qualquer. Novamente consideramos as vizinhanças $N_R(v)$ e $N_B(v)$ de tamanho $d_R(v)$ e $d_B(v)$ respectivamente. Assim, temos que $d_R(v) + d_B(v) = 8$. Suponha que $d_R(v) \geq 4$. Então na vizinhança $N_R(v)$, se existir alguma aresta de vermelha, formamos um triângulo vermelho unindo as extremidades desta aresta com $v$, absurdo.
+Portanto, $d_R(v) \leq 3$, o que nos dá que $d_B(v) \geq 5$, então suponha que $d_B(v) \geq 6$. Como sabemos que $R(3,3) = 6$, $N_B(v)$ possui um triângulo monocromático. Como $G$ não possui $K_3$ vermelho, então $N_B(v)$ possui um $K_3$ azul. Contudo, isto nos dá uma contradição, pois unindo este $K_3$ com o vértice $v$, temos um $K_4$ azul. Portanto, podemos concluir que $d_B(v) = 5$ e $d_R(v) = 3$. Isto, no entanto, vale para qualquer vértice de $G$. Pelo lema do aperto de mãos, sabemos que
+\[ \sum_{v \in G_R}d(v) = 2 |E(G_R)|  \Rightarrow 9 \times 3 = 2|E(G_R)|.\]
+Isto nos dá um absurdo, pois o lado esquerdo e direito da segunda igualdade possuem paridades distintas. Neste caso, tanto o grafo $G_R$ quando o grafo $G_B$ possuem uma quantidade ímpar de vértices de grau ímpar, o que é impossível. Portanto, contradizemos a hipótese de que não existe $K_3$ vermelho ou $K_4$ azul, e concluímos que $R(3,4) \leq 9$.
+\end{proof}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\GraphInit[vstyle=Hasse]
+{\tikzset{EdgeStyle/.append style = {blue,line width=2pt}}
+\grCycle[RA=1.8,prefix=a,rotation=0]{8}
+\EdgeInGraphMod{a}{8}{4}
+{\tikzset{EdgeStyle/.append style = {red,line width=2pt}}
+\EdgeInGraphMod{a}{8}{2}
+\EdgeInGraphMod{a}{8}{3}
+\end{tikzpicture}
+\caption{Coloração de arestas do $K_8$ sem $K_4$ vermelho e sem $K_3$ azul.}
+\label{fig:exr34}
+\end{figure}
+
+Novamente, para mostrar alguma cota inferior, precisamos construir uma coloração em duas cores sem $K_3$ vermelho e sem $K_4$ azul. Temos um tal grafo na Figura \ref{fig:exr34} com 8 vértices. Isto nos dá que $R(3,4) > 8$, que em conjunto com a Proposição \ref{thm:r34}, temos $R(3,4) = 9$. Embora apenas evidenciar uma coloração é suficiente, existem $2^{\binom{8}{2}} = 2^{28} = 268435456$ colorações de arestas do $K_8$ em duas cores, o que nos deixa intrigados em saber como obter tal coloração.
+
+\begin{proposition}[Greenwood e Gleason]
+\label{thm:exr34}
+$R(3,4) > 8$.
+\end{proposition}
+\begin{proof}
+Vamos construir a coloração de arestas do grafo $G$ da Figura \ref{fig:exr34}. Escolhemos como conjunto de vértices $v_0, v_2, \dots, v_7$ e definimos a seguinte relação em $\mathbb{Z}_8$: dizemos que $i \sim j$ se $ i - j \equiv \pm 2 \text{ ou } \pm 3 \Mod{8}$.
+Notemos que $i \sim j$ implica em $ j \sim i$ e em $i + k \sim j + k$ para todo $k$. Construimos nossa coloração $c$ então da seguinte maneira:
+
+\[c(v_i v_j) = \begin{cases}
+  \text{vermelho}, & \text{se } i \sim j \\
+  \text{azul}, & \text{se } i \not\sim j.
+\end{cases}\]
+
+Agora observaremos que não existe $K_4$ vermelho em $G$. Suponha que $v_i, v_j, v_k, v_w$ formem um $K_4$ vermelho em $G$. Sem perda de generalidade, podemos colocar $w = 0$ uma vez que esta relação é invariante à translações. Portanto, temos que $i \sim 0$, $j \sim 0$ e $k \sim 0$. Isto nos dá que $i,j,k \in \{-3,-2,2,3\}$ e uma vez que eles são distintos, algum par dentre $\{-3,-2\}$ e $\{2,3\}$ está coberto pelos $i$, $j$ ou $k$.
+No entanto, $-3 \not\sim -2$ e $3 \not\sim 2$, o que nos mostra que alguma aresta não está presente, impedindo a existência de um $K_4$ vermelho.
+
+Similarmente, podemos observar que não existe $K_3$ azul. Suponha que $v_i, v_j, v_k$ formem um $K_3$ azul em $G$. Como $i \not\sim j$ implica $i + k \not\sim j + k$, podemos novamente supor que $k = 0$, o que nos dá que $i,j \in \{-1,1,4\}$.
+No entanto, temos que $-1 \sim 1$, $-1 \sim 4$ e $1 \sim 4$. Ou seja, qualquer que sejam os $i$ e $j$, a aresta entre $i$ e $j$ não será azul. Portanto, não existe $K_3$ azul em $G$.
+\end{proof}
+
+Finalmente, vamos explorar este tipo de idéia mais uma vez ao tentar computar $R(4,4)$. Temos a seguinte proposição:
+
+\begin{theorem}
+\label{thm:r44}
+$R(4,4) \leq 18$.
+\end{theorem}
+\begin{proof}
+Seja $G$ um grafo completo com 18 vértices e $c$ uma coloração de arestas em duas cores, $R$ e $B$ e suponha que não exista $K_4$ monocromático. Seja $v \in V(G)$ um vértice qualquer. Novamente consideramos as vizinhanças $N_R(v)$ e $N_B(v)$ de tamanho $d_R(v)$ e $d_B(v)$ respectivamente. Assim, temos que $d_R(v) + d_B(v) = 17$. Alguma destas duas vizinhanças possui pelo menos 9 vértices, digamos, $d_R(v) \geq 9$. Com isto, como $R(3,4) = 9$ temos que $N_R(v)$ possui um $K_3$ vermelho ou um $K_4$ azul. Como supomos que não existe $K_4$ monocromático em $G$, então $N_R(v)$ possui um $K_3$ vermelho.
+No entanto, unindo este $K_3$ com o vértice $v$, obtemos um $K_4$ vermelho. Temos um absurdo, e portanto, contradizemos nossa hipótese de que não existe $K_4$ monocromático. Assim, concluimos que $R(4,4) \leq 18$.
+\end{proof}
+
+A construção de uma coloração que nos sirva como prova de que $R(4,4) > 17$ é mais complicada, embora utilize uma idéia bem parecida. A coloração de fato está explicitada na Figura \ref{fig:exr44}. Vamos ver como chegar nesta coloração.
+
+\begin{proposition}[Greenwood e Gleason]
+\label{thm:exr34}
+$R(4,4) > 17$.
+\end{proposition}
+\begin{proof}
+Vamos construir a coloração de arestas do grafo $G$ da Figura \ref{fig:exr44}. Desta vez trabalharemos no corpo $\mathbb{Z}_{17}$, uma vez que 17 é primo. Escolhemos como conjunto de vértices $v_0, v_2, \dots, v_{16}$ como elementos do corpo e definimos a seguinte relação em $\mathbb{Z}_{17}$: dizemos que $i \sim j$ se $ i - j $ for um resíduo quadrático, isto é, se existe $x \in \mathbb{Z}_{17}$ tal que $i - j \equiv x^2 \Mod{17}$.
+Notemos que $i \sim j$ implica em $ j \sim i$, em $i + k \sim j + k$ para todo $k$ e em $a^2 i \sim a^2 j$. Novamente, construimos nossa coloração $c$ então da seguinte maneira:
+
+\[c(v_i v_j) = \begin{cases}
+  \text{vermelho}, & \text{se } i \sim j \\
+  \text{azul}, & \text{se } i \not\sim j.
+\end{cases}\]
+
+Agora observaremos que não existe $K_4$ monocromático em $G$. Suponha que $v_i, v_j, v_k, v_w$ formem um $K_4$ vermelho em $G$. Sem perda de generalidade, podemos colocar $w = 0$ uma vez que esta relação é invariante à translações. Portanto, temos que os números $i$, $j$, $k$, $i - j$, $i - k$, $j - k$ são todos resíduos quadráticos ou não são resíduos quadráticos.
+Se eles forem todos resíduos, e como $i \neq 0$, $i^{-1}$ também é resíduo quadrático e definindo $a = i^{-1}j$, $b = i^{-1}k$, temos que os números $1$, $a$, $b$, $1 - a$, $1- b$, $a - b$ são todos reíduos quadráticos. Isto se deve ao fato de que os resíduos quadráticos são fechados por multiplicação.
+
+Se os números não forem resíduos quadráticos, então $i^{-1}$ também não é resíduo. Definindo $a$ e $b$ da mesma maneira, obtemos que os números $1$, $a$, $b$, $1 - a$, $1- b$, $a - b$ são todos resíduos quadráticos em $\mathbb{Z}_{17}$. Isto se deve ao fato de que em $\mathbb{Z}_{p}$ com $p$ primo, o produto de dois elementos que não são resíduos quadráticos é um resíduo quadrático, que é uma consequência do critério de Euler (adicionar no apêndice???).
+
+Em ambos os casos, temos que $1$, $a$, $b$, $1 - a$, $1- b$, $a - b$ são resíduos quadráticos em $\mathbb{Z}_{17}$. Mas os resíduos quadráticos são 1,2,4,8,9,13,15 e 16, e não é possível escolher $a$ e $b$ de maneira que todos os números sejam simultaneamente resíduos. Isto pode ser verificado da seguinte maneira. Suponha que $a = 4$, então $1 - a \equiv 14 \Mod{17}$, que não é resíduo quadrático.
+O mesmo verificamos se $a = 8$, $a = 13$ e $a = 15$, obtendo $1 - a \equiv 10 \Mod{17}$, $1 - a \equiv 5 \Mod{17}$ e $1 - a \equiv 3 \Mod{17}$ respectivamente, todos os casos não sendo resíduos quadráticos. Se $a = 9$ então $1 - a \equiv a \Mod{17}$ e os índices não são distintos.
+Portanto a única escolha restante é $a = 2$ e $b = 16$. Mas então $1 - a \equiv 16 \equiv b \Mod{17}$ e novamente não temos índices distintos.
+\end{proof}
+
+\begin{figure}[h!]
+\label{fig:exr44}
+\centering
+\begin{tikzpicture}
+\GraphInit[vstyle=Hasse]
+\grEmptyCycle[RA=4,prefix=a,rotation=0]{17}
+{\tikzset{EdgeStyle/.append style = {blue,line width=1pt}}
+\EdgeInGraphMod{a}{17}{1}
+\EdgeInGraphMod{a}{17}{2}
+\EdgeInGraphMod{a}{17}{4}
+\EdgeInGraphMod{a}{17}{8}
+{\tikzset{EdgeStyle/.append style = {red,line width=1pt}}
+\EdgeInGraphMod{a}{17}{3}
+\EdgeInGraphMod{a}{17}{5}
+\EdgeInGraphMod{a}{17}{6}
+\EdgeInGraphMod{a}{17}{7}
+\end{tikzpicture}
+\caption{Coloração do $K_{17}$ sem $K_4$ monocromáticos.}
+\end{figure}
+
+É natural agora tentar encontrar outros valores, no entanto, os argumentos ficam cada vez mais difíceis. Por exemplo, o valor de $R(5,5)$ não é conhecido e o valor de $R(4,5) = 25$ foi encontrado por uma busca computacional extensiva em 1995 \cite{rad45}.
+
+Algo de interessante que podemos observar em todos os números que encontramos até o momento é que o argumento utilizado na prova do limitante superior é bem semelhante. De fato, podemos condensar esta idéia em um resultado à parte.
+
+\begin{theorem}[Greenwood, Gleason]
+\label{thm:inequality}
+$R(k,s) \leq R(k,s-1) + R(k-1,s)$.
+\end{theorem}
+\begin{proof}
+Seja $G$ um grafo completo com $n$ vértices e $c$ uma coloração de arestas em duas cores, $R$ e $B$ e suponha que não exista $K_k$ vermelho e nem $K_s$ azul. Seja $v \in V(G)$ um vértice qualquer. Consideramos as vizinhanças $N_R(v)$ e $N_B(v)$ de tamanho $d_R(v)$ e $d_B(v)$ respectivamente. Assim, temos que $d_R(v) + d_B(v) = n-1$. Se $d_R(v) \geq R(k-1,s)$, então em $N_R(v)$ possui um $K_s$ azul ou um $K_{k-1}$ vermelho, que em conjunto com $v$ forma um $K_k$ vermelho. Isto contradiz nossa hipótese, então $d_R(v) \geq R(k-1,s) - 1$. Similarmente, mostramos que $d_B(v) \geq R(k,s-1) - 1$. Portanto:
+\begin{align*}
+d_R(v) + d_B(v) &\leq R(k-1,s) + R(k,s-1) - 2 \\
+n &\leq R(k-1,s) + R(k,s-1) - 1
+\end{align*}
+Portanto, escolhendo $n = R(k-1,s) + R(k,s-1)$ obtemos uma contradição, e portanto, concluimos que $G$ possui um $K_k$ vermelho ou um $K_s$ azul. Ou seja, $R(k,s) \leq R(k,s-1) + R(k-1,s)$ como queríamos.
+\end{proof}
+
+Observe que esta desigualde nos dá fácilmente que $R(3,3) \leq R(2,3) + R(3,2) = 3 + 3 = 6$ e $R(4,4) \leq R(3,4) + R(4,3) = 18$. No entanto, para o valor $R$ Outra consequência interessante dsta desigualdade é que podemos utiliza-la para demonstrar um limitante superior genérico, e chegar em uma versão ligeiramente melhor do Teorema \ref{thm:ramsey}.
+
+
+\begin{theorem}[Erdös, Szekerés]
+\label{thm:szekeres}
+$\displaystyle R(k,s) \leq \binom{k + s - 2}{k - 1}$.
+\end{theorem}
+\begin{proof}
+Se $k = 1$ temos $R(1,s) = 1 = \binom{s - 1}{0}$. Se $k = 2$, temos $R(2,s) = s = \binom{s}{1}$. Procedemos agora por indução em $s + k$. Temos
+\[ R(k,s) \leq R(k,s-1) + R(k-1,s) \leq \binom{k + s - 3}{k - 2} + \binom{k + s - 3}{k - 1} = \binom{k + s - 2}{k - 1}. \]
+\end{proof}
+
+\begin{corollary}[Erdös, Szekerés]
+\label{col:szekeres}
+$\displaystyle R(k+1,k+1) \leq (1+o(1))\frac{4^k}{\sqrt{k \pi}}$.
+\end{corollary}
+\begin{proof}
+Vamos utilizar a aproximação de Stirling $n! = (1+o(1)) \sqrt{2n \pi} \left ( \frac{n}{e} \right)^n $ e o limitante dado pelo Teorema \ref{thm:szekeres} para os números de Ramsey diagonais $R(k+1,k+1) \leq \binom{2k}{k}$. Obtemos
+\begin{align*}
+R(k+1,k+1) &\leq \binom{2k}{k} = \frac{(2k)!}{k!^2} = (1 +o(1)) \frac{\sqrt{4 k \pi} \left ( \frac{2k}{e} \right)^{2k} }{2k\pi \left ( \frac{k}{e} \right)^{2k} } \\
+&= (1 +o(1))\frac{4^k}{\sqrt{k\pi}}.
+\end{align*}
+\end{proof}
+
+Note que este limitante é ligeiramente melhor que o obtido no Teorema \ref{thm:ramsey} por causa da presença do termo $\sqrt{k}$ no denominador. Isto nos indica que os números de Ramsey diagonais crescem no máximo exponencialmente e com expoente estritamente menor que 4. Poucas melhoras substanciais neste limitante são conhecidas, sendo o melhor atual
+\[R(k+1,k+1) \leq k^{-C\frac{\log k}{\log \log k}} \binom{2k}{k},\]
+para alguma constante $C$ adequada, devido a David Conlon em 2009\cite{conlon}. Note que o termo $k^{C\frac{\log k}{\log \log k}}$ é subexponencial, logo este limitante não melhora a constante $4^k$ implicada pelo coeficiente binomial central $\binom{2k}{k}$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Teoria de Ramsey}
+\section{Limitantes Inferiores}
+
+Os limitantes inferiores visto na seção anterior anterior são construtivos, isto é, quando mostramos que $R(4,4) > 17$, por exemplo, isto passou pela construção de uma coloração de arestas do grafo $K_{17}$. Para encontrar um bom limitante inferior, vamos precisar de uma abordagem um pouco diferente.
+
+O nosso objetivo é encontrar colorações de arestas de $K_n$ sem $K_k$ monocromáticos com $k$ fixado e $n$ maior possível, para poder concluir que $R(k,k) > n$. Note que não necessariamente precisamos construir tal coloração, basta saber que alguma coloração que satisfaz estas propriedades existe. Vamos introduzir agora uma técnica chamada de \indef{método probabilistico} para resolver este tipo de problema. O nosso objetivo é provar que uma estrutura com certas propriedades existe. Definimos então um espaço de probabilidade sobre o conjunto destas estruturas de maneira adequada e mostramos que com probabilidade positiva, a propriedade de interesse é satisfeita. Isto nos mostra que o conjunto dos elementos cuja propriedade são satisfeitas não pode ser vazio, caso contrário, a probabilidade seria 0, e mostramos a existência de uma estrutura com esta propriedade.
+
+Esta técnica foi aplicada com sucesso pela primeira vez pelo matemático Paul Erdös para encontrar justamente um limitante inferior para os números de Ramsey diagonais $R(k,k)$. Antes do tal, vamos revisar alguns conceitos de probabilidade discreta, em particular, estamos interessados em escolher uma coloração de arestas do $K_n$ de maneira aleatória. Seja $\mathcal{C}$ o conjunto de todas as colorações de arestas em duas cores do $K_n$. Claramente, temos que $|\mathcal{C}| = 2^{\binom{n}{2}}$.
+Suponha que escolhemos uma coloração $c \in \mathcal{C}$ aleatoria e uniformemente, queremos saber qual é a probabilidade desta coloração possuir uma dada propriedade. Seja $\mathcal{P} \subset \mathcal{C}$ o conjunto das colorações que satisfazem a dada propriedade. Temos então que $\prob(c \text{ possui a propriedade}) = \prob(c \in \mathcal{P}) = |\mathcal{P}| / |\mathcal{C}|$, onde $\prob$ é a medida de probabilidade.
+Em particular, se $e$ é uma aresta, então $|\mathcal{P}| = |\{c \in \mathcal{C} : c(e) = R \}| = 2^{\binom{n}{2}-1}$, o que nos dá $\prob(c(e) = R) = \frac{1}{2}$ e também $\prob(c(e) = B) = \frac{1}{2}$. Podemos agora introduzir a primeira aplicação do método probabilístico:
+
+\begin{theorem}[Erdös, 1947]
+Se $\displaystyle \binom{n}{k} \dot 2^{1 - \binom{k}{2}} < 1$ então $R(k,k) > n$. Isso nos dá que $R(k,k) > \lfloor 2^{k/2} \rfloor$ para todo $k \geq 3$.
+\end{theorem}
+\begin{proof}
+Considere uma coloração de arestas do $K_n$ em duas cores obtida de maneira aleatória colorindo independentemente e uniformemente. Fixe um subconjunto $A \subset V(K_n)$ de $k$ vértices e seja $M_A$ o evento de que o subrafo completo induzido por $A$ é monocromático. Fixando uma cor para as arestas do subgrafo induzido por $A$, podemos colorir as diversas $\binom{n}{2} - \binom{k}{2}$ arestas de qualquer cor. Como existem duas cores disponíveis, temos:
+\[ \prob(M_A) = \frac{2\cdot 2^{\binom{n}{2} - \binom{k}{2}}}{2^{\binom{n}{2}}}  = 2^{1 - \binom{k}{2}} \]
+Considere agora o evento $M = \bigcup_{R \subset V(G), |R|=k}M_R$ que corresponde a existência de algum $K_k$ monocromático.
+\begin{align*}
+\prob(M) &= \prob\left (\bigcup_{\mathclap{\substack{R \subset V(K_n)\\ |R| = k}}}M_R \right) \leq \sum_{\mathclap{\substack{R \subset V(K_n)\\ |R| = k}}}\prob(M_R) \\
+&= \sum_{\mathclap{\substack{R \subset V(K_n)\\ |R| = k}}} 2^{1 - \binom{k}{2}} = \binom{n}{k} 2^{1 - \binom{k}{2}} < 1
+\end{align*}
+Logo, $\prob(\comp{M_R}) = 1 - \prob(M_R) > 0$, o que nos indica que existe alguma coloração de $K_n$ sem $K_k$ monocromático. Com isso, temos $R(k,k) > n$.
+(FINALIZAR BOUND)
+\end{proof}
+
+
+Na seção anterior, vimos alguns limitantes superiores para o número $R(k,k)$ que tem ordem assintótica próxima de $4^k$.
+
+\begin{openproblem}
+Constructive Ramsey
+\end{openproblem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Teoria de Grafos}
+\section{Número de Ramsey de Grafos}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
