@@ -1,0 +1,28 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{tkz-graph}
+\usepackage{tkz-berge}
+
+\begin{document}
+
+\begin{tikzpicture}
+  \SetGraphUnit{2}
+  \GraphInit[vstyle=Normal]
+  \tikzset{LabelStyle/.style={opacity=0,text opacity=1}}
+  \Vertex[L=$u$]{A}
+  \EA[L=$v$](A){B}
+  \EA[L=$w$](B){C}
+  \SetGraphUnit{3}
+  \NO[L=$x$](B){D}
+  \Edge[label=$e$,labelstyle=left](B)(D)
+  \Loop[dist=1cm,dir=NO,style={thick,-},label=$s$,labelstyle=above](D)
+  \tikzset{EdgeStyle/.append style = {bend left}}
+  \Edge[label=$f$,labelstyle=above](A)(B)
+  \Edge[label=$g$,labelstyle=above](B)(A)
+  \Edge[label=$h$,labelstyle=above](B)(C)
+  \Edge[label=$j$,labelstyle=above](C)(B)
+  \Edge[label=$k$,labelstyle=left](A)(D)
+  \Edge[label=$l$,labelstyle=right](D)(C)
+\end{tikzpicture}
+
+\end{document}

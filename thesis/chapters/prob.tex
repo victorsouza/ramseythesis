@@ -1,0 +1,63 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Projeto Final de Graduação
+%% Aluno: Victor Seixas Souza
+%% Orientadora: Christiane Neme Campos
+%% Tema: Teoria de Ramsey em Grafos
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% !TEX root = ../thesis.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Método Probabilístico}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Recall de fatos de probabilidade.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Limitantes Inferiores}
+
+Os limitantes inferiores visto na seção anterior anterior são construtivos, isto é, quando mostramos que $R(4,4) > 17$, por exemplo, isto passou pela construção de uma coloração de arestas do grafo $K_{17}$. Para encontrar um bom limitante inferior, vamos precisar de uma abordagem um pouco diferente.
+
+O nosso objetivo é encontrar colorações de arestas de $K_n$ sem $K_k$ monocromáticos com $k$ fixado e $n$ maior possível, para poder concluir que $R(k,k) > n$. Note que não necessariamente precisamos construir tal coloração, basta saber que alguma coloração que satisfaz estas propriedades existe. Vamos introduzir agora uma técnica chamada de \indef{método probabilistico} para resolver este tipo de problema. O nosso objetivo é provar que uma estrutura com certas propriedades existe. Definimos então um espaço de probabilidade sobre o conjunto destas estruturas de maneira adequada e mostramos que com probabilidade positiva, a propriedade de interesse é satisfeita. Isto nos mostra que o conjunto dos elementos cuja propriedade são satisfeitas não pode ser vazio, caso contrário, a probabilidade seria 0, e mostramos a existência de uma estrutura com esta propriedade.
+
+Esta técnica foi aplicada com sucesso pela primeira vez em 1947 pelo matemático Paul Erdös para encontrar justamente um limitante inferior para os números de Ramsey diagonais $R(k,k)$~\cite{erdos47}. Antes do tal, vamos revisar alguns conceitos de probabilidade discreta, em particular, estamos interessados em escolher uma coloração de arestas do $K_n$ de maneira aleatória. Seja $\mathcal{C}$ o conjunto de todas as colorações de arestas em duas cores do $K_n$. Claramente, temos que $|\mathcal{C}| = 2^{\binom{n}{2}}$.
+Suponha que escolhemos uma coloração $c \in \mathcal{C}$ aleatoria e uniformemente, queremos saber qual é a probabilidade desta coloração possuir uma dada propriedade. Seja $\mathcal{P} \subset \mathcal{C}$ o conjunto das colorações que satisfazem a dada propriedade. Temos então que $\prob(c \text{ possui a propriedade}) = \prob(c \in \mathcal{P}) = |\mathcal{P}| / |\mathcal{C}|$, onde $\prob$ é a medida de probabilidade.
+Em particular, se $e$ é uma aresta, então $|\mathcal{P}| = |\{c \in \mathcal{C} : c(e) = R \}| = 2^{\binom{n}{2}-1}$, o que nos dá $\prob(c(e) = R) = \frac{1}{2}$ e também $\prob(c(e) = B) = \frac{1}{2}$. Podemos agora introduzir a primeira aplicação do método probabilístico:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{theorem}[Erdös, 1947]
+Se $\displaystyle \binom{n}{k} 2^{1 - \binom{k}{2}} < 1$ então $R(k,k) > n$. Isso nos dá que $R(k,k) > \lfloor 2^{k/2} \rfloor$ para todo $k \geq 3$.
+\end{theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{proof}
+Considere uma coloração de arestas do $K_n$ em duas cores obtida de maneira aleatória colorindo independentemente e uniformemente. Fixe um subconjunto $A \subset V(K_n)$ de $k$ vértices e seja $M_A$ o evento de que o subrafo completo induzido por $A$ é monocromático. Fixando uma cor para as arestas do subgrafo induzido por $A$, podemos colorir as diversas $\binom{n}{2} - \binom{k}{2}$ arestas de qualquer cor. Como existem duas cores disponíveis, temos:
+\[ \prob(M_A) = \frac{2\cdot 2^{\binom{n}{2} - \binom{k}{2}}}{2^{\binom{n}{2}}}  = 2^{1 - \binom{k}{2}} \]
+Considere agora o evento $M = \bigcup_{R \subset V(G), |R|=k}M_R$ que corresponde a existência de algum $K_k$ monocromático.
+\begin{align*}
+\prob(M) &= \prob\Bigg( \;\;\;\;\bigcup_{\mathclap{\substack{R \subset V(K_n)\\ |R| = k}}}M_R \Bigg) \leq \sum_{\mathclap{\substack{R \subset V(K_n)\\ |R| = k}}}\prob(M_R) \\
+&= \sum_{\mathclap{\substack{R \subset V(K_n)\\ |R| = k}}} 2^{1 - \binom{k}{2}} = \binom{n}{k} 2^{1 - \binom{k}{2}} < 1
+\end{align*}
+Logo, $\prob(\comp{M_R}) = 1 - \prob(M_R) > 0$, o que nos indica que existe alguma coloração de $K_n$ sem $K_k$ monocromático. Com isso, temos $R(k,k) > n$.
+
+Lembre que $\binom{n}{k} \leq n^k /k!$ e suponha que $n = \lfloor 2^{k/2} \rfloor$. Temos então que
+\[ \binom{n}{k}2^{1 - \binom{k}{2}} \leq \frac{n^k}{k!}2^{1 - \frac{k^2}{2} + \frac{k}{2}} = \frac{n^k 2^{1 + \frac{k}{2}}}{k!2^{\frac{k^2}{2}}} \leq \frac{2^{1 + \frac{k}{2}}}{k!} < 1 \]
+quando $n \geq 3$. Assim, temos $R(k,k) > \lfloor 2^{k/2} \rfloor$ quando $n \geq 3$.
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Este tipo de idéia pode ser refinada para obter resultados melhores para o limitante inferior. No entanto, não se conhece algum limitante inferior cuja ordem exponencial seja superior à $\sqrt{2}^k$. Vimos na seção anterior, que o melhor limitante superior conhecido possui ordem exponencial $4^k$. Um dos problemas abertos mais importantes em Combinatória é determinar a ordem exponencial correta para o crescimento dos números de Ramsey diagonais.
+
+Na seção anterior, vimos alguns limitantes superiores para o número $R(k,k)$ que tem ordem assintótica próxima de $4^k$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{openproblem}
+Constructive Ramsey
+\end{openproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{O Lema Local de Lovász}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

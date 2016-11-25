@@ -1,0 +1,18 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{tkz-graph}
+\usepackage{tkz-berge}
+
+\begin{document}
+
+\begin{tikzpicture}
+  \GraphInit[vstyle=Hasse]
+  {\tikzset{EdgeStyle/.append style = {blue,line width=2pt}}
+    \grCycle[RA=1.8,prefix=a,rotation=18]{5}
+  }
+  {\tikzset{EdgeStyle/.append style = {red,line width=2pt}}
+    \EdgeInGraphMod{a}{5}{2}
+  }
+\end{tikzpicture}
+
+\end{document}

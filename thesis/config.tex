@@ -24,6 +24,7 @@
 \usepackage{amsfonts}
 \usepackage{amsthm}
 \usepackage{nicefrac}
+\usepackage{mathtools}
 %% NOMENCLATURE
 \usepackage{nomencl}
 %% CHAPTER HEADINGS
@@ -53,15 +54,15 @@ Supervisora: Christiane Neme Campos}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% THEOREMS
 
-\newtheorem{definition}{Definição}[chapter]
-\newtheorem{theorem}{Teorema}[chapter]
+\newtheorem{theorem}{Teorema}%[chapter]
+\newtheorem{definition}[theorem]{Definição}
 \newtheorem{lemma}[theorem]{Lema}
 \newtheorem{proposition}[theorem]{Proposição}
 \newtheorem{corollary}[theorem]{Corolário}
 \newtheorem{fact}[theorem]{Fato}
 \newtheorem{observation}[theorem]{Observação}
 \newtheorem{openproblem}[theorem]{Problema em Aberto}
-\newtheorem{example}{Exemplo}
+\newtheorem{example}[theorem]{Exemplo}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MATH OPERATORS
