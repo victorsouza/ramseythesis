@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{tkz-graph}
+\usepackage{tkz-berge}
+
+\begin{document}
+
+\begin{tikzpicture}
+\GraphInit[vstyle=Hasse]
+\grEmptyCycle[RA=4,prefix=a,rotation=0]{17}
+{\tikzset{EdgeStyle/.append style = {blue,line width=1pt}}
+  \EdgeInGraphMod{a}{17}{1}
+  \EdgeInGraphMod{a}{17}{2}
+  \EdgeInGraphMod{a}{17}{4}
+  \EdgeInGraphMod{a}{17}{8}
+}
+{\tikzset{EdgeStyle/.append style = {red,line width=1pt}}
+  \EdgeInGraphMod{a}{17}{3}
+  \EdgeInGraphMod{a}{17}{5}
+  \EdgeInGraphMod{a}{17}{6}
+  \EdgeInGraphMod{a}{17}{7}
+}
+\end{tikzpicture}
+
+\end{document}

@@ -31,7 +31,8 @@
 \usepackage[Sonny]{fncychap}
 %% TODONOTES
 \usepackage{todonotes}
-
+%% TABLE AND FIGURE COUNTERS
+\usepackage{chngcntr}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% FILE INFO
@@ -89,6 +90,19 @@ Supervisora: Christiane Neme Campos}
 \newcommand{\comp}[1]{\overline{#1}}
 \newcommand{\card}[1]{\left | #1 \right |}
 \newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+\newcommand{\legendre}[2]{\big(\frac{#1}{#2}\big)}
+\newcommand{\Z}[1]{\mathbb{Z}_{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BOUND TABLE
+%\newcommand{\tbound}[2]{\begin{tabular}[c]{@{}l@{}} $\geq#1$\\ $\leq #2$\end{tabular}}
+%\newcommand{\texact}[1]{$=#1$}
+\newcommand{\tbound}[2]{\begin{tabular}[c]{@{}l@{}} {\color{Red}\textbf{#1}} \\ {\color{Blue}\textbf{#2}}\end{tabular}}
+\newcommand{\texact}[1]{{\color{ForestGreen}\textbf{#1}}}
+
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% INILINE DEFINITIONS

@@ -116,7 +116,7 @@ Temos então que o grafo vazio com $n$ vértices é complemento de $K_n$, portan
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Finalmente, o último conceito necessário nesta introdução é o de \indef{coloração de arestas}. A noção de coloração é muito importante em Teoria de Grafos, sendo intimamente relacionada ao surgimento da mesma. A idéia principal de colorações é mapear o conjunto de vértices ou de arestas em um conjunto de cores $\mathcal{C}$. Utiliza-se cores no lugar de índices ou números para enfatizar a ausência de estrutura no conjunto. Assim, se $G = (V,E)$ é um grafo, então uma coloração de arestas de $G$ em $k$ cores é um mapa entre $E$ e um conjunto de $k$ cores, isto é, uma função $c: E(G) \to \mathcal{C}$, no qual $\mathcal{C} = \{ C_1, \dots, C_k\}$ é um conjunto de $k$ cores.
-Uma coloração de arestas em $k$ cores também é chamada de $k$-coloração de arestas. Note que se considerarmos apenas arestas de cor $C$ em uma coloração de arestas, temos um subgrafo de $G$, que é denotado por $G_C$.
+Uma coloração de arestas em $k$ cores também é chamada de \indef{$k$-coloração de arestas}. Podemos explicitar quais cores são utilizadas na coloração chamando de \indef{RB-coloração} uma 2-coloração de arestas nas cores $R$ e $B$, por exemplo. Note que se considerarmos apenas arestas de cor $C$ em uma coloração de arestas, temos um subgrafo de $G$, que é denotado por $G_C$.
 Neste texto, quando alguma notação incluir $G_C$ como índice, podemos simplificar para apenas $C$. Por exemplo, a vizinhança do vértice $v$ no grafo $G_C$ pode ser denotada por $N_C(v)$ em vez de $N_{G_C}(v)$.
 
 Note também que uma coloração de arestas pode ser vista como uma partição do conjunto de arestas nas partes $c^{-1}(C_i)$. Desta forma, estamos particionando as arestas do grafo em classes determinada pela cor. Por exemplo, a Figura \ref{fig:intro:excolouring} exemplifica uma coloração de arestas em três cores do grafo construído no início desta seção. Esta coloração particiona o conjunto de arestas em $\{k,j\}$, $\{e,f,g,s\}$ e $\{h,l\}$.
@@ -173,12 +173,12 @@ Para todo $k \in \mathbb{N}$, $R(k) \leq 2^{2k-2} < 4^k $. Em particular, $R(k)$
 \end{theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proof}
-Esta prova consiste em sucessivas aplicações do princípio da casa dos pombos. Seja $G = G^1$ um grafo completo com $n = 2^{l}$ vértices com uma coloração de arestas $c$ em duas cores $R$ e $B$. Vamos encontrar uma cópia monocromática de $K_k$ em $G$ se fizermos $n$ grande o suficiente ao escolher $l$ de forma apropriada.
+Esta prova consiste em sucessivas aplicações do princípio da casa dos pombos. Seja $G = G^1$ um grafo completo com $n = 2^{l}$ vértices com uma RB-coloração $c$. Vamos encontrar uma cópia monocromática de $K_k$ em $G$ se fizermos $n$ grande o suficiente ao escolher $l$ de forma apropriada.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.7\linewidth]{figures/1_intro_6_recursive}
+\includegraphics[width=0.9\linewidth]{figures/1_intro_6_recursive}
 \caption{Construção recursiva da sequência de vértices $v_i$ e cores.}
 \label{fig:intro:recursive}
 \end{figure}
