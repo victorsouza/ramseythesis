@@ -8,37 +8,122 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Método Probabilístico}
+\label{chap:prob}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Recall de fatos de probabilidade.
+O \indef{método probabilistico} é uma técnica não-construtiva para demonstração da existência de objetos matemáticos com alguma prorpiedade específica. Como o próprio nome indica, o argumento tem natureza probabilística, e ele consiste em mostrar que ao escolher um objeto de maneira aleatória, a probabilidade deste objeto ter a propriedade desejada é positiva. Isto garante a existência deste objeto.
+
+Cabe então, antes de entramos nos detalhes desta técnica, fazer uma breve revisão de conceitos de probabilidade, em particular, esaços discretos de probabilidade. Referências adicionais recomendadas incluem as notas de aula do Leonardo Rolla \cite{rolla} e o livro do Barry James \cite{barryjames}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Probabilidade Discreta}
+
+Um modelo probabilístico possui três componentes básicas: um espaço amostral, uma classe de eventos e uma medida de probabilidade. O \indef{espaço amostral} é um conjunto não-vazio $\Omega$, cujos elementos representam os resultados possíveis para um experimento. Uma realização deste experimento consiste na escolha aleatória de um elemento $\omega \in \Omega$. Estaremos interessados exclusivamente no caso em que $\Omega$ é um conjunto finito.
+
+Em conjunto com um espaço amostral $\Omega$, se associa uma classe $\mathcal{F}$ apropriada de subconjuntos de $\Omega$. Os elementos de $\mathcal{F}$ são subconjuntos $A \subseteq \Omega$ são os conjuntos quais atribuimos uma probabilidade, e são denomidados \indef{eventos} ou \indef{conjuntos mensuráveis}. Definiremos probabilidade apenas para elementos desta classe. Para que isto seja feito de maneira adequada, a classe $\mathcal{F}$ precisa satisfazer algumas propriedades. Mais precisamente, $\mathcal{F}$ precisa formar uma $\sigma$-álgebra sobre $\Omega$, veja \cite{barryjames}.
+No entanto, esta formalidade é facilmente contornada no caso discreto, uma vez que o conjunto de todos os subconjuntos de $\Omega$ é uma $\sigma$-álgebra sobre $\Omega$ quando $\Omega$ é finito. O par $(\Omega, \mathcal{F})$ é dito um \indef{espaço mensurável}.
+
+Finalmente, uma \indef{medida de probabilidade}, ou simplesmente \indef{probabilidade}, é uma medida sobre o espaço mensurável $(\Omega, \mathcal{F})$, ou seja, uma função $\prob : \mathcal{A} \to \mathbb{R}$ com as seguintes propriedades:
+
+\begin{enumerate}[label=(P\arabic*),itemindent=*]
+  \item $\prob(A) \geq 0$ para todo $A \in \mathcal{F}$.
+  \item $\prob(\Omega) = 1$.
+  \item Se $A_1, A_2, \dots \in \mathcal{F}$ com $A_i \cap A_j = \emptyset, \forall i \neq j$, então $\prob( \bigcup_{i} A_i ) = \sum_i \prob(A_i)$.
+\end{enumerate}
+
+Um \indef{espaço de probabilidade} é uma tripla $(\Omega, \mathcal{F}, \prob)$ no qual $\Omega$ é um espaço amostral, $\mathcal{F}$ é uma classe de eventos e $\prob$ é uma medida de probabilidade sobre $(\Omega, \mathcal{F})$. Para um espaço de probabilidade, também valem as seguintes propriedades:
+
+\begin{enumerate}[label=\arabic*.,itemindent=*]
+  \item $\prob(\emptyset) = 0$
+  \item $\prob(\comp{A}) = 1 - \prob(A)$.
+  \item Se $A$ e $B \in \mathcal{F}$ e $A \subseteq B$, então $\prob(A) \leq \prob(B)$.
+  \item Se $A$ e $B \in \mathcal{F}$ e $A \subseteq B$, então $\prob(B \setminus A) = \prob(B) - \prob(A)$.
+  \item Para todo $A \in \mathcal{F}$, temos $0 \leq \prob(A) \leq 1$.
+  \item Se $A_1, A_2, \dots \in \mathcal{A}$ c, então $\prob( \bigcup_{i} A_i ) \leq \sum_i \prob(A_i)$.
+  \item Se $A$ e $B \in \mathcal{F}$, então $\prob(A \cup B) = \prob(A) + \prob(B) - \prob(A \cap B)$.
+\end{enumerate}
+
+Existem diversas maneiras de construir espaços de probabilidade, cada uma se adequando a uma situação. Para nossos propósitos, o espaço dos resultados \indef{equiprováveis} é de grande interesse, e é construido da seguinte maneira.
+Seja $\Omega$ um conjunto finito e $\mathcal{F}$ o conjunto de todos os subconjuntos de $\Omega$. Para $A \in \mathcal{F}$, definiremos a probabilidade de $A$ por $\prob(A) = \frac{\card{A}}{\card{\Omega}}$. O leitor pode verificar que esta definição satisfaz as propriedades (P1), (P2) e (P3) de uma medida de probabilidade. Medidas de probabilidade sobre espaços finitos que satisfazem $\prob(A) = \frac{\card{A}}{\card{\Omega}}$ também são ditas \indef{uniformes}.
+
+Dado um espaço de probabilidade $(\Omega, \mathcal{F}, \prob)$ e $A$ e $B \in \mathcal{F}$, definimos a \indef{probabilidade condicional} de $A$, dado que $B$ ocorre, $\prob(A | B)$, por
+\[ \prob(A|B) = \frac{\prob(A \cap B)}{\prob(B)}. \]
+Quando $\prob(B) = 0$, definimos $\prob(A|B) = \prob(A)$. Desta forma, a função $\prob(\cdot | B) : \mathcal{F} \to \mathbb{R}$ é uma medida de probabilidade em $(\Omega, \mathcal{F})$.
+
+Dois eventos $A$ e $B$ são ditos \indef{independentes} se $\prob(A \cap B) = \prob(A) \prob(B)$. Usa-se $A \indep B$ para indicar que os eventos $A$ e $B$ são independentes. Intuitivamente, dois eventos são independentes quando a ocorrencia ou não de um deles não influencia a probabilidade da ocorrência do outro evento. As proposições a seguir são todas equivalentes:
+
+\begin{enumerate}[label=\arabic*.,itemindent=*]
+  \item $A$ e $B$ são independentes.
+  \item $A$ e $\comp{B}$ são independentes.
+  \item $\comp{A}$ e $B$ são independentes.
+  \item $\comp{A}$ e $\comp{B}$ são independentes.
+  \item $\prob(A|B) = \prob(A)$.
+  \item $\prob(B|A) = \prob(B)$.
+\end{enumerate}
+
+Seja $\{ A_i : i \in I\}$ uma família de eventos, onde $I$ é um conjunto qualquer de índices. A família $\{ A_i : i \in I\}$ é dita \indef{independente dois a dois} se $A_i$ é independente de $A_j$ para todo $i,j \in I$, $i \neq j$. A mesma família é dita \indef{coletivamente independente} se para qualquer subconjunto $J \subset I$ de índices, vale
+\[ \prob\left(\bigcap_{j \in J} A_j \right) = \prod_{j \in J}\prob(A_j).\]
+
+Uma \indef{variável aleatória} é uma função $X: \Omega \to \mathbb{R}$ que associa a cada elemento do espaço amostral a um valor real. Formalmente, também é requerido que o conjunto $\{ \omega \in \Omega : X(\omega) \leq x \}$ seja mensurável, ou seja, $X^{-1}( (-\infty,x]) \in \mathcal{F}$. Quando $\Omega$ é finito e $\mathcal{F}$ é a classe de todos os subconjuntos de $\Omega$, este requisito sempre é satisfeito. Quando uma variável aleatória $X$ assume uma quantidade finita de valores, ela é dita \indef{simples}.
+
+Utilizaremos variáveis aleatórias para realizar contagens. Chamaremos  variáveis aleatórias que só assumem valores inteiros não-negativos de \indef{naturais}. Uma classe de variáveis aleatórias naturais bastante importante é a das \indef{funções indicadoras}. Fixado $A \subset \Omega$, definimos a função indicadora de $A$, $\ind{A}$, por
+\[ \ind{A}(\omega) = \begin{cases}
+  1, & \text{se } \omega \in A; \\
+  0, & \text{se } \omega \not\in A.
+\end{cases}\]
+
+Dado uma variável aleatória natural $X$ sobre $(\Omega, \mathcal{F}, \prob)$, definimos a \indef{esperança} de $X$, denotada $\expec[X]$ por
+\[ \expec[X] = \sum_{n = 0}^{\infty} n \prob(\{X = n\}).\]
+Note que para funções indicadoras, temos $\expec[\ind{A}] = \prob(A)$.
+
+A esperança é um \indef{linear} no seguinte sentido. Sejam $X_1, \dots, X_n$ variáveis aleatórias sobre um mesmo espaço de probabilidade, e sejam $\alpha_1, \dots, \alpha_n \in \mathbb{R}$. Temos que
+\[ \expec\left[ \sum_{i=1}^n \alpha_i X_i \right] = \sum_{i = 1}^{n} \alpha_i \expec[X_i]. \]
+
+A esperança é \indef{monótona} significando que se $X$ e $Y$ são variáveis aleatórias num mesmo espaço com $X \geq Y$, então $\expec[X] \geq \expec[Y]$.
+
+A \indef{desigualdade de Markov} é uma importante ferramenta dentro do método probabilístico. Ela nos dá que se $X$ é uma variável aleatória não-negativa, então
+\[ \prob(X \geq a) \leq \frac{\expec[X]}{a}. \]
+
+Este apanhado de resultados é suficiente para finalmente introduzirmos o método probabilístico aplicado em Teoria de Ramsey. Aplicações mais refinadas do método, no entanto, requerem conceitos mais avançados de probabilidade, como martingales, concentração de medida, grandes desvios e desigualdade de correlações. O livro \emph{The Probabilistic Method} \cite{alon} é a grande referência para o método e contém inúmeras aplicações, tanto em Combinatória quanto em outras áreas da Matemática.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Limitantes Inferiores}
 
-Os limitantes inferiores visto na seção anterior anterior são construtivos, isto é, quando mostramos que $R(4,4) > 17$, por exemplo, isto passou pela construção de uma coloração de arestas do grafo $K_{17}$. Para encontrar um bom limitante inferior, vamos precisar de uma abordagem um pouco diferente.
+Os limitantes inferiores para os números de Ramsey visto no Capítulo~\ref{chap:prelim} são construtivos, isto é, quando mostramos que $R(4,4) > 17$, por exemplo, isto passou pela construção de uma coloração de arestas do grafo $K_{17}$. Para encontrar bons limitante inferiores de maneira mais genérica, vamos precisar de uma abordagem um pouco diferente. Vamos começar pelos números de Ramsey diagonais.
 
-O nosso objetivo é encontrar colorações de arestas de $K_n$ sem $K_k$ monocromáticos com $k$ fixado e $n$ maior possível, para poder concluir que $R(k,k) > n$. Note que não necessariamente precisamos construir tal coloração, basta saber que alguma coloração que satisfaz estas propriedades existe. Vamos introduzir agora uma técnica chamada de \indef{método probabilistico} para resolver este tipo de problema. O nosso objetivo é provar que uma estrutura com certas propriedades existe. Definimos então um espaço de probabilidade sobre o conjunto destas estruturas de maneira adequada e mostramos que com probabilidade positiva, a propriedade de interesse é satisfeita. Isto nos mostra que o conjunto dos elementos cuja propriedade são satisfeitas não pode ser vazio, caso contrário, a probabilidade seria 0, e mostramos a existência de uma estrutura com esta propriedade.
+O nosso objetivo é encontrar colorações de arestas de $K_n$ sem $K_k$ monocromáticos com $k$ fixado e $n$ maior possível, para poder concluir que $R(k,k) > n$. Note que não necessariamente precisamos construir tal coloração, basta saber que alguma coloração que satisfaz estas propriedades existe. Vamos introduzir agora o \indef{método probabilistico} para resolver este tipo de problema. O nosso objetivo é provar que uma estrutura com certas propriedades existe. Definimos então um espaço de probabilidade sobre o conjunto destas estruturas de maneira adequada e mostramos que com probabilidade positiva, a propriedade de interesse é satisfeita. Isto nos mostra que o conjunto dos elementos cuja propriedade são satisfeitas não pode ser vazio, caso contrário, a probabilidade seria 0, e mostramos a existência de uma estrutura com esta propriedade.
 
-Esta técnica foi aplicada com sucesso pela primeira vez em 1947 pelo matemático Paul Erdös para encontrar justamente um limitante inferior para os números de Ramsey diagonais $R(k,k)$~\cite{erdos47}. Antes do tal, vamos revisar alguns conceitos de probabilidade discreta, em particular, estamos interessados em escolher uma coloração de arestas do $K_n$ de maneira aleatória. Seja $\mathcal{C}$ o conjunto de todas as colorações de arestas em duas cores do $K_n$. Claramente, temos que $|\mathcal{C}| = 2^{\binom{n}{2}}$.
-Suponha que escolhemos uma coloração $c \in \mathcal{C}$ aleatoria e uniformemente, queremos saber qual é a probabilidade desta coloração possuir uma dada propriedade. Seja $\mathcal{P} \subset \mathcal{C}$ o conjunto das colorações que satisfazem a dada propriedade. Temos então que $\prob(c \text{ possui a propriedade}) = \prob(c \in \mathcal{P}) = |\mathcal{P}| / |\mathcal{C}|$, onde $\prob$ é a medida de probabilidade.
-Em particular, se $e$ é uma aresta, então $|\mathcal{P}| = |\{c \in \mathcal{C} : c(e) = R \}| = 2^{\binom{n}{2}-1}$, o que nos dá $\prob(c(e) = R) = \frac{1}{2}$ e também $\prob(c(e) = B) = \frac{1}{2}$. Podemos agora introduzir a primeira aplicação do método probabilístico:
+Esta técnica, embora aplicada pela primeira vez por Szele, foi vastamente explorada pelo matemático Paul Erdös, que utilizou desta técnica para encontrar justamente um limitante inferior para os números de Ramsey diagonais $R(k,k)$~\cite{erdos47}. Estamos interessados em escolher uma $RB$-coloração do $K_n$ de maneira aleatória e uniforme. O nosso espaço amostral $\Omega$ é, portanto, o conjunto de todas as colorações de arestas em duas cores do $K_n$. Seja $(\Omega, \mathcal{F}, \prob)$ o espaço de probabilidade com medida uniforme. Como temos que $|\Omega| = 2^{\binom{n}{2}}$, dado $A \in \mathcal{F}$, temos:
+\[ \prob(A) = \frac{|A|}{2^{\binom{n}{2}}}.\]
+
+Suponha que escolhemos uma coloração $c \in \Omega$ de maneira aleatoria e uniforme, de acordo com o espaço de probabilidade acima. Queremos saber qual é a probabilidade desta coloração possuir uma dada propriedade. Seja $\mathcal{P} \subset \Omega$ o conjunto das colorações que satisfazem a dada propriedade. Temos então que $\prob(c \text{ possui a propriedade}) = \prob(c \in \mathcal{P}) = \card{\mathcal{P}} / \card{\mathcal{C}}$, onde $\prob$ é a medida de probabilidade.
+
+Em particular, se $e$ é uma aresta, então $\card{\mathcal{P}} = \card{\{c \in \mathcal{C} : c(e) = R \}} = 2^{\binom{n}{2}-1}$, o que nos dá $\prob(c(e) = R) = \frac{1}{2}$ e também $\prob(c(e) = B) = \frac{1}{2}$.
+Além disso, se $e$ e $f$ são arestas distintas, $\prob(c(e) = B \cap c(f) = B) = \frac{1}{4}$, o que nos mostra que os eventos da forma $\{c(e) = C\}$ para alguma aresta $e$ e cor $C$ são independentes.
+
+Desta forma, escolher uma coloração $c \in \Omega$ utilizando o espaço de probabilidade $(\Omega, \mathcal{F}, \prob)$ é equivalente a escolher uma coloração das arestas de $K_n$ colorindo cada aresta de maneira aleatória, uniforme e independente. Podemos agora introduzir a primeira aplicação do método probabilístico:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{theorem}[Erdös, 1947]
+\label{thm:prob:method}
 Se $\displaystyle \binom{n}{k} 2^{1 - \binom{k}{2}} < 1$ então $R(k,k) > n$. Isso nos dá que $R(k,k) > \lfloor 2^{k/2} \rfloor$ para todo $k \geq 3$.
 \end{theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proof}
-Considere uma coloração de arestas do $K_n$ em duas cores obtida de maneira aleatória colorindo independentemente e uniformemente. Fixe um subconjunto $A \subset V(K_n)$ de $k$ vértices e seja $M_A$ o evento de que o subrafo completo induzido por $A$ é monocromático. Fixando uma cor para as arestas do subgrafo induzido por $A$, podemos colorir as diversas $\binom{n}{2} - \binom{k}{2}$ arestas de qualquer cor. Como existem duas cores disponíveis, temos:
+Suponha que $\binom{n}{k} 2^{1 - \binom{k}{2}} < 1$ e considere uma $RB$-coloração $c$ do grafo completo $G = (V,E) \iso K_n$ obtida pintando cada aresta de maneira aleatória, uniforme e independente. Fixado um subconjunto $A \in \binom{V}{k}$, ou seja, um subconjunto de $V$ com $k$ elementos, defina o evento $M_A = \{G[A] \text{ é monocromático em } c\}$. Fixando uma cor para as arestas do subgrafo induzido por $A$, podemos colorir as diversas $\binom{n}{2} - \binom{k}{2}$ arestas de qualquer cor. Como existem duas cores disponíveis, temos:
 \[ \prob(M_A) = \frac{2\cdot 2^{\binom{n}{2} - \binom{k}{2}}}{2^{\binom{n}{2}}}  = 2^{1 - \binom{k}{2}} \]
-Considere agora o evento $M = \bigcup_{R \subset V(G), |R|=k}M_R$ que corresponde a existência de algum $K_k$ monocromático.
+
+Considere agora a variavel aleatória $X$ que conta a quantidade de $K_k$ monocromáticos em $K_n$. Temos então $X = \sum_{A \in \binom{V}{k}}\ind{M_A}$. Vamos avaliar o valor esperado de $X$.
+
 \begin{align*}
-\prob(M) &= \prob\Bigg( \;\;\;\;\bigcup_{\mathclap{\substack{R \subset V(K_n)\\ |R| = k}}}M_R \Bigg) \leq \sum_{\mathclap{\substack{R \subset V(K_n)\\ |R| = k}}}\prob(M_R) \\
-&= \sum_{\mathclap{\substack{R \subset V(K_n)\\ |R| = k}}} 2^{1 - \binom{k}{2}} = \binom{n}{k} 2^{1 - \binom{k}{2}} < 1
+\expec[X] &= \expec\Bigg[]\sum_{A \in \binom{V}{k}}\ind{M_A} \Bigg] = \sum_{A \in \binom{V}{k}} \expec[\ind{M_A}] \\
+&= \sum_{A \in \binom{V}{k}} \prob(M_A) = \sum_{A \in \binom{V}{k}} 2^{1 - \binom{k}{2}}  = \binom{n}{k} 2^{1 - \binom{k}{2}} < 1
 \end{align*}
-Logo, $\prob(\comp{M_R}) = 1 - \prob(M_R) > 0$, o que nos indica que existe alguma coloração de $K_n$ sem $K_k$ monocromático. Com isso, temos $R(k,k) > n$.
+
+Pela desigualdade de Markov, $\prob(X \geq 1) \leq \expec[X] < 1$, portanto $\prob(X = 0) > 0$. Portanto, existe alguma coloração de $K_n$ sem $K_k$ monocromático. Com isso, temos $R(k,k) > n$.
 
 Lembre que $\binom{n}{k} \leq n^k /k!$ e suponha que $n = \lfloor 2^{k/2} \rfloor$. Temos então que
 \[ \binom{n}{k}2^{1 - \binom{k}{2}} \leq \frac{n^k}{k!}2^{1 - \frac{k^2}{2} + \frac{k}{2}} = \frac{n^k 2^{1 + \frac{k}{2}}}{k!2^{\frac{k^2}{2}}} \leq \frac{2^{1 + \frac{k}{2}}}{k!} < 1 \]
@@ -46,14 +131,80 @@ quando $n \geq 3$. Assim, temos $R(k,k) > \lfloor 2^{k/2} \rfloor$ quando $n \ge
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Este tipo de idéia pode ser refinada para obter resultados melhores para o limitante inferior. No entanto, não se conhece algum limitante inferior cuja ordem exponencial seja superior à $\sqrt{2}^k$. Vimos na seção anterior, que o melhor limitante superior conhecido possui ordem exponencial $4^k$. Um dos problemas abertos mais importantes em Combinatória é determinar a ordem exponencial correta para o crescimento dos números de Ramsey diagonais.
+Este tipo de idéia pode ser refinada para obter resultados melhores para o limitante inferior. No entanto, não se conhece algum limitante inferior cuja ordem exponencial seja superior à $\sqrt{2}^k$. Vimos na seção anterior, que o melhor limitante superior conhecido possui ordem exponencial $4^k$. Um dos problemas abertos mais importantes em Combinatória é determinar a ordem exponencial correta para o crescimento dos números de Ramsey diagonais. Em particular, não se sabe se o seguinte limite existe~\cite{chung1983survey}:
+\[ \lim_{k \to \infty} \left(R(k,k)  \right)^{1/k}. \]
+Mostramos que se este limite existir, ele está entre $\sqrt{2}$ e $4$.
 
-Na seção anterior, vimos alguns limitantes superiores para o número $R(k,k)$ que tem ordem assintótica próxima de $4^k$.
+A diferença entre as ordens de crescimento do limitante inferior e do limitante superior nos mostra o quanto ainda não se sabe sobre estes números. O melhor que podemos fazer para encontrar um $K_k$ monocromático consiste em jogar fora metade do grafo a cada passo, como foi feito no Teorema~\ref{thm:intro:ramsey}, o que provavelmente é destrutivo demais. A melhor construção que encontramos para uma coloração sem $K_k$ monocromático é uma coloração aleatória. Toda construção explicita conhecida é sub-exponencial. De fato, um importante problema em aberto da Teoria de Ramsey é encontrar uma demonstração construtiva de que $R(k,k) \geq (1+c)^k$ para alguma constante $c > 0$.
+
+Outro aspecto interessante desta demonstração é que ao alterando a condição para $\binom{n}{k} 2^{1 - \binom{k}{2}} \ll 1$, garantimos que $\prob(X = 0) \to 1$. De fato, isso ocorre quando $n = \lfloor 2^{k/2} \rfloor$. Isto possui implicações algorítmicas interessantes. Podemos encontrar de fato uma coloração do $K_n$ sem $K_{2\log n}$ monocromático com alta probabilidade apenas colorindo as arestas de maneira aleatória. De fato, quando maior $n$, menor a probabilidade de uma coloração aleatória do $K_n$ possuir um $K_{2\log n}$ monocromático.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Pequenas Alterações}
+
+Na aplicação do método probabilísto da seção anterior, mostramos que a existência de configurações em que alguma estrutura indesejada não ocorre. Algumas vezes, não conseguimos garantir que estas estruturas não aparecam, mas podemos encontrar configurações em que não existam muitas dessas estruturas ruins. O que podemos fazer em seguida é alterar a configuração afim de remover estas estruturas indesejadas. Este procedimento de realizar alterações nos grafos é bastante utilizado e geralmente permitirá refinar ligeiramente o nosso limitante inferior.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{openproblem}
-Constructive Ramsey
-\end{openproblem}
+\begin{theorem}
+\label{thm:prob:alter}
+Para todo inteiro $n$, temos $\displaystyle R(k,k) > n - \binom{n}{k}2^{1 - \binom{k}{2}}$.
+\end{theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{proof}
+Considere uma $RB$-coloração $c$ do grafo completo $G = (V,E) \iso K_n$ obtida pintando cada aresta de maneira aleatória, uniforme e independente. Procedendo de maneira idêntida ao Teorema~\ref{thm:prob:method}, definimos a variável aleatória $X$ que c conta a quantidade de $K_k$ monocromáticos em $K_n$. Calculamos o valor experado de $X$ e obtivemos:
+\[ \expec[X] = \binom{n}{k} 2^{1 - \binom{k}{2}} \]
+
+Isto é suficiente para garantir que existe uma coloração $c$ de $K_n$ com no máximo $\expec[X]$ cópias monocromáticas de $K_k$. Remova do $K_n$ um vértice de cada uma das cópias monocromáticas $K_k$, e assim, obtemos um grafo livre de $K_k$ moncromático. Removemos no máximo $\expec[X]$ vértices, portanto sobram pelo restam $n - \expec[X]$ vértices no grafo. Portanto
+\[ R(k,k) \geq n - \expec[X] = n - \binom{n}{k} 2^{1 - \binom{k}{2}}.  \qedhere\]
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Fazendo uma análise cuidadosa desta desigualdade \cite{spencer2014asymptopia}, podemos escolher $n$ de forma a maximizar $n - \binom{n}{k}2^{1 - \binom{k}{2}}$ e obter o seguinte resultado.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{corollary}
+Para $k \to \infty$, temos $\displaystyle R(k,k) > (1+o(1))\frac{k\sqrt{2}^k}{e}$.
+\end{corollary}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Até agora, vimos como utilizar o método probabilístico para encontrar limitantes para os números de Ramsey diagonais. Se desejarmos encontrar limitantes para outros números de Ramsey, precisamos alterar o nosso espaço de probabilidade.
+
+Seja $\Omega$ o conjunto de todas as $RB$-colorações do $G = (V,E) \iso K_n$ e $\mathcal{F}$ o conjunto de todos os subconjuntos de $\Omega$. Vamos construir uma medida de probabilidade que não é uniforme em $\Omega$. Fixe $0 \leq p \leq 1$ e pinte cada aresta de maneira aleatória e independente, com $\prob(c(e) = R) = p$ e $\prob(c(e) = B) = 1 - p$. Para uma coloração $c \in \Omega$ qualquer, temos então
+\[ \prob(c) =  p^{e(G_R)} + (1-p)^{e(G_B)}.\]
+Assim, $(\Omega, \mathcal{F}, \prob)$ consiste de um espaço de probabilidade. O espaço uniforme que tinhamos antes é o caso particular em que $p = 1/2$. Podemos generalizar o Teorema~\ref{thm:prob:alter} para números $R(k,s)$ da seguinte maneira:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{theorem}
+\label{thm:prob:alter_off}
+Para todo inteiro $n$ e $p \in [0,1]$, temos $\displaystyle R(k, s) > n - \binom{n}{k}p^{\binom{k}{2}} - \binom{n}{s}(1-p)^{\binom{s}{2}}$.
+\end{theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{proof}
+Considere uma $RB$-coloração $c$ do grafo completo $G = (V,E) \iso K_n$ obtida pintando cada aresta de maneira aleatória e independente de forma que cada aresta é vermelha com probabilidade $p$ e azul com probabilidade $1-p$.
+Definmos a variável aleatória $X$ como a quantidade de cópias vermelhas de $K_k$ vem $c$ e $Y$ como a quantidade de cópias azuis de $K_s$ em $c$. Computando as esperanças de $X$ e $Y$, obtemos:
+\begin{align*}
+\expec[X] &= \binom{n}{k}p^{\binom{k}{2}} \\
+\expec[Y] &= \binom{n}{s}(1-p)^{\binom{s}{2}}
+\end{align*}
+
+Consideramos um grafo proibido como uma cópia vermelha de $K_k$ ou uma cópia azul de $K_s$. Defina $Z = X + Y$ como a quantidade de grafos proibidos. Note que $\expec[Z] = \expec[X] + \expec[Y]$. Existe, portanto, uma coloração $c$ de $K_n$ com no máximo $\expec[Z]$ grafos proibidos. Remova do $K_n$ um vértice de cada um dos grafos proibidos, e obtemos um grafo livre de $K_k$ vermelho e de $K_s$ azul. Removemos no máximo $\expec[Z]$ vértices, portanto sobram pelo restam $n - \expec[Z] $ vértices no grafo. Portanto
+\[ R(k, s) > n - \binom{n}{k}p^{\binom{k}{2}} - \binom{n}{s}(1-p)^{\binom{s}{2}}.  \qedhere\]
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Esta modificação do resultado nos permite obter limitantes inferiores para outras classes de números. Fazendo escolhas adequadas de $n$ e $p$ no Teorema~\ref{thm:prob:alter_off}, obtém-se os seguintes corolários
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{corollary}
+O número de Ramsey $R(3,k)$ satisfaz $\displaystyle R(3,k) \geq  \Omega\left( \frac{k^{3/2}}{\log^{3/2} k}\right)$.
+\end{corollary}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{corollary}
+O número de Ramsey $R(4,k)$ satisfaz $\displaystyle R(4,k) \geq  \Omega\left( \frac{k^2}{\log^2 k}\right)$.
+\end{corollary}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

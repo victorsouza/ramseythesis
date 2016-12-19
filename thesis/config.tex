@@ -7,7 +7,7 @@
 % !TEX root = thesis.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% PACKAGES
-
+\usepackage{techrep-PFG-ic}
 %% FIGURES
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{tkz-graph}
@@ -24,6 +24,7 @@
 \usepackage{amsfonts}
 \usepackage{amsthm}
 \usepackage{nicefrac}
+\usepackage{bbm}
 \usepackage{mathtools}
 %% NOMENCLATURE
 \usepackage{nomencl}
@@ -33,12 +34,16 @@
 \usepackage{todonotes}
 %% TABLE AND FIGURE COUNTERS
 \usepackage{chngcntr}
+%% HEADINGS
+\usepackage{fancyhdr}
+
+\usepackage{enumitem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% FILE INFO
 
-\author{Aluno: Victor Seixas Souza\\
-Supervisora: Christiane Neme Campos}
+\author{Aluno: Victor Seixas Souza \\
+Supervisora: Christiane Neme Campos \thanks{Instituto  de Computação, Universidade Estadual  de Campinas, 13081-970 Campinas}}
 
 \title{Projeto Final de Graduação\\
 \Huge{Introdução à Teoria de Ramsey em Grafos}}
@@ -48,9 +53,19 @@ Supervisora: Christiane Neme Campos}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% CONFIGURATION
 
-\pagestyle{plain}
-\bibliographystyle{plain}
+\bibliographystyle{acm}
 %\makenomenclature
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[CE]{\leftmark}
+\fancyhead[CO]{\rightmark}
+\renewcommand{\headrulewidth}{1pt}
+
+\makeatletter
+\renewcommand\mainmatter{\clearpage\@mainmattertrue\pagenumbering{arabic}}
+\makeatother
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% THEOREMS
@@ -87,11 +102,14 @@ Supervisora: Christiane Neme Campos}
 
 \DeclareMathOperator{\union}{\cup}
 \DeclareMathOperator{\iso}{\simeq}
+\DeclareMathOperator{\indep}{\perp}
+\DeclareMathOperator{\lequiv}{\Longleftrightarrow}
 \newcommand{\comp}[1]{\overline{#1}}
 \newcommand{\card}[1]{\left | #1 \right |}
 \newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
 \newcommand{\legendre}[2]{\big(\frac{#1}{#2}\big)}
 \newcommand{\Z}[1]{\mathbb{Z}_{#1}}
+\newcommand{\ind}[1]{\mathbbm{1}[#1]}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% BOUND TABLE

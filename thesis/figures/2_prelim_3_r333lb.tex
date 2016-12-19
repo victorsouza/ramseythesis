@@ -10,13 +10,13 @@
 \tikzset{VertexStyle/.style = {shape = circle,fill = white,inner sep = 0pt,outer sep = 0pt,minimum size = 8pt,draw}}
 
 \grEmptyCycle[RA=0,prefix=a]{1};
-\grEmptyCycle[RA=1.2,prefix=b,rotation= 90]{3};
-\grEmptyCycle[RA=2.4,prefix=c,rotation =95]{3};
-\grEmptyCycle[RA=3.6,prefix=f,rotation=100]{3};
-\grEmptyCycle[RA=4.8,prefix=d,rotation=105]{3};
-\grEmptyCycle[RA=6.0,prefix=e,rotation=110]{3};
+\grEmptyCycle[RA=1.2,prefix=b,rotation= 90-20]{3};
+\grEmptyCycle[RA=2.4,prefix=c,rotation =95-20]{3};
+\grEmptyCycle[RA=3.6,prefix=f,rotation=100-20]{3};
+\grEmptyCycle[RA=4.8,prefix=d,rotation=105-20]{3};
+\grEmptyCycle[RA=6.0,prefix=e,rotation=110-20]{3};
 
-{\tikzset{EdgeStyle/.append style = {black!25!green,line width=0.5pt}}
+{\tikzset{EdgeStyle/.append style = {black!25!green,line width=0.7pt}}
   \Edge(a0)(b1);\Edge(a0)(c1);\Edge(a0)(d1);\Edge(a0)(e1);\Edge(a0)(f1);
   \Edge(c0)(f0);\Edge(c0)(b0);\Edge(f0)(d0);\Edge(d0)(e0);\Edge(b0)(e0);
   \Edge(f2)(c2);\Edge(f2)(d2);\Edge(c2)(b2);\Edge(d2)(e2);\Edge(b2)(e2);
@@ -28,7 +28,7 @@
   \Edge(c0)(f2);\Edge(d0)(d2);\Edge(e0)(c2);\Edge(f0)(b2);\Edge(b0)(e2);
 }
 
-{\tikzset{EdgeStyle/.append style = {red,line width=0.5pt}}
+{\tikzset{EdgeStyle/.append style = {red,line width=0.7pt}}
   \Edge(a0)(b2);\Edge(a0)(c2);\Edge(a0)(d2);\Edge(a0)(e2);\Edge(a0)(f2);
   \Edge(b1)(d1);\Edge(b1)(e1);\Edge(c1)(d1);\Edge(c1)(f1);\Edge(e1)(f1);
   \Edge(c0)(d0);\Edge(c0)(e0);\Edge(d0)(b0);\Edge(f0)(b0);\Edge(f0)(e0);
@@ -40,7 +40,7 @@
   \Edge(e0)(f2);\Edge(f0)(c2);\Edge(b0)(d2);\Edge(b0)(b2);\Edge(e0)(b2);
 }
 
-{\tikzset{EdgeStyle/.append style = {blue,line width=0.5pt}}
+{\tikzset{EdgeStyle/.append style = {blue,line width=0.7pt}}
   \Edge(a0)(b0);\Edge(a0)(c0);\Edge(a0)(d0);\Edge(a0)(e0);\Edge(a0)(f0);
   \Edge(b1)(c1);\Edge(c1)(e1);\Edge(b1)(f1);\Edge(d1)(e1);\Edge(d1)(f1);
   \Edge(f2)(e2);\Edge(c2)(e2);\Edge(f2)(b2);\Edge(d2)(b2);\Edge(c2)(d2);
@@ -53,11 +53,11 @@
 }
 
 \grEmptyCycle[RA=0,prefix=a]{1};
-\grEmptyCycle[RA=1.2,prefix=b,rotation= 90]{3};
-\grEmptyCycle[RA=2.4,prefix=c,rotation= 95]{3};
-\grEmptyCycle[RA=3.6,prefix=f,rotation=100]{3};
-\grEmptyCycle[RA=4.8,prefix=d,rotation=105]{3};
-\grEmptyCycle[RA=6.0,prefix=e,rotation=110]{3};
+\grEmptyCycle[RA=1.2,prefix=b,rotation= 90-20]{3};
+\grEmptyCycle[RA=2.4,prefix=c,rotation= 95-20]{3};
+\grEmptyCycle[RA=3.6,prefix=f,rotation=100-20]{3};
+\grEmptyCycle[RA=4.8,prefix=d,rotation=105-20]{3};
+\grEmptyCycle[RA=6.0,prefix=e,rotation=110-20]{3};
 \end{tikzpicture}
 
 \end{document}
