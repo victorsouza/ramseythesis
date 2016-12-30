@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{tkz-graph}
+\usepackage{tkz-berge}
+
+\begin{document}
+
+\begin{tikzpicture}
+  \SetVertexNoLabel
+  \grEmptyCycle[RA=1.8,prefix=a,rotation=210]{6};
+
+  {\tikzset{EdgeStyle/.append style = {red, line width=1.5pt}}
+    \Edge(a0)(a1); \Edge(a0)(a2); \Edge(a1)(a2);
+    \Edge(a0)(a5); \Edge(a1)(a4); \Edge(a2)(a3);
+  }
+
+  {\tikzset{EdgeStyle/.append style = {blue, line width=1.5pt}}
+    \Edge(a3)(a4); \Edge(a3)(a5); \Edge(a4)(a5);
+    \Edge(a3)(a0); \Edge(a3)(a1);
+    \Edge(a4)(a0); \Edge(a4)(a2);
+    \Edge(a5)(a1); \Edge(a5)(a2);
+  }
+  \AssignVertexLabel{a}{$a_1$, $a_2$, $a_3$, $b_3$, $b_2$, $b_1$}
+
+\end{tikzpicture}
+
+\end{document}

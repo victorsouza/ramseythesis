@@ -42,11 +42,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% FILE INFO
 
-\author{Aluno: Victor Seixas Souza \\
-Supervisora: Christiane Neme Campos \thanks{Instituto  de Computação, Universidade Estadual  de Campinas, 13081-970 Campinas}}
+\newcommand*\samethanks[1][\value{footnote}]{\footnotemark[#1]}
 
-\title{Projeto Final de Graduação\\
-\Huge{Introdução à Teoria de Ramsey em Grafos}}
+\author{Autor: Victor Seixas Souza \thanks{Instituto  de Computação, Universidade Estadual  de Campinas, Campinas}\\
+Supervisora: Christiane Neme Campos \samethanks}
+
+\title{\Huge{Introdução à Teoria de Ramsey em Grafos}}
 
 \date{\today}
 
@@ -65,7 +66,6 @@ Supervisora: Christiane Neme Campos \thanks{Instituto  de Computação, Universi
 \makeatletter
 \renewcommand\mainmatter{\clearpage\@mainmattertrue\pagenumbering{arabic}}
 \makeatother
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% THEOREMS

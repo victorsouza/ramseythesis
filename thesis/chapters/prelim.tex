@@ -236,7 +236,7 @@ para alguma constante $\alpha$ adequada, devido a David Conlon em 2009~\cite{con
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Números de Ramsey Multicoloridos}
+\section{Números de Ramsey multicoloridos}
 
 Uma maneira muito natural de generalizar os números de Ramsey é considerar colorações de arestas com um número maior de cores. Estes números são conhecidos por \indef{números de Ramsey multicoloridos}.
 
@@ -246,29 +246,31 @@ $R(t_1, \dots, t_k)$ é o menor inteiro positivo $n$ tal que qualquer coloraçã
 \end{definition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Algumas observações são imediatas, por exemplo, se algum $t_i = 1$, então $R(t_1, \dots, t_k) = 1$, pois um $K_1$ é um $K_1$ de qualquer cor, em particular, da cor $C_i$. Se algum $t_i = 2$, então a cor $C_i$ não pode estar presente na coloração. Assim, podemos remover este parâmetro: $R(t_1, \dots, t_{k-1}, 2) = R(t_1, \dots, t_{k-1})$. Além disso, os números de Ramsey possuem a seguinte simetria: se $\sigma$ é uma permutação de $k$, então
-$R(t_{\sigma(1)}, \dots, t_{\sigma(k)}) = R(t_1, \dots, t_k)$. Vamos ver que algumas propriedades dos números de Ramsey com duas cores podem ser estendidas para mais cores sem muito esforço. Por exemplo, em analogia ao Teorema~\ref{prelim:thm:inequality}, temos o resultado a seguir.
+Algumas observações são imediatas, por exemplo, se algum $t_i = 1$, então $R(t_1, \dots, t_k) = 1$, pois um $K_1$ é um $K_1$ de qualquer cor, em particular, da cor $C_i$. Se algum $t_i = 2$, digamos $t_k = 2$, então $R(t_1, \dots, t_{k-1}, 2) = R(t_1, \dots, t_{k-1})$, uma vez que um qualquer aresta da cor $C_i$ induz um $K_2$ desta cor. Além disso, os números de Ramsey possuem a seguinte simetria: se $\sigma$ é uma permutação de $\{1, \dots, k\}$, então
+$R(t_{\sigma(1)}, \dots, t_{\sigma(k)}) = R(t_1, \dots, t_k)$.
+
+Vamos ver que algumas propriedades dos números de Ramsey com duas cores podem ser estendidas para mais cores sem muito esforço. Por exemplo, em analogia ao Teorema~\ref{prelim:thm:inequality}, temos o resultado a seguir.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{theorem}[Greenwood, Gleason~\cite{greenwood}]
 \label{prelim:thm:multi_inequality}
-Para todos os inteiros positivos $t_i$, $1 \leq i \leq k$, temos:
-\[ R(t_1, \dots, t_k) \leq \sum_{i=1}^{k} R(t_1, \dots, t_i - 1, \dots, t_k) - k + 2. \]
+Para todos os inteiros positivos $t_i$, $1 \leq i \leq k$,
+\[ R(t_1, \dots, t_k) \leq \sum_{i=1}^{k} R(t_1, \dots,t_{i-1}, t_i - 1, t_{i+1}, \dots, t_k) - k + 2. \]
 \end{theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proof}
-Sejam $G$ um grafo completo com $n$ vértices e $c$ uma k-coloração de arestas nas cores $C_1, \dots, C_k$. Suponha que não exista $K_{t_i}$ da cor $C_i$ para todo $1 \leq i \leq k$. Seja $v \in V(G)$ um vértice qualquer. Consideramos as vizinhanças $N_{C_i}(v)$, que possuem $d_{C_i}(v)$ vértices. Assim, temos que $\sum_{i=1}^{k} d_{C_i}(v) = n-1$.
+Sejam $G$ um grafo completo com $n$ vértices e $c$ uma $k$-coloração de arestas nas cores $C_1, \dots, C_k$. Suponha que não exista $K_{t_i}$ da cor $C_i$ para todo $1 \leq i \leq k$. Seja $v \in V(G)$ um vértice qualquer. Consideramos as vizinhanças $N_{C_i}(v)$, que possuem $d_{C_i}(v)$ vértices. Assim, temos que $\sum_{i=1}^{k} d_{C_i}(v) = n-1$.
 
 Se $d_{C_i}(v) \geq R(t_1, \dots, t_i - 1, \dots, t_k)$ para algum $i$, então em $N_{C_i}(v)$ possui um $K_{t_i - 1}$ de cor $C_i$, pois $G$ não possui $K_{t_j}$ de cor $C_j$ para nenhum $j \neq i$. No entanto, unindo $v$ ao $K_{t_i - 1}$ de cor $C_i$ formamos um $K_{t_i}$ de cor $C_i$.
-Contradizemos então nossa hipótese e temos que $d_{C_i}(v) \leq R(t_1, \dots, t_i - 1, \dots, t_k) - 1$ para todo $i$. Portanto
+Contradizemos, então, nossa hipótese e temos que $d_{C_i}(v) \leq R(t_1, \dots, t_i - 1, \dots, t_k) - 1$ para todo $i$. Portanto,
 \begin{align*}
-n = \sum_{i=1}^{k} d_{C_i}(v)  + 1 \leq \sum_{i=1}^{k} R(t_1 - 1, \dots, t_i - 1, \dots, t_k) - k + 1.
+n = \sum_{i=1}^{k} d_{C_i}(v)  + 1 \leq \sum_{i=1}^{k} R(t_1, \dots, t_i - 1, \dots, t_k) - k + 1.
 \end{align*}
-Dessa maneira, escolhendo $n = \sum_{i=1}^{k} R(t_1 - 1, \dots, t_i - 1, \dots, t_k) - k + 2$ obtemos uma contradição, e obtemos o resultado.
+Dessa maneira, se um $K_n$ com uma $k$-coloração de arestas não possui $K_{t_i}$ da cor $C_i$, então $n \leq \sum_{i=1}^{k} R(t_1, \dots, t_i - 1, \dots, t_k) - k + 1$. Portanto, uma $k$-coloração de um grafo completo com $\sum_{i=1}^{k} R(t_1, \dots, t_i - 1, \dots, t_k) - k + 2$ vértices necessariamente possui algum $K_{t_i}$ de cor $C_i$, como queríamos demonstrar.
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Analogamente ao Corolário~\ref{thm:szekeres}, transformamos a desigualdade deste teorema em um limitante com um coeficiente multinomial:
+Analogamente ao Teorema~\ref{thm:szekeres}, transformamos a desigualdade deste teorema em um limitante com um coeficiente multinomial:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{corollary}[Greenwood, Gleason~\cite{greenwood}]
@@ -284,7 +286,7 @@ R(3,3,3) &\leq R(2,3,3) + R(3,2,3) + R(3,3,2) - 1 \\
 &= 3R(3,3,2) - 1 = 3R(3,3) -1 = 17.
 \end{align*}
 
-De fato, temos que $R(3,3,3) = 17$. Para demonstrar este fato, precisamos construir uma 3-coloração de arestas de um $K_{16}$ sem que haja triângulos monocromáticos. Isto foi feito pela primeira vez por Greenwood e Gleason~\cite{greenwood}, mas apresentamos uma construção simplificada por Sun e Cohen~\cite{sun}.
+De fato, temos que $R(3,3,3) = 17$. Para demonstrar este fato, precisamos construir uma 3-coloração de arestas de um $K_{16}$ sem que haja triângulos monocromáticos. Isto foi feito pela primeira vez por Greenwood e Gleason~\cite{greenwood}, mas, neste texto, vamos apresentar uma construção mais simples por Sun e Cohen~\cite{sun}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proposition}
@@ -293,7 +295,7 @@ $R(3,3,3) > 16$.
 \end{proposition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proof}
-Vamos construir a coloração de arestas do grafo $G$ exibida na Figura~\ref{prelim:fig:exr333}. Desta vez trabalhamos no corpo $\Z{2}^4 = \Z{2}\times\Z{2}\times\Z{2}\times\Z{2}$. Vamos particionar o conjunto dos elementos não nulos de $\Z{2}^4$ em três partes:
+Vamos construir a coloração de arestas do grafo $G$ exibida na Figura~\ref{prelim:fig:exr333}. Desta vez, trabalhamos no corpo $\Z{2}^4 = \Z{2}\times\Z{2}\times\Z{2}\times\Z{2}$. Vamos particionar o conjunto dos elementos não nulos de $\Z{2}^4$ em três partes:
 \begin{align*}
 S_1&=\big\{ (1,1,0,0),\;(0,0,1,1),\;(1,0,0,1),\;(1,1,1,0),\;(1,0,0,0) \big\},\\
 S_2&=\big\{ (1,0,1,0),\;(0,1,0,1),\;(0,1,1,0),\;(1,1,0,1),\;(0,1,0,0) \big\},\\
@@ -307,7 +309,7 @@ Cada uma destas partes $S_i$ possui a seguinte propriedade: se $a,b \in S_i$, en
   \text{verde}, & \text{se } a + b \in S_3.
 \end{cases}\]
 
-Esta coloração está bem definida pois os $S_i$ são disjuntos e cobrem todos os elementos não nulos de $\Z{2}^4$ e que se $a,b \in \Z{2}^4$ com $a$ e $b$ distintos, então $a + b \neq 0$. De fato, existe uma coordenada em que eles diferem, então, esta coordenada será 1 na soma $a+b$, logo $a + b \neq 0$.
+Esta coloração está bem definida pois os $S_i$ são disjuntos, cobrem todos os elementos não nulos de $\Z{2}^4$ e se $a,b \in \Z{2}^4$ com $a$ e $b$ distintos, então $a + b \neq 0$. De fato, dados $a$ e $b$ distintos, existe pelo menos uma coordenada em que eles diferem. Logo, esta coordenada será 1 na soma $a+b$, portanto $a + b \neq 0$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht!]
@@ -319,16 +321,16 @@ Esta coloração está bem definida pois os $S_i$ são disjuntos e cobrem todos 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Agora vamos ver que a coloração $c$ não possui triângulos monocromáticos.
-Sejam $v_x, v_y, v_z$ os vértices de um triângulo qualquer. Suponha que duas das arestas sejam da mesma cor, digamos $c(v_x v_y) = c(v_x v_z)$. Vamos ver que a terceira aresta tem uma cor distinta. Temos para algum $i$, que $x + y, y + z \in S_i$. Utilizando a propriedade da soma de elementos de $S_i$, temos que $(x + y) + (y  + z) = x + z + 2y = x + y \not\in S_i$. Portanto, $c(v_y v_z) \neq v(v_x v_y)$. Portanto, $c$ não possui triângulos monocromáticos.
+Sejam $v_x, v_y, v_z$ os vértices de um triângulo qualquer. Suponha que duas das arestas sejam da mesma cor, digamos $c(v_x v_y) = c(v_x v_z)$. Vamos ver que a terceira aresta tem uma cor distinta. Temos para algum $i$, que $x + y, x + z \in S_i$. Utilizando a propriedade da soma de elementos de $S_i$,
+temos que $(x+y) + (x+z) \not\in S_i$. Entretanto, $(x+y) +(x+z) = 2x + y + z = y + z$. Isto implica que $c(v_x,v_y)\neq c_(v_y,v_z)$. Portanto, $c$ não possui triângulos monocromáticos.
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Uma coleção de números de Ramsey é de bastante interesse é dos números multicoloridos para triângulos. Denotamos por $R_r(3)$ o número de Ramsey $r$-colorido $R(3,3,\dots,3)$ com $r$ termos. De fato, já mostramos que $R_2(3) = 6$ e $R_3(3) = 17$. O número $R_4(3) = R(3,3,3,3)$ sabe-se que está entre 51 e 62. Em geral, temos as seguintes estimativas.
+Uma coleção de números de Ramsey de bastante interesse é a dos números multicoloridos para triângulos. Denotamos por $R_r(3)$ o número de Ramsey $r$-colorido $R(3,3,\dots,3)$ com $r$ termos. De fato, já mostramos que $R_2(3) = 6$ e $R_3(3) = 17$. O número $R_4(3) = R(3,3,3,3)$ sabe-se que está entre 51 e 62. Em geral, temos as seguintes estimativas.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{theorem}
-\label{prelim:thm:multi3ub} Para todo inteiro $r \geq 2$, temos
-$5^{r/2} \leq R_r(3) \leq 3 r!$.
+\label{prelim:thm:multi3ub} Para todo inteiro $r \geq 2$, $5^{r/2} \leq R_r(3) \leq 3 r!$.
 \end{theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proof}
