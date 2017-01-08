@@ -20,12 +20,13 @@ Cabe então, antes de entramos nos detalhes desta técnica, fazer uma breve revi
 
 \section{Probabilidade Discreta}
 
-Um modelo probabilístico possui três componentes básicas: um espaço amostral, uma classe de eventos e uma medida de probabilidade. O \indef{espaço amostral} é um conjunto não-vazio $\Omega$, cujos elementos representam os resultados possíveis para um experimento. Uma realização deste experimento consiste na escolha aleatória de um elemento $\omega \in \Omega$. Estaremos interessados exclusivamente no caso em que $\Omega$ é um conjunto finito.
+Para formalizar a probabilidade em matemática, introduzimos o conceito de um \indef{modelo probabilístico}, que será o ambiente natural no qual podemos falar de probabilidade.
+Um modelo probabilístico possui três componentes básicas: um espaço amostral, uma classe de eventos e uma medida de probabilidade. O \indef{espaço amostral} é um conjunto não-vazio $\Omega$, cujos elementos representam os resultados possíveis para um experimento. Uma realização deste experimento consiste na escolha aleatória de um elemento $\omega \in \Omega$. Estamos interessados exclusivamente no caso em que $\Omega$ é um conjunto finito.
 
 Em conjunto com um espaço amostral $\Omega$, se associa uma classe $\mathcal{F}$ apropriada de subconjuntos de $\Omega$. Os elementos de $\mathcal{F}$ são subconjuntos $A \subseteq \Omega$ são os conjuntos quais atribuimos uma probabilidade, e são denomidados \indef{eventos} ou \indef{conjuntos mensuráveis}. Definiremos probabilidade apenas para elementos desta classe. Para que isto seja feito de maneira adequada, a classe $\mathcal{F}$ precisa satisfazer algumas propriedades. Mais precisamente, $\mathcal{F}$ precisa formar uma $\sigma$-álgebra sobre $\Omega$, veja \cite{barryjames}.
 No entanto, esta formalidade é facilmente contornada no caso discreto, uma vez que o conjunto de todos os subconjuntos de $\Omega$ é uma $\sigma$-álgebra sobre $\Omega$ quando $\Omega$ é finito. O par $(\Omega, \mathcal{F})$ é dito um \indef{espaço mensurável}.
 
-Finalmente, uma \indef{medida de probabilidade}, ou simplesmente \indef{probabilidade}, é uma medida sobre o espaço mensurável $(\Omega, \mathcal{F})$, ou seja, uma função $\prob : \mathcal{A} \to \mathbb{R}$ com as seguintes propriedades:
+Finalmente, uma \indef{medida de probabilidade}, ou simplesmente \indef{probabilidade}, é uma medida sobre o espaço mensurável $(\Omega, \mathcal{F})$, ou seja, uma função $\prob : \mathcal{F} \to \mathbb{R}$ com as seguintes propriedades:
 
 \begin{enumerate}[label=(P\arabic*),itemindent=*]
   \item $\prob(A) \geq 0$ para todo $A \in \mathcal{F}$.
@@ -41,7 +42,7 @@ Um \indef{espaço de probabilidade} é uma tripla $(\Omega, \mathcal{F}, \prob)$
   \item Se $A$ e $B \in \mathcal{F}$ e $A \subseteq B$, então $\prob(A) \leq \prob(B)$.
   \item Se $A$ e $B \in \mathcal{F}$ e $A \subseteq B$, então $\prob(B \setminus A) = \prob(B) - \prob(A)$.
   \item Para todo $A \in \mathcal{F}$, temos $0 \leq \prob(A) \leq 1$.
-  \item Se $A_1, A_2, \dots \in \mathcal{A}$ c, então $\prob( \bigcup_{i} A_i ) \leq \sum_i \prob(A_i)$.
+  \item Se $A_1, A_2, \dots \in \mathcal{F}$, então $\prob( \bigcup_{i} A_i ) \leq \sum_i \prob(A_i)$.
   \item Se $A$ e $B \in \mathcal{F}$, então $\prob(A \cup B) = \prob(A) + \prob(B) - \prob(A \cap B)$.
 \end{enumerate}
 
@@ -50,7 +51,7 @@ Seja $\Omega$ um conjunto finito e $\mathcal{F}$ o conjunto de todos os subconju
 
 Dado um espaço de probabilidade $(\Omega, \mathcal{F}, \prob)$ e $A$ e $B \in \mathcal{F}$, definimos a \indef{probabilidade condicional} de $A$, dado que $B$ ocorre, $\prob(A | B)$, por
 \[ \prob(A|B) = \frac{\prob(A \cap B)}{\prob(B)}. \]
-Quando $\prob(B) = 0$, definimos $\prob(A|B) = \prob(A)$. Desta forma, a função $\prob(\cdot | B) : \mathcal{F} \to \mathbb{R}$ é uma medida de probabilidade em $(\Omega, \mathcal{F})$.
+Quando $\prob(B) = 0$, definimos $\prob(A|B) = \prob(A)$. Desta forma, a função $\prob(\; \cdot \;| B) : \mathcal{F} \to \mathbb{R}$ é uma medida de probabilidade em $(\Omega, \mathcal{F})$.
 
 Dois eventos $A$ e $B$ são ditos \indef{independentes} se $\prob(A \cap B) = \prob(A) \prob(B)$. Usa-se $A \indep B$ para indicar que os eventos $A$ e $B$ são independentes. Intuitivamente, dois eventos são independentes quando a ocorrencia ou não de um deles não influencia a probabilidade da ocorrência do outro evento. As proposições a seguir são todas equivalentes:
 
@@ -86,6 +87,8 @@ A esperança é \indef{monótona} significando que se $X$ e $Y$ são variáveis 
 A \indef{desigualdade de Markov} é uma importante ferramenta dentro do método probabilístico. Ela nos dá que se $X$ é uma variável aleatória não-negativa, então
 \[ \prob(X \geq a) \leq \frac{\expec[X]}{a}. \]
 
+
+
 Este apanhado de resultados é suficiente para finalmente introduzirmos o método probabilístico aplicado em Teoria de Ramsey. Aplicações mais refinadas do método, no entanto, requerem conceitos mais avançados de probabilidade, como martingais, concentração de medida, grandes desvios e desigualdade de correlações. O livro \emph{The Probabilistic Method} \cite{alon} é a grande referência para o método e contém inúmeras aplicações, tanto em Combinatória quanto em outras áreas da Matemática.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -94,14 +97,14 @@ Este apanhado de resultados é suficiente para finalmente introduzirmos o métod
 
 Os limitantes inferiores para os números de Ramsey visto no Capítulo~\ref{chap:prelim} são construtivos, isto é, quando mostramos que $R(4,4) > 17$, por exemplo, isto passou pela construção de uma coloração de arestas do grafo $K_{17}$. Para encontrar bons limitante inferiores de maneira mais genérica, vamos precisar de uma abordagem um pouco diferente. Vamos começar pelos números de Ramsey diagonais.
 
-O nosso objetivo é encontrar colorações de arestas de $K_n$ sem $K_k$ monocromáticos com $k$ fixado e $n$ maior possível, para poder concluir que $R(k,k) > n$. Note que não necessariamente precisamos construir tal coloração, basta saber que alguma coloração que satisfaz estas propriedades existe. Vamos introduzir agora o \indef{método probabilistico} para resolver este tipo de problema. O nosso objetivo é provar que uma estrutura com certas propriedades existe. Definimos então um espaço de probabilidade sobre o conjunto destas estruturas de maneira adequada e mostramos que com probabilidade positiva, a propriedade de interesse é satisfeita. Isto nos mostra que o conjunto dos elementos cuja propriedade são satisfeitas não pode ser vazio, caso contrário, a probabilidade seria 0, e mostramos a existência de uma estrutura com esta propriedade.
+O nosso objetivo é encontrar colorações de arestas de $K_n$ sem $K_k$ monocromáticos com $k$ fixado e $n$ maior possível, para poder concluir que $R(k,k) > n$. Note que não necessariamente precisamos construir tal coloração, basta saber que alguma coloração que satisfaz estas propriedades exista. Vamos introduzir agora o \indef{método probabilistico} para resolver este tipo de problema. O nosso objetivo é provar que uma estrutura com certas propriedades existe. Definimos então um espaço de probabilidade sobre o conjunto destas estruturas de maneira adequada e mostramos que com probabilidade positiva, a propriedade de interesse é satisfeita. Isto nos mostra que o conjunto dos elementos cuja propriedade são satisfeitas não pode ser vazio, caso contrário, a probabilidade seria 0, e mostramos a existência de uma estrutura com esta propriedade.
 
 Esta técnica, embora aplicada pela primeira vez por Szele \cite{szele1943kombinatorikai}, foi vastamente explorada pelo matemático Paul Erdös, que utilizou desta técnica para encontrar justamente um limitante inferior para os números de Ramsey diagonais $R(k,k)$~\cite{erdos47}. Estamos interessados em escolher uma $RB$-coloração do $K_n$ de maneira aleatória e uniforme. O nosso espaço amostral $\Omega$ é, portanto, o conjunto de todas as colorações de arestas em duas cores do $K_n$. Seja $(\Omega, \mathcal{F}, \prob)$ o espaço de probabilidade com medida uniforme. Como temos que $|\Omega| = 2^{\binom{n}{2}}$, dado $A \in \mathcal{F}$, temos:
 \[ \prob(A) = \frac{|A|}{2^{\binom{n}{2}}}.\]
 
-Suponha que escolhemos uma coloração $c \in \Omega$ de maneira aleatoria e uniforme, de acordo com o espaço de probabilidade acima. Queremos saber qual é a probabilidade desta coloração possuir uma dada propriedade. Seja $\mathcal{P} \subset \Omega$ o conjunto das colorações que satisfazem a dada propriedade. Temos então que $\prob(c \text{ possui a propriedade}) = \prob(c \in \mathcal{P}) = \card{\mathcal{P}} / \card{\mathcal{C}}$, onde $\prob$ é a medida de probabilidade.
+Suponha que escolhemos uma coloração $c \in \Omega$ de maneira aleatoria e uniforme, de acordo com o espaço de probabilidade acima. Queremos saber qual é a probabilidade desta coloração possuir uma dada propriedade. Seja $\mathcal{P} \subset \Omega$ o conjunto das colorações que satisfazem a dada propriedade. Temos então que $\prob(c \text{ possui a propriedade}) = \prob(c \in \mathcal{P}) = \card{\mathcal{P}} / \card{\Omega}$, onde $\prob$ é a medida de probabilidade.
 
-Em particular, se $e$ é uma aresta, então $\card{\mathcal{P}} = \card{\{c \in \mathcal{C} : c(e) = R \}} = 2^{\binom{n}{2}-1}$, o que nos dá $\prob(c(e) = R) = \frac{1}{2}$ e também $\prob(c(e) = B) = \frac{1}{2}$.
+Em particular, se $e$ é uma aresta, então $\card{\mathcal{P}} = \card{\{c \in \Omega : c(e) = R \}} = 2^{\binom{n}{2}-1}$, o que nos dá $\prob(c(e) = R) = \frac{1}{2}$ e também $\prob(c(e) = B) = \frac{1}{2}$.
 Além disso, se $e$ e $f$ são arestas distintas, $\prob(c(e) = B \cap c(f) = B) = \frac{1}{4}$, o que nos mostra que os eventos da forma $\{c(e) = C\}$ para alguma aresta $e$ e cor $C$ são independentes.
 
 Desta forma, escolher uma coloração $c \in \Omega$ utilizando o espaço de probabilidade $(\Omega, \mathcal{F}, \prob)$ é equivalente a escolher uma coloração das arestas de $K_n$ colorindo cada aresta de maneira aleatória, uniforme e independente. Podemos agora introduzir a primeira aplicação do método probabilístico:
@@ -123,7 +126,7 @@ Considere agora a variavel aleatória $X$ que conta a quantidade de $K_k$ monocr
 &= \sum_{A \in \binom{V}{k}} \prob(M_A) = \sum_{A \in \binom{V}{k}} 2^{1 - \binom{k}{2}}  = \binom{n}{k} 2^{1 - \binom{k}{2}} < 1.
 \end{align*}
 
-Pela desigualdade de Markov, $\prob(X \geq 1) \leq \expec[X] < 1$, portanto $\prob(X = 0) > 0$. Portanto, existe alguma coloração de $K_n$ sem $K_k$ monocromático. Com isso, temos $R(k,k) > n$.
+Pela desigualdade de Markov, $\prob(X \geq 1) \leq \expec[X] < 1$, logo $\prob(X = 0) > 0$. Portanto, existe alguma coloração de $K_n$ sem $K_k$ monocromático. Com isso, temos $R(k,k) > n$.
 
 Lembre que $\binom{n}{k} \leq n^k /k!$ e suponha que $n = \lfloor 2^{k/2} \rfloor$. Temos então que
 \[ \binom{n}{k}2^{1 - \binom{k}{2}} \leq \frac{n^k}{k!}2^{1 - \frac{k^2}{2} + \frac{k}{2}} = \frac{n^k 2^{1 + \frac{k}{2}}}{k!2^{\frac{k^2}{2}}} \leq \frac{2^{1 + \frac{k}{2}}}{k!} < 1, \]
@@ -133,7 +136,7 @@ quando $n \geq 3$. Assim, temos $R(k,k) > \lfloor 2^{k/2} \rfloor$ quando $n \ge
 
 Este tipo de idéia pode ser refinada para obter resultados melhores para o limitante inferior. No entanto, não se conhece algum limitante inferior cuja ordem exponencial seja superior à $\sqrt{2}^k$. Vimos na seção anterior, que o melhor limitante superior conhecido possui ordem exponencial $4^k$. Um dos problemas abertos mais importantes em Combinatória é determinar a ordem exponencial correta para o crescimento dos números de Ramsey diagonais. Em particular, não se sabe se o seguinte limite existe~\cite{chung1983survey}:
 \[ \lim_{k \to \infty} \left(R(k,k)  \right)^{1/k}. \]
-Mostramos que se este limite existir, ele está entre $\sqrt{2}$ e $4$.
+Já mmostramos que se este limite existir, ele está entre $\sqrt{2}$ e $4$.
 
 A diferença entre as ordens de crescimento do limitante inferior e do limitante superior nos mostra o quanto ainda não se sabe sobre estes números. O melhor que podemos fazer para encontrar um $K_k$ monocromático consiste em jogar fora metade do grafo a cada passo, como foi feito no Teorema~\ref{thm:intro:ramsey}, o que provavelmente é destrutivo demais. A melhor construção que encontramos para uma coloração sem $K_k$ monocromático é uma coloração aleatória. Toda construção explicita conhecida é sub-exponencial. De fato, um importante problema em aberto da Teoria de Ramsey é encontrar uma demonstração construtiva de que $R(k,k) \geq (1+c)^k$ para alguma constante $c > 0$.
 
@@ -164,7 +167,7 @@ Fazendo uma análise cuidadosa desta desigualdade \cite{spencer2014asymptopia}, 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{corollary}
-Para $k \to \infty$, temos $\displaystyle R(k,k) > (1+o(1))\frac{k\sqrt{2}^k}{e}$.
+Para $k \to \infty$, temos $\displaystyle R(k,k) > (1+o(1))\frac{1}{e}k\sqrt{2}^k$.
 \end{corollary}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -193,7 +196,7 @@ Consideramos um grafo proibido como uma cópia vermelha de $K_k$ ou uma cópia a
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Esta modificação do resultado nos permite obter limitantes inferiores para outras classes de números. Fazendo escolhas adequadas de $n$ e $p$ no Teorema~\ref{thm:prob:alter_off}, obtém-se os seguintes corolários
+Esta modificação do resultado nos permite obter limitantes inferiores para outras classes de números. Fazendo escolhas adequadas de $n$ e $p$ no Teorema~\ref{thm:prob:alter_off}, obtém-se os seguintes corolários.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{corollary}
@@ -210,5 +213,128 @@ O número de Ramsey $R(4,k)$ satisfaz $\displaystyle R(4,k) \geq  \Omega\left( \
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{O Lema Local de Lovász}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Nas aplicações do método probabilístico apresentadas até agora, mostramos a existência de um objeto com determinada propriedade através da demonstração de que uma probabilidade é maior que zero. Em todos os casos que vimos, nós provamos algo mais forte, vimos que a probabilidade deste evento é bastante alta. Em alguns casos, no entanto, o evento de interesse possui probabilidade baixa, mas positiva. Ainda pode-se concluir a existência do objeto, mas precisamos de técnicas mais refinadas.
+
+Suponha que ao objeto que queremos encontrar foi codificado pela não ocorrência de alguns eventos raros. Sejam $\{E_i; i = 1,\dots,n\}$ estes eventos. Desejamos provar que existe a possibilidade de esses eventos não ocorrerem simultaneamente, isto é,  $\prob(\bigcap_{i=1}^n \comp{E_i}) > 0$. Um caso bem simples em que obtemos probabilidades bem pequenas é quando os $n$ eventos são mutualmente independentes, cada um com probabilidade $0 \leq p<1$. A probabilidade de todos os eventos não acontecerem simultaneamente é $(1-p)^n > 0$, e fica bem pequena à medida que $n$ cresce. A técnica do \indef{Lema Local de Lovász} (LLL) nos permite obter um resultado similar para eventos que não são mutualmente independentes, mas possuem dependências fracas entre sí.
+
+Para enunciar o LLL, precisamos introduzir o conceito de digrafo simples, que generaliza ligeiramente o conceito de grafo. Um \indef{digrafo} é um par ordenado $(V(D), A(D))$, que consiste em um conjunto $V(D)$ de \indef{vértices} e um conjunto $A(D)$ de \indef{arcos}, disjunto de $V(D)$, acompanhado de uma função de incidência $\Psi_D$ que associa cada arco de $A(D)$ a um par ordenado de vértices de $V(D)$, não necessariamente distintos. Diferentemente das arestas em grafos, os arcos dos digrafos são ordenados, e portanto, sugerem uma orientação. Se $a \in A(D)$ e $\Psi_D(a) = (u,v)$ dizemos que $u$ se liga à $v$. Além disso, dizemos que $u$ é a \indef{cauda} de $a$ e $v$ é a \indef{cabeça} de $a$.
+
+Analogamente ao grafo simples, chamamos de \indef{digrafo simples} é um digrafo no qual não existem arcos paralelos, isto é, $a$ e $b$ distintos em $A(D)$ com $\Psi_D(a) = \Psi_D(b)$. Portanto, um arco pode ser unicamente identificado com um par de elementos em $V(D) \times V(D)$, e a função de incidência fica implícita. Assim, podemos definir um digrafo simples como um par $D = (V,A)$ onde $A \subset V\times V$.
+
+Uma definição central ao LLL é a de digrafo de dependência, que caracteriza a estrutura de dependência entre variáveis aleatórias. Sejam $E_1, \dots, E_n$ eventos em um espaço de probabilidade $(\Omega, \mathcal{F}, \prob)$. Um digrafo $D = (V,A)$ é dito um \indef{digrafo de dependência} dos eventos $E_1, \dots, E_n$ quando $V = \{1, \dots, n\}$ e o evento $E_i$ é mutualmente independente dos eventos no conjunto $\{ E_j : (i,j) \in A\}$.
+
+Note que não existe apenas um digrafo de dependência para um conjunto de variáveis aleatórias $\{E_i\}$. De fato, considere duas moedas justas lançadas independentemente com resultados cara ($H$) ou coroa ($T$). Considere os seguintes eventos:
+\begin{align*}
+  E_1 &= \{ (H,H) , (H,T) \} && \text{Cara no primeiro lançamento;}\\
+  E_2 &= \{ (T,H) , (T,T) \} && \text{Coroa no primeiro lançamento;}\\
+  E_3 &= \{ (H,H) , (T,T) \} && \text{Lançamentos iguais.}
+\end{align*}
+
+Na Figura~\ref{prob:fig:ddigraph}, vemos dois possíveis digrafos de dependêcia para os eventos $E_1$, $E_2$ e $E_3$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[ht!]
+\centering
+\includegraphics{figures/4_prob_1_ddigraph}
+\caption{Dois digrafos de dependência distintos para os mesmos eventos.}
+\label{prob:fig:ddigraph}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Podemos agora enunciar e demonstrar a versão geral do Lema Local de Lovász, que foi provado inicialmente por Erdös e Lovász~\cite{erdos1975problems}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lemma}[Lema Local de Lovász; Versão Geral]
+\label{thm:prob:lll}
+Sejam $E_1, \dots, E_n$ eventos em um espaço de probabilidade $(\Omega, \mathcal{F}, \prob)$. Suponha que $D = (V, A)$ seja um digrafo de dependência dos eventos $E_i$ e suponha que para todo $1 \leq i \leq n$, existam números reais $x_1, \dotsc x_n$ tal que $0 \leq x_i < 1$ e $\prob (E_i) \leq x_i \prod_{(i,j) \in A}(1-x_j)$. Então
+\[ \prob \left( \bigcap_{i = 1}^n \comp{E_i} \right) \geq \prod_{i = 1}^n (1 - x_i) > 0.\]
+\end{lemma}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{proof}
+Vamos mostrar por indução em $s$ que para qualquer $S \subset \{1, \dots, n\}$, $|S| = s < n$, temos a seguinte desigualdade para todo $i \not\in S$:
+\[ \prob\bigg( E_i \bigg| \bigcap_{j \in S} \comp{E_j} \bigg) \leq x_i.\]
+
+Para $s = 0$, não condicionamos em nenhum evento, logo $\prob(E_i) \leq x_i \prod_{(i,j) \in A}(1-x_j) \leq x_i$. Para o passo de indução, considere $S_1 = \{ j \in S : (i,j) \in A\}$ e $S_2 = \{ l \in S : (i,l) \not\in A \}$. Utilizando a definição de probabilidade condicional, obtemos
+\begin{align*}
+  \prob\bigg( E_i \bigg| \bigcap_{j \in S} \comp{E_j} \bigg) = \frac{\prob\left( E_i \cap \left(\bigcap_{j \in S_1} \comp{E_j} \right) \middle| \bigcap_{l \in S_2} \comp{E_l} \right)}{\prob\left( \bigcap_{j \in S_1} \comp{E_j} \middle| \bigcap_{l \in S_2} \comp{E_l} \right)}.
+\end{align*}
+Vamos agora limitar o numerador e o denominador individualmente. Para o numerador, note que o evento $E_i$ é mutualmente independente dos eventos $E_l$ com $l \in S_2$ pela definição de digrafo de dependência. Assim, temos:
+\[ \prob\bigg( E_i \cap \bigg(\bigcap_{j \in S_1} \comp{E_j} \bigg) \bigg| \bigcap_{l \in S_2} \comp{E_l} \bigg) \leq \prob\bigg( E_i \bigg| \bigcap_{l \in S_2} \comp{E_l} \bigg) = \prob(E_i) \leq x_i \prod_{\mathclap{(i,j) \in A}}(1-x_j) \]
+
+Já para o denominador, vamos utilizar a hipótese de indução. Suponha que $S_1 = \{j_1, j_2, \dots, j_r \}$. Se $r = 0$, então a interseção $\bigcap_{j \in \emptyset} \comp{E_j}  = \Omega$. Portanto, esta probabilidade é um e provamos a proposição apenas com o limitante do numerador. Com $r > 0$, obtemos:
+\begin{align*}
+&\prob \bigg( \comp{E_{j_1}} \cap \comp{E_{j_2}} \cap \dots \cap \comp{E_{j_r}} \bigg| \bigcap_{l \in S_2} \comp{E_l} \bigg) \\
+=&\prob \bigg( \comp{E_{j_1}} \bigg| \bigcap_{l \in S_2} \comp{E_l} \bigg) \prob \bigg( \comp{E_{j_2}} \bigg| \comp{E_{j_1}} \cap \bigg(\bigcap_{l \in S_2} \comp{E_l} \bigg) \bigg) \cdots \prob \bigg( \comp{E_{j_r}} \bigg| \comp{E_{j_1}} \cap \dots \cap \comp{E_{j_{r-1}}} \cap \bigg(\bigcap_{l \in S_2} \comp{E_l}\bigg) \bigg) \\
+\geq&(1-x_{j_1})(1-x_{j_2})\dots(1-x_{j_r}) \geq \prod_{\mathclap{(i,j) \in A}}(1-x_j).
+\end{align*}
+
+Portanto, obtemos
+\begin{align*}
+  \prob\bigg( E_i \bigg| \bigcap_{j \in S} \comp{E_j} \bigg) = \frac{\prob\left( E_i \cap \left(\bigcap_{j \in S_1} \comp{E_j} \right) \middle| \bigcap_{l \in S_2} \comp{E_l} \right)}{\prob\left( \bigcap_{j \in S_1} \comp{E_j} \middle| \bigcap_{l \in S_2} \comp{E_l} \right)} \leq \frac{x_i\prod_{(i,j) \in A}(1-x_j)}{\prod_{(i,j) \in A}(1-x_j)} = x_i.
+\end{align*}
+
+Finalmente, vamos voltar ao enunciado original do lema:
+\begin{align*}
+\prob \left( \bigcap_{i = 1}^n \comp{E_i} \right) &= \prob (\comp{E_1}) \prob (\comp{E_2} | \comp{E_1} ) \cdots \prob( \comp{E_n} | \comp{E_1} \cap \dots \cap \comp{E_{n-1}}) \\
+&\geq (1 - x_1)(1 - x_2)\cdots(1-x_n) = \prod_{i=1}^n(1 - x_1) > 0. \qedhere
+\end{align*}
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Um caso particular de bastante interesse e mais fácil de aplicar é o chamado de caso simétrico, que está enunciado em seguida.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lemma}[Lema Local de Lovász; Versão Simétrica]
+\label{thm:prob:llls}
+Sejam $E_1, \dots, E_n$ eventos em um espaço de probabilidade $(\Omega, \mathcal{F}, \prob)$. Suponha que cada evento $E_i$ seja mutualmente independente de todos os outros eventos $E_j$ com no máximo $d$ excessões, e que $\prob(E_i) \leq p$ para todo $1 \leq i \leq n$. Se
+\[ ep(d+1) \leq 1 \]
+então $\prob \left( \bigcap_{i = 1}^n \comp{E_i} \right) > 0$. (A constante ``$e$'' da desigualdade acima é a constante de Euler.)
+\end{lemma}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{proof}
+Se $d = 0$, então $p < 1$ e os eventos são independentes. Caso contrário, construimos um digrado de dependência $D = (V,A)$ para os eventos $E_1, \dots, E_n$ no qual, para cada $i$, $|\{j, (i,j) \in A\}| \leq d$. Escolheremos $x_i = \frac{1}{d+1}$ e vamos mostrar que $\prob (E_i) \leq x_i \prod_{(i,j) \in A}(1-x_j)$.
+Com isso, estaremos dentro das condições do caso geral no Lema~\ref{thm:prob:lll}, e concluiremos que $\prob \left( \bigcap_{i = 1}^n \comp{E_i} \right) > 0$. De fato, lembrando que para todo $d$, $\frac{1}{e} < (1 - \frac{1}{d+1})^d$, temos
+\[ \prob(E_i) \leq p \leq \frac{1}{e(d+1)} < \frac{1}{d+1}\left(1 - \frac{1}{d+1} \right)^d \leq x_i \prod_{\mathclap{(i,j) \in A}}(1-x_j). \qedhere\]
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Foi mostrado por Shearer~\cite{shearer1985problem} que a constante ``$e$'' na desigualdade $ep(d+1) \leq 1$ é a melhor possível. Esta versão do Lema Local de Lovász possui diversas aplicações e produz bons resultados. De fato, o melhor limitante inferior conhecido para os números de Ramsey diagonais $R(k,k)$ é uma consequência desta versão do lema.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{theorem}[Spencer~\cite{spencer1975ramsey}]
+\label{thm:prob:ramseylll}
+Se $\displaystyle e \binom{k}{2}\binom{n-2}{k-2} 2^{1 - \binom{k}{2}} < 1$ então $R(k,k) > n$.
+\end{theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{proof}
+Considere uma $RB$-coloração $c$ do grafo completo $G = (V,E) \iso K_n$ obtida pintando cada aresta de maneira aleatória, uniforme e independente. Fixado um subconjunto $A \in \binom{V}{k}$, defina o evento $M_A = \{G[A] \text{ é monocromático em } c\}$. Temos $\prob(M_A) = 2^{1- \binom{k}{2}}$. Se $S, T \subset V$ e $|S \cap T| \leq 1$, então os eventos $M_S$ e $M_T$ são independentes.
+Além disso, se $|S \cap T| \geq 2$, então $M_S$ e $M_T$ são dependentes. Fixado $S$, vamos estimar a quantidade de conjuntos $T$ de $k$ vértices que satisfazem $|S \cap T| \geq 2$. Primeiramente, escolhemos dois vértices desta interseção, obtendo $\binom{k}{2}$ possibilidades. Os $k-2$ vértices restates podem ser quaisquer vértices que não foram escolhidos anteriormente, assim, temos $\binom{n-2}{k-2}$. Desta forma, contamos mais de uma vezes alguns conjuntos $T$, mas estimamos que no máximo $\binom{k}{2}\binom{n-2}{k-2}$ destes conjuntos existem.
+
+Portanto, aplicando o Lema~\ref{thm:prob:llls} com $p = 2^{1 - \binom{k}{2}}$ e $d < \binom{k}{2}\binom{n-2}{k-2}$, e sabendo por hipótese que $ep(d+1) \leq 1$,
+temos $\prob \left( \bigcap_{S \in \binom{V}{2}} \comp{M_S} \right) > 0$, e assim, existe uma coloração de arestas de $K_n$ sem $K_k$ monocromáticos. Portanto, $R(k,k) > n$.
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Fazendo uma análise detalhada deste resultado e escolhendo $n$ de forma adequada, isso nos dá que
+\[R(k,k) > (1+o(1))\frac{\sqrt{2}}{e}k\sqrt{2}^k.\]
+Este limitante inferior possui a constante ligeiramente melhor que o apresentado anteriormente, é o melhor limitante inferior conhecido para os números de Ramsey diagonais.
+
+Uma análise similar pode ser feita para números de Ramsey fora da diagonal, mas para isso, a versão geral do LLL é necessária. Com efeito, temos eventos de dois tipos, se $T \in \binom{V}{3}$, então definimos $A_T$ como o evento em que $T$ é um triangulo azul, e se $S \in \binom{V}{k}$, $B_S$ é o evento em que $S$ é um $K_k$ vermelho.
+Temos $\prob(A_T) = p^3$ e $\prob(B_S) = (1-p)^{\binom{k}{2}}$.
+Cada evento $A_T$ é dependente de no máximo $3(n-3) < 3n$ eventos $A_{T'}$ e $\binom{n}{k}$ eventos $B_{S'}$. E cada evento $B_S$ é dependente de no máximo $\binom{k}{2}(n-2) < nk^2/2$ eventos $A_{T'}$ e $\binom{n}{k}$ eventos $B_{S'}$.
+Segue então do Lema~\ref{thm:prob:lll} que se existem $0 < p < 1$ e dois reais $0 \leq x,y < 1$, tais que
+\begin{align*} p^3 \leq x(1-x)^{3n}(1-y)^{\binom{n}{k}} && \text{e} &&
+(1-p)^{\binom{k}{2}} \leq y(1-x)^{nk^2/2}(1-y)^{\binom{n}{k}},
+\end{align*}
+então temos que $R(3,k) > n$.
+
+A melhor escolha possível de parâmetros é difícil de se encontrar, mas ela nos permite chegar que $R(3,k) > Ck^2/log^2(k)$, para uma constante $C > 0$. A ordem de crescimento deste número foi determinada por Kim~\cite{kim1995ramsey}, que encontrou a seguinte ordem:
+\[ R(3,k) = \Theta\left( \frac{k^2}{\log k}\right). \]
+Determinar se existe uma constante $C$ tal que $R(3,k) \sim Ck^2 / \log k$ e determinar tal constante caso ela exista são dois problemas abertos fundamentais da Teoria de Ramsey.
+
+A mesma idéia ainda pode ser utilizada para os números $R(4,k)$, e em tal caso, encontramos que $R(4,k) > k^{5/2 + o(1)}$. Este é limitante é melhor que qualquer outro limitante conhecido que pode ser provado sem utilizar o Lema Local de Lovász.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

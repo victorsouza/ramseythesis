@@ -225,7 +225,7 @@ Para $k \to \infty$, temos
 Para transformar o limitante dado pelo Teorema~\ref{thm:szekeres} em um limitante assintótico para os números de Ramsey diagonais, vamos utilizar a aproximação de Stirling $n! = (1+o(1)) \sqrt{2n \pi} \left ( \frac{n}{e} \right)^n $, com $n \to \infty$, obtendo:
 \begin{align*}
 R(k+1,k+1) &\leq \binom{2k}{k} = \frac{(2k)!}{k!^2} = (1 +o(1)) \frac{\sqrt{4 k \pi} \left ( \frac{2k}{e} \right)^{2k} }{2k\pi \left ( \frac{k}{e} \right)^{2k} } \\
-&= (1 +o(1))\frac{4^k}{\sqrt{k\pi}}.
+&= (1 +o(1))\frac{4^k}{\sqrt{k\pi}}. \qedhere
 \end{align*}
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -346,16 +346,18 @@ Podemos colorir as arestas dos subgrafos $G[S_i]$ com as cores $C_1, \dots, C_k$
   C_{k+1}, & \text{se } i - j \equiv 1 \Mod{5} \\
   C_{k+2}, & \text{caso contrário}.
 \end{cases}\]
-A Figura~\ref{prelim:fig:const} exemplifica esta construção. Note que $c$ não possui triângulo monocromático nas cores $C_1, \dots, C_k$, uma vez que construímos a coloração em $G[S_i]$ desta maneira. Além disso, $c$ também não possui triângulo monocromático nas cores $C_{k+1}$ e $C_{k+2}$ por construção.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[ht!]
+\begin{figure}[H]
 \centering
 \includegraphics{figures/2_prelim_4_const}
 \caption{Construção da coloração da Proposição~\ref{prelim:thm:multi3ub}.}
 \label{prelim:fig:const}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+A Figura~\ref{prelim:fig:const} exemplifica esta construção. Note que $c$ não possui triângulo monocromático nas cores $C_1, \dots, C_k$, uma vez que construímos a coloração em $G[S_i]$ desta maneira. Além disso, $c$ também não possui triângulo monocromático nas cores $C_{k+1}$ e $C_{k+2}$ por construção.
 
 Desta forma, concluimos que existe uma $k+2$-coloração de arestas de $G$ sem triângulo monocromático. Logo $R_{k+2}(3) \geq 5n = 5R_k(3)$. Aplicando esta relação repetidamente, obtemos:
 \begin{align*}
