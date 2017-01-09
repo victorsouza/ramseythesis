@@ -31,6 +31,7 @@ Vamos analisar inicialmente alguns valores de números de Ramsey que são imedia
 Vamos agora estudar o número $R(3,4)$, utilizando um argumento semelhante ao do $R(3,3)$, porém ligeiramente mais sofisticado. O número $R(3,4)$ foi determinado em 1955, por Greenwood e Gleason~\cite{greenwood}, e está apresentado a seguir. Neste trabalho, os autores obtiveram outros resultados e alguns destes também estão apresentados a seguir.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Needspace*{4\baselineskip}
 \begin{proposition}[Greenwood, Gleason~\cite{greenwood}]
 \label{prelim:thm:r34}
 $R(3,4) \leq 9$.
@@ -209,12 +210,13 @@ Para $k$ e $s$ inteiros positivos, temos:
 Se $k = 1$ temos $R(1,s) = 1 = \binom{s - 1}{0}$. Se $k = 2$, temos $R(2,s) = s = \binom{s}{1}$. Procedemos agora por indução em $s + k$. Temos
 \begin{align*}
   R(k,s) &\leq R(k,s-1) + R(k-1,s) \\
-  &\leq \binom{k + s - 3}{k - 2} + \binom{k + s - 3}{k - 1} = \binom{k + s - 2}{k - 1}.
+  &\leq \binom{k + s - 3}{k - 2} + \binom{k + s - 3}{k - 1} = \binom{k + s - 2}{k - 1}. \qedhere
 \end{align*}
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Needspace*{4\baselineskip}
 \begin{corollary}[Erdös, Szekerés~\cite{erdos_szekeres35}]
 \label{col:szekeres}
 Para $k \to \infty$, temos

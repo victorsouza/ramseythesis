@@ -53,8 +53,10 @@ Dado um espaço de probabilidade $(\Omega, \mathcal{F}, \prob)$ e $A$ e $B \in \
 \[ \prob(A|B) = \frac{\prob(A \cap B)}{\prob(B)}. \]
 Quando $\prob(B) = 0$, definimos $\prob(A|B) = \prob(A)$. Desta forma, a função $\prob(\; \cdot \;| B) : \mathcal{F} \to \mathbb{R}$ é uma medida de probabilidade em $(\Omega, \mathcal{F})$.
 
-Dois eventos $A$ e $B$ são ditos \indef{independentes} se $\prob(A \cap B) = \prob(A) \prob(B)$. Usa-se $A \indep B$ para indicar que os eventos $A$ e $B$ são independentes. Intuitivamente, dois eventos são independentes quando a ocorrencia ou não de um deles não influencia a probabilidade da ocorrência do outro evento. As proposições a seguir são todas equivalentes:
+Dois eventos $A$ e $B$ são ditos \indef{independentes} se $\prob(A \cap B) = \prob(A) \prob(B)$. Usa-se $A \indep B$ para indicar que os eventos $A$ e $B$ são independentes. Intuitivamente, dois eventos são independentes quando a ocorrencia ou não de um deles não influencia a probabilidade da ocorrência do outro evento.
 
+\Needspace*{4\baselineskip}
+As proposições a seguir são todas equivalentes:
 \begin{enumerate}[label=\arabic*.,itemindent=*]
   \item $A$ e $B$ são independentes.
   \item $A$ e $\comp{B}$ são independentes.
