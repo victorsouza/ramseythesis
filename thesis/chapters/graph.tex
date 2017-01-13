@@ -20,8 +20,7 @@ Sejam $G$ e $H$ grafos simples. Definimos $r(G,H)$ como o menor inteiro positivo
 \end{definition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Note que por esta definição, $R(k,s) = r(K_k, K_s)$. Também definimos $r(G) = r(G,G)$. Observemos agora que estes números possuem
-Se $G$ é subgrafo de $G'$ então $r(G,H) \leq r(G',H)$. Assim, estes números estão bem definidos pois $r(G,H) \leq r(K_{v(G)}, K_{v(H)}) = R(v(G), v(H)) < \infty$. De maneira analoga, podemos definir os números de Ramsey para várias cores, $r(G_1, \dots, G_k)$, e adaptar a notação $r_k(G) = r(G,\dots,G)$.
+Note que por esta definição, $R(k,s) = r(K_k, K_s)$. Também definimos $r(G) = r(G,G)$. Seque que se $G$ é subgrafo de $G'$ então $r(G,H) \leq r(G',H)$. Assim, estes números estão bem definidos pois $r(G,H) \leq r(K_{v(G)}, K_{v(H)}) = R(v(G), v(H)) < \infty$. De maneira analoga, podemos definir os números de Ramsey para várias cores, $r(G_1, \dots, G_k)$, e adaptar a notação $r_k(G) = r(G,\dots,G)$.
 
 Agora vamos estudar algumas classes de grafos interessantes e seus números de Ramsey. Vale observar que mesmo famílias simples de grafos, os números de Ramsey associados podem ser bem difíceis de se determinar. Por este motivo, muitos dos resultados apresentados nesta seção não incluirão as demonstrações. O texto, no entanto, fornece uma base sólida o suficiente para que o leitor interessado, busque as referências e estudem tais demonstrações por si só.
 
@@ -29,7 +28,7 @@ Agora vamos estudar algumas classes de grafos interessantes e seus números de R
 
 \section{Grafos Bipartidos}
 
-Seja $G = (V,E)$ um grafo simples. Dizemos que $G$ é um \indef{grafo bipartido} se o conjunto $V$ pode ser particionado em duas partes não vazias $X$ e $Y$ de tal forma que toda aresta em $E$ tem uma extremidade em $X$ a outra em $Y$. Tal partição $(X,Y)$ é dita uma \indef{bipartição} do grafo $G$. Um grafo $G$ com bipartição $(X,Y)$ é denotado $G[X,Y]$.
+Seja $G = (V,E)$ um grafo simples. Dizemos que $G$ é um \indef{grafo bipartido} se o conjunto $V$ pode ser particionado em duas partes não vazias $X$ e $Y$ de tal forma que toda aresta em $E$ tem uma extremidade em $X$ e a outra em $Y$. Tal partição $(X,Y)$ é dita uma \indef{bipartição} do grafo $G$. Um grafo $G$ com bipartição $(X,Y)$ é denotado $G[X,Y]$.
 
 Quando um grafo bipartido $G[X,Y]$ é tal que par de vértices $x \in X$ e $y \in Y$ é adjacente, dizemos que $G[X,Y]$ é um \indef{grafo bipartido completo}. Naturalmente, temos uma família de grafos associada. Denotamos por $K_{n,m}$ o grafo bipartido completo $G[X,Y]$ com $|X| = n$ e $|Y| = m$. Temos portanto que $v(K_{n,m}) = n + m$ e $e(K_{n,m}) = nm$.
 
@@ -37,7 +36,7 @@ Quando um grafo bipartido $G[X,Y]$ é tal que par de vértices $x \in X$ e $y \i
 \begin{figure}[ht!]
 \centering
 \includegraphics{figures/3_graph_1_part}
-\caption{Alguns grafos bipartidos.}
+\caption{Alguns grafos bipartidos completos.}
 \label{graph:fig:part}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -61,9 +60,9 @@ Primeiramente, note que em uma coloração de arestas, um $K_{1,n}$ monocromáti
 Considere uma $RB$-coloração qualquer de um grafo completo $G$ sem $K_{1,n}$ vermelho ou $K_{1,m}$ azul. Temos então que $d_R(v) \leq n-1$ e $d_B(v) \leq m-1$ para todo vértice $v \in V(G)$. Isto é impossível se $G = K_{n+m}$, logo $r(K_{1,n}, K_{1,m}) \leq n+m$.
 Se $m$ e $n$ são pares, considere $G = K_{n+m-1}$. Temos portanto que $d_R(v) = n-1$ e $d_B(v) = m-1$ para todo vértice $v \in V(G)$. Logo, o grafo $G_R$ possui todos os vértices de grau ímpar. Mas $v(G_R) = n + m -1$ também é ímpar. Pelo \emph{handshaking lemma}, não existe grafo com um número ímpar de vértices de grau ímpar. Portanto, $r(K_{1,n}, K_{1,m}) \leq n + m - 1$.
 
-No caso de algum entre $n$ e $m$ ser ímpar, considere sem perda de generalidade que $n$ é ímpar, com $n = 2k + 1$. Considere $G  = K_{n+m-1}$ com $V(G) = \{ v_0, \dots, v_{n+m-1} \}$. Defina uma $RB$-coloração $c$ da seguinte maneira.
+No caso de algum entre $n$ e $m$ ser ímpar, considere sem perda de generalidade que $n$ é ímpar, com $n = 2k + 1$. Considere $G  = K_{n+m-1}$ com $V(G) = \{ v_0, \dots, v_{n+m-2} \}$. Defina uma $RB$-coloração $c$ da seguinte maneira.
 \[c(v_i v_j) = \begin{cases}
-  \text{vermelho}, & \text{se }  i - j \in \{ -k, \dots, k\} \Mod{n+m-1}; \\
+  \text{vermelho}, & \text{se }  |i - j| \in \{ 1, \dots, k\} \Mod{n+m-1}; \\
   \text{azul}, & \text{caso contrário}.
 \end{cases}\]
 Note que nesta coloração, $d_R(v) = 2k = n - 1$ e $d_B(v) = m - 1$ para todo vértice $v \in V(G)$. Portanto, $c$ não possui $K_{1,n}$ vermelho nem $K_{1,m}$ azul, o que implica em $r(K_{1,n}, K_{1,m}) = n + m$.
@@ -83,7 +82,7 @@ onde $\varepsilon = 1$ se $t$ é par e $\varepsilon = 2$ caso contrário.
 \end{theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Outras classes de grafos bipartidos completos também já foram estudadas. Por exemplo, sabe-se que para todo $n\geq 2$,  $r(K_{2,n}, K_{2,n}) \leq 4n -2$~\cite{exoo}. Além disso, conjectura-se que em~\cite{lortz2002ramsey} que $4n - 3 \leq r(K_{2,n}, K_{2,n}) \leq 4n -2$.
+Outras classes de grafos bipartidos completos também já foram estudadas. Por exemplo, sabe-se que para todo $n\geq 2$,  $r(K_{2,n}, K_{2,n}) \leq 4n -2$~\cite{exoo}. Além disso, conjectura-se em~\cite{lortz2002ramsey} que $4n - 3 \leq r(K_{2,n}, K_{2,n}) \leq 4n -2$.
 O compêndio dinâmico de Radziszowski~\cite{small_ramsey} é uma excelente referência para encontrar outros resultados deste tipo.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -96,7 +95,7 @@ Um \indef{caminho} é um grafo simples que pode ter seus vértices listados por 
 \begin{figure}[ht!]
 \centering
 \includegraphics{figures/3_graph_2_cyclepath}
-\caption{Alguns ciclos e caminhos pequenos.}
+\caption{Alguns caminhos e ciclos pequenos.}
 \label{graph:fig:cyclepath}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -106,7 +105,7 @@ Note que $P_2 \iso K_2$, $P_3 \iso K_{1,2}$, $C_3 \iso K_3$ e $C_4 \iso K_{2,2}$
 
 Se $n > 1$, o grafo $P_n$ possui $2$ vértices de grau um, chamados de \indef{extremidades}, os demais $n-2$ vértices são ditos \indef{internos}, e possuem grau dois. Já o grafo $C_n$ é 2-regular, isto é, possui todos os vértices com grau igual a dois.
 
-Os caminhos e ciclos são de importância fundamental para a Teoria de Grafos, sendo peças centrais em muitas de suas subáreas. Naturalmente, núemros de Ramsey que envolvam estes grafos foram intensamente estudados. Uma primeira família de números de Ramsey envolvendo caminhos e ciclos é a seguinte.
+Os caminhos e ciclos são de importância fundamental para a Teoria de Grafos, sendo peças centrais em muitas de suas subáreas. Naturalmente, números de Ramsey que envolvam estes grafos foram intensamente estudados. Uma primeira família de números de Ramsey envolvendo caminhos e ciclos é a seguinte.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proposition}
@@ -119,11 +118,11 @@ Note que o grafo $K_{k-1,k-1}$ não possui triângulo e que o seu complementar �
 
 Agora, considere uma $RB$-coloração $c$ de $G=K_n$ com $n = 2k-1$. Seja $P$ um caminho vermelho maximal em $G$, isto é, um caminho de arestas vermelhas que não pode ser estendido. Se $P$ possui $k$ vértices, então a coloração $c$ possui um $P_k$ vermelho. Suponha que $P$ possui no máximo $k-1$ vérices. Seja $v$ uma das extremidades de $P$. Se $c(vu) = B$ para algum vértice $u$ que não está em $P$, então $P$ não é maximal. Portanto, $d_B(v) \geq k$, pois existem pelo menos $k$ vértices fora de $P$ e $v$ se conecta à todos eles por arestas azuis.
 
-Assim, a vizinhanca $N_B(v)$ possui pelo menos $k$ vértices. Seja $e$ uma aresta interna à $N_B(v)$. Se $c(e) = B$, então obtemos um $K_3$ azul unindo $v$ às extremidades de $e$. Por outro lado, se nenhuma aresta interna à $N_B(v)$ for azul, então $N_B(v)$ é um subgrafo completo vermelho com $k$ vértices, que em particular, possui um $P_k$ vermelho. Finalmente, isto nos dá que em uma $RB$-coloração do $K_{2k-1}$, a presença de um $P_k$ vermelho ou um $K_3$ azul é inevitável, mostrando que $r(P_k, K_3) \leq 2k-1$.
+Assim, a vizinhanca $N_B(v)$ possui pelo menos $k$ vértices. Seja $e$ uma aresta interna à $N_B(v)$. Se $c(e) = B$, então obtemos um $K_3$ azul unindo $v$ às extremidades de $e$. Por outro lado, se nenhuma aresta interna à $N_B(v)$ for azul, então $N_B(v)$ é um subgrafo completo vermelho com $k$ vértices, que, em particular, possui um $P_k$ vermelho. Finalmente, isto nos dá que em uma $RB$-coloração do $K_{2k-1}$, a presença de um $P_k$ vermelho ou um $K_3$ azul é inevitável, mostrando que $r(P_k, K_3) \leq 2k-1$.
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Na próxima subseção veremos generalizações consideraveis deste resultado. Outros resultados envolvendo caminhos também são conhecidos. Abaixo apresentamos dois destes sem demonstrações. Embora o primeiro deles apresente uma demonstração simples, a segunda envolve a famosa e intricada técnica da Regularidade de Szemerédi.
+Na próxima subseção veremos generalizações consideraveis deste resultado. Outros resultados envolvendo caminhos também são conhecidos. Abaixo apresentamos dois destes sem demonstrações. Embora o primeiro deles apresente uma demonstração simples, o segundo envolve a famosa e intricada técnica da Regularidade de Szemerédi.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{theorem}[Gerencsér, Gyárfás~\cite{gerencser1967ramsey}]
@@ -151,7 +150,7 @@ $r(C_4,C_4) = 6$.
 \end{theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proof}
-A coloração do $K_5$ dada na Figura~\ref{fig:intro:r33lb} não possui $C_4$ monocromático, logo $r(C_4,C_4) > 5$.
+A coloração do $K_5$ dada na Figura~\ref{fig:intro:r33lb} também não possui $C_4$ monocromático, logo $r(C_4,C_4) > 5$.
 
 Seja $c$ uma $RB$-coloração de $G = K_6$. Suponha que $c$ não possua $C_4$ monocromático. Como $R(3,3) = 6$, existe um $K_3$ monocromático, digamos vermelho, que utiliza os vértices $a_1,a_2,a_3 \in V(G)$. Sejam $b_1,b_2,b_3 \in V(G)$ os demais vértices.
 
@@ -178,18 +177,17 @@ O caso geral para ciclos foi completamente determinado de forma independente por
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{theorem}
 \label{graph:thm:cycle}
-Sejam $3 \leq k \leq n$ inteiros. Então
-\[r(C_k, C_n) = \begin{cases}
-  6, & \text{se }k = n = 3 \text{ ou } 4;\\
-  n + k/2 - 1, & \text{se }  n \text{ e } k \text{ pares}; \\
-  \max\{n + k/2 - 1, 2n - 1\}, & \text{se } n \text{ ímpar e } k \text{ par};\\
-  2n - 1 , & \text{se }  k \text{ ímpar}.
+Sejam $3 \leq m \leq n$ inteiros. Então
+\[r(C_m, C_n) = \begin{cases}
+  6, & \text{se }m = n = 3 \text{ ou } 4;\\
+  n + m/2 - 1, & \text{se }  n \text{ e } m \text{ pares}; \\
+  \max\{n + m/2 - 1, 2n - 1\}, & \text{se } n \text{ ímpar e } m \text{ par};\\
+  2n - 1 , & \text{se } m \text{ ímpar}.
 \end{cases}\]
 \end{theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Como $P_n$ é subgrafo de $C_n$, temos que $r(P_m, P_n) \leq r(C_m, P_n) \leq r(C_m, C_n)$ para todo $n$ e $m$ inteiros. Como temos determinados os números de Ramsey $r(P_m, P_n)$ no Teorema~\ref{graph:thm:path} e o número $r(C_m, C_n)$ no Teorema~\ref{graph:thm:cycle}, obtemos diretamente limitantes para $r(C_m, P_n)$. Resultados precisos, no entanto, foram obtidos por Faudree, Lawrence, Parsons e Schelp~\cite{faudree1974path}, e estão enunciados abaixo.
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{theorem}
@@ -204,13 +202,13 @@ Sejam $m$ e $n$ inteiros. Então
 \end{theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Em particular, se $m$ e $n$ são pares e maiores e pelo menos um deles for maior que 4, então $r(P_m, P_n) = r(C_m, P_n) = r(C_m, C_n)$.
+Em particular, se $m$ e $n$ são pares e pelo menos um deles for maior que 4, então $r(P_m, P_n) = r(C_m, P_n) = r(C_m, C_n)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Árvores}
 
-Seja $G$ um grafo simples. Dizemos que dois vértices $x$ e $y$ estão \indef{conectados} se existe um caminho em $G$ com uma extremidade em $x$ e outra em $y$. Note que esta relação é uma relação de equivalência no conjunto $V(G)$. Chamamos as classes de equivalência desta relação de \indef{componentes}. Dizemos que $G$ é \indef{conexo} se entre quaisquer dois vértices de $G$ estão conectados, ou seja, $G$ possui apenas uma componente.
+Seja $G$ um grafo simples. Dizemos que dois vértices $x$ e $y$ estão \indef{conectados} se existe um caminho em $G$ com uma extremidade em $x$ e outra em $y$. Note que esta relação é uma relação de equivalência no conjunto $V(G)$. Chamamos as classes de equivalência desta relação de \indef{componentes}. Dizemos que $G$ é \indef{conexo} se quaisquer dois vértices de $G$ estão conectados, ou seja, $G$ possui apenas uma componente.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht!]
@@ -224,7 +222,7 @@ Seja $G$ um grafo simples. Dizemos que dois vértices $x$ e $y$ estão \indef{co
 Um grafo que não possui ciclos como subgrafo é dito \indef{acíclico}.
 Um grafo $G$ é chamado de \indef{árvore} se ele é conexo e acíclico. A Figura~\ref{graph:fig:tree} exemplifica uma árvore com dezesseis vértices. Árvores são grafos conexos minimais, isto é, a remoção de qualquer aresta de uma árvore a desconecta. Os grafos $P_n$ e $K_{1,n}$ são árvores.
 
-Os vértices de uma árvore que possuem grau um são chamados de \indef{folhas}. A árvore da Figura~\ref{graph:fig:tree}, por exemplo, possui dez folhas. Pode ser mostrado que qualquer árvore com pelo menos dois vértoces possui pelo menos duas folhas. A árvore $P_n$, por exemplo, possui exatamente duas folhas se $n \geq 2$.
+Os vértices de uma árvore que possuem grau um são chamados de \indef{folhas}. A árvore da Figura~\ref{graph:fig:tree}, por exemplo, possui dez folhas. Pode ser mostrado que qualquer árvore com pelo menos dois vértices possui pelo menos duas folhas. A árvore $P_n$, por exemplo, possui exatamente duas folhas se $n \geq 2$.
 
 Existem diversas maneiras equivalentes de se definir árvores. A seguir, listamos algumas propriedades de árvores que também podem ser tomadas como definições. De fato, se $G$ é um grafo simples com $n$ vértices, as seguintes proposições são equivalentes.
 
@@ -254,9 +252,9 @@ Seja $T$ uma árvore com $n$ vértices e $G$ um grafo com $\delta(G) \geq n-1$. 
 \end{proposition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proof}
-Vamos provar por indução em $n$. Se $n = 2$, então $T \iso K_2$ logo o grafo $G$ possui uma cópia de $T$ se e somente se $G$ possui alguma aresta. Mas $\delta(G) \geq 1$, logo $G$ possui aresta.
+Vamos provar por indução em $n$. Se $n = 2$, então $T \iso K_2$, logo o grafo $G$ possui uma cópia de $T$ se e somente se $G$ possui alguma aresta. Mas $\delta(G) \geq 1$, e assim, concluimos que $G$ possui uma aresta.
 
-Considere $n > 2$. Seja $v \in V(T)$ uma folha. Como $d_T(v) =1$, existe apenas um vértice adjacente à $v$ em $T$; denote-o por $u \in V(T)$. Note que o grafo $T' = T - v$ também é uma árvore, uma vez que a remoção de uma folha não cria ciclos e não desconecta $T$. A árvore $T'$, no entanto, possui $n-1$ vértices. Por hipótese de indução, existe uma cópia de $T'$ em $G$. Seja $x \in V(G)$ o vértice que corresponde ao vértice $u \in V(T')$.
+Considere agora que $n > 2$. Seja $G$ um grafo com $\delta(G) \geq n-1$. Seja $v \in V(T)$ uma folha. Como $d_T(v) =1$, existe apenas um vértice adjacente à $v$ em $T$; denote-o por $u \in V(T)$. Note que o grafo $T' = T - v$ também é uma árvore, uma vez que a remoção de uma folha não cria ciclos e não desconecta $T$. A árvore $T'$, no entanto, possui $n-1$ vértices. Por hipótese de indução, existe uma cópia de $T'$ em $G$. Seja $x \in V(G)$ o vértice que corresponde ao vértice $u \in V(T')$.
 Por hipótese, temos que $d_G(x) \geq n-1$. Como existem apenas outros $n-2$ vértices em $T'$, isto implica que existe um vértice $y \in V(G)$ adjacente a $x$ que não foi utilizado na cópia de $T'$ em $G$. Unindo a cópia de $T'$ com a aresta $xy$, obtemos uma cópia de $T$ em $G$.
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -271,10 +269,10 @@ Seja $T$ uma árvore com $n$ vértices. Então
 \end{proposition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proof}
-Note que o grafo $K_{n-1,n-1}$ não possiu triângulos e o seu complementar são duas cópias disjuntas de $K_{n-1}$, logo não possuem $T$ como subgrafo. Com isto, tempos que $r(T,K_3) > 2n - 2$.
+Note que o grafo $K_{n-1,n-1}$ não possiu triângulos e o seu complementar são duas cópias disjuntas de $K_{n-1}$, logo não possuem $T$ como subgrafo. Com isto, temos que $r(T,K_3) > 2n - 2$.
 
 Seja $c$ uma $RB$-coloração de $G = K_{2n-1}$ que não possui $T$ vermelho ou $K_3$ azul. Pela Proposição~\ref{graph:thm:treesub}, se $\delta(G_R) \geq n-1$, então $c$ possui $T$ vermelho, logo, existe um vértice $v$ com $d_R(v) \leq n - 2$. Portanto $d_B(v) \geq n$. Se existir alguma aresta azul com ambas as extremidades em $N_B(v)$, unindo-as com $v$ forma-se um $K_3$ azul.
-Portanto $N_B(v)$ só possui arestas vermelhas. Como $|N_B(v)| \geq n$, $c$ possui um $K_n$ vermelho. Em particular, $c$ possui uma cópia de $T$ vermelha, contradizendo nossa hipótese. Concluímos então que $r(T,K_3) \geq 2n - 1$.
+Portanto $N_B(v)$ só possui arestas vermelhas. Como $|N_B(v)| \geq n$, $c$ possui um $K_n$ vermelho. Em particular, $c$ possui uma cópia de $T$ vermelha, contradizendo nossa hipótese. Concluímos então que $r(T,K_3) \leq 2n - 1$.
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -303,7 +301,8 @@ Burr e Erdös conjecturaram que se $H$ é uma família de grafos com grau médio
 
 Esta conjectura foi desprovada por Brandt~\cite{brandty1996expanding}, mas resultados similares valem para grafos esparsos em outros sentidos. Por exemplo, Burr e Erdös mostraram que se $H$ possui largura de banda\footnote{A largura de banda de um grafo $G$ é o menor inteiro positivo $l$ tal que existe uma ordenação $v_1, \dots, v_n$ dos vértices de $G$ de forma que toda aresta $v_i v_j$ satisfaz $|i - j| \leq l$.} limitada, então $H$ é $s$-bom. Este resultado foi estendido por Allen, Brightwell e Skokan~\cite{allen2013ramsey} para grafos com largura de banda até $o(\log n / \log \log n)$ e grafos com grau médio limitado e largura de banda $o(n)$.
 
-Outros resultados foram obtidos para famílias específicas. Por exemplo, Pontiveiros, Griffiths, Morris, Saxton e Skokan~\cite{pontiveros2014ramsey} estudaram o caso do hipercubo $Q_n$, isto é, o grafo com conjunto de vértices $\{ 0, 1 \}^n$ e arestas entre pares de vértices que diferem em exatamente uma coordenada. O hipercubo possui $N=2^n$ vértices, grau médio $\log_2(N)$ e largura de banda aproximadamante $N/\sqrt{\log N}$, e portanto, não está coberto pelos resultados mais genéricos menciodados. Foi mostrado em~\cite{pontiveros2014ramsey} que $r(Q_n, K_s) = (s-1)(2^n -1) + 1$ para $n \geq n_0(s)$.
+Outros resultados foram obtidos para famílias específicas. Por exemplo, Pontiveiros, Griffiths, Morris, Saxton e Skokan~\cite{pontiveros2014ramsey} estudaram o caso do hipercubo $Q_n$, isto é, o grafo com conjunto de vértices $\{ 0, 1 \}^n$ e arestas entre pares de vértices que diferem em exatamente uma coordenada. O hipercubo possui $N=2^n$ vértices, grau médio $\log_2(N)$ e largura de banda aproximadamante $N/\sqrt{\log N}$, e portanto, não está coberto pelos resultados mais genéricos menciodados.
+Foi mostrado em~\cite{pontiveros2014ramsey} que $r(Q_n, K_s) = (s-1)(2^n -1) + 1$ para $n$ suficientemente grande.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

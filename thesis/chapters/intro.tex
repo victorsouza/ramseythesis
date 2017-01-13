@@ -22,9 +22,9 @@ Em uma mesa com seis alunos, três alunos se conhecem ou três alunos não se co
 \end{fact}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Vamos ver agora como que a professora percebeu este fato. Considere que você seja um dos seis alunos da mesa. Dos cinco restantes, você conhece uma quantidade, digamos $c$, e também não conhece uma quantidade $n$. Sabemos que $c + n = 5$. Isto nos dá que, ou $c \geq 3$, ou $n \geq 3$. De fato, se $c \leq 2$ e $n \leq 2$ occorrerem simultaneamente, $5 = c + n \leq 4$, o que é absurdo. Suponha $c \geq 3$, isto significa que você conhece pelo menos três dos outros alunos, digamos Alberto, Bruna e Carlos. Se existe alguma amizade entre eles, digamos, Alberto e Carlos são amigos, então a mesa possui um grupo de três alunos que se conhece, você, Alberto e Carlos. Caso isto não ocorra, então Alberto, Bruna e Carlos formam um grupo de três alunos que não se conhecem. O caso $n \geq 3$ segue do mesmo raciocínio.
+Vamos ver agora como que a professora percebeu este fato. Considere que você seja um dos seis alunos da mesa. Dos cinco restantes, você conhece uma quantidade, digamos $c$, e também não conhece uma quantidade $n$. Sabemos que $c + n = 5$. Isto nos dá que, ou $c \geq 3$, ou $n \geq 3$. De fato, se $c \leq 2$ e $n \leq 2$ occorrerem simultaneamente, $5 = c + n \leq 4$, o que é absurdo. Suponha que $c \geq 3$. Isto significa que você conhece pelo menos três dos outros alunos, digamos Alberto, Bruna e Carlos. Se existe alguma amizade entre eles, digamos, Alberto e Carlos são amigos, então a mesa possui um grupo de três alunos que se conhece, você, Alberto e Carlos. Caso isto não ocorra, então Alberto, Bruna e Carlos formam um grupo de três alunos que não se conhecem. O caso $n \geq 3$ segue do mesmo raciocínio.
 
-O Fato~\ref{fact:intro:ramsey} pode ser considerado o primeiro resultado na Teoria de Ramsey e possui generalizações interessantes. Além disso, ele possui uma formulação mais clara em termos de coloração de grafos. Na próxima seção, introduzimos os conceitos da Teoria de Grafos que são necessários para adentrar o universo da Teoria de Ramsey em grafos. Um leitor familiarizado com grafos é convidado a fazer uma leitura rápida da seção para se familiarizar à notação utilizada neste texto.
+O Fato~\ref{fact:intro:ramsey} pode ser considerado o primeiro resultado na Teoria de Ramsey e possui generalizações interessantes. Além disso, ele possui uma formulação mais clara em termos de coloração de grafos. Na próxima seção, introduzimos os conceitos da Teoria de Grafos que são necessários para adentrar o universo da Teoria de Ramsey em grafos. Mesmo um leitor familiarizado com grafos é convidado a fazer uma leitura rápida da seção para se familiarizar à notação utilizada neste texto.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -36,14 +36,14 @@ Uma outra relação é a de adjacência, que se aplica para elementos de mesma n
 
 Vamos construir um grafo $G = (V(G), E(G))$ para ilustrar estas definições. O conjunto de vértices será $V(G) = \{u,v,w,x\}$ e o conjunto de arestas será $E(G) = \{e, f, g, h, j, k, l, s\}$. Falta definir a função de incidência $\Psi_G$, que associa as arestas aos vértices:
 \begin{align*}
-\Psi_G(e) = \{v,x\} & &
-\Psi_G(f) = \{u,v\} & &
-\Psi_G(g) = \{u,v\} & &
-\Psi_G(h) = \{v,w\} \\
-\Psi_G(j) = \{v,w\} & &
-\Psi_G(k) = \{u,x\} & &
-\Psi_G(l) = \{w,x\} & &
-\Psi_G(s) = \{x\}
+\Psi_G(e) &= \{v,x\} &
+\Psi_G(f) &= \{u,v\} &
+\Psi_G(g) &= \{u,v\} &
+\Psi_G(h) &= \{v,w\} \\
+\Psi_G(j) &= \{v,w\} &
+\Psi_G(k) &= \{u,x\} &
+\Psi_G(l) &= \{w,x\} &
+\Psi_G(s) &= \{x\}
 \end{align*}
 
 Isto completa a definição do grafo $G$. Uma maneira interessante de representar grafos é por meio de um desenho. A Figura~\ref{fig:intro:grafo} representa o grafo $G$ da seguinte maneira: os vértices são indicados por círculos e as arestas são indicadas por linhas que unem os círculos que correspondem aos vértices nos quais a aresta incide. A representação gráfica é muito importante pois nos permite criar uma intuição sobre a estrutura dos grafos. Vale a pena notar que um mesmo grafo pode possuir mais de um desenho: basta desenhar os vértices em posições diferentes do plano. De fato, a posição dos vértices e das arestas não é importante, é a relação entre os vértices e as arestas que caracteriza a estrutura do grafo.
@@ -70,7 +70,7 @@ Esta noção de igualdade de grafos é, como vimos, muito restritiva. Para captu
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Grafos isomorfos possuem essencialmente a mesma estrutura e são considerados como iguais para todos os efeitos práticos. Com efeito, muitas vezes, os nomes que os vértices possuem não tem nenhuma importância. Quando abrimos mão de definir os nomes dos vértices, temos um \indef{grafo não rotulado}, em contrapartida aos \indef{grafos rotulados}. Muitas vezes, apenas nos interessa a interconectividade dos vértices, então consideramos grafos não rotulados e nomeamos os vértices e arestas conforme necessário.
+Grafos isomorfos possuem essencialmente a mesma estrutura e são considerados como iguais para todos os efeitos práticos. De fato, muitas vezes, os nomes que os vértices possuem não tem nenhuma importância. Quando abrimos mão de definir os nomes dos vértices, temos um \indef{grafo não rotulado}, em contrapartida aos \indef{grafos rotulados}. Muitas vezes, apenas nos interessa a interconectividade dos vértices, e então consideramos grafos não rotulados e nomeamos os vértices e arestas conforme necessário.
 
 Formalmente, a relação de isomorfismo $\iso$ é uma relação de equivalência na classe de todos os grafos. As classes de equivalência são compostas por grafos rotulados que são equivalentes sob a relação de isomorfismo. Grafo não rotulado é um nome que damos a uma destas classes de equivalência, não sendo um grafo propriamente dito, e sim uma entidade abstrata que carrega em si a estrutura de um grafo sem incluir os rótulos dos vértices e das arestas.
 
@@ -78,13 +78,13 @@ O que nos permite escolher um representante dentro desta classe sem perda de gen
 
 Uma outra noção fundamental é a de \indef{subgrafo}. Seja $G$ um grafo, dizemos que $H$ é um subgrafo de $G$, se $H$ for um grafo tal que $V(H) \subset V(G)$, $E(H) \subset E(G)$ e $\Psi_H$ é restrição de $\Psi_G$. Quando $H$ é subgrafo de $G$, também dizemos que $G$ possui $H$, ou que existe uma cópia de $H$ em $G$. Em geral, diremos que $H$ é um subgrafo de $G$ quando existir subgrafo de $G$ isomorfo a $H$.
 
-Uma noção ligeiramente distinta de subgrafo é a de \indef{subgrafo induzido}. Seja $G = (V,E)$ um grafo e $S \subset V$ um subconjunto de vértices. O grafo $G[S]$ é o grafo cujo conjunto de vértices é $S$ e cujo conjunto de arestas consiste nas arestas de $G$ que possuem ambas extremidades em $S$. Dizemos que $G[S]$ é um subgrafo de $G$ \indef{induzido} pelo conjunto $S$.
+Uma noção ligeiramente distinta de subgrafo é a de \indef{subgrafo induzido}. Seja $G = (V(G), E(G))$ um grafo e $S \subset V(G)$ um subconjunto de vértices. O grafo $G[S]$ é o grafo cujo conjunto de vértices é $S$ e cujo conjunto de arestas consiste nas arestas de $G$ que possuem ambas extremidades em $S$. Dizemos que $G[S]$ é um subgrafo de $G$ \indef{induzido} pelo conjunto de vértices $S$.
 
 Até agora, a definição de grafos que temos é bastante abrangente e permite algumas situações que não gostaríamos de considerar em nosso estudo. A primeira situação especial ocorre quando duas arestas $e$ e $f$ incidem nos mesmos vértices, isto é, $\Psi_G(e) = \Psi_G(f)$, neste caso dizemos que $e$ e $f$ são \indef{arestas paralelas}. No grafo exemplificado na Figura~\ref{fig:intro:grafo}, $f$ e $g$ são arestas paralelas.
 A segunda situação é quando $e$ incide em apenas um vértice $v$, isto é, $\Psi_G(e) = \{v\}$, como é o caso da aresta $s$ da Figura~\ref{fig:intro:grafo}, e dizemos que esta aresta é um \indef{laço}. Um grafo no qual não existem arestas paralelas ou laços é dito um \indef{grafo simples}. Neste estudo, consideraremos apenas grafos simples.
 
-Seja $G$ um grafo simples e $u$ e $v$ dois vértices de $G$. Se $u$ e $v$ forem adjacentes, então existe uma única aresta $e$ em $G$ com $\Psi_G(e) = \{u,v\}$. Portanto podemos identificar $e$ por $\{u,v\}$. De fato, quando $G$ é simples, a função de incidência $\Psi_G$ fica definida implicitamente e nomeamos as arestas por suas extremidades. Dessa forma, ao definir grafos simples, pode-se omitir a função de incidência $\Psi$, definindo o conjunto das arestas $E(G)$ como um subconjunto de pares de vértices.
-Para tal propósito, dado um conjunto $S$, definimos o conjunto de pares de elementos de $S$ por $\binom{S}{2}$; assim, podemos ver um grafo como um par $G = (V(G),E(G))$ no qual $E(G) \subset \binom{V(G)}{2}$. Em geral, denotamos o conjunto de todos os subconjuntos de $S$ com $k$ elementos por $\binom{S}{k}$, e temos a propriedade $\card{\binom{S}{k}} = \binom{\card{S}}{k}$.
+Seja $G$ um grafo simples e $u$ e $v$ dois vértices de $G$. Se $u$ e $v$ forem adjacentes, então existe uma única aresta $e$ em $G$ com $\Psi_G(e) = \{u,v\}$. Portanto podemos identificar $e$ por $\{u,v\}$ ou $uv$. De fato, quando $G$ é simples, a função de incidência $\Psi_G$ fica definida implicitamente e nomeamos as arestas por suas extremidades. Dessa forma, ao definir grafos simples, pode-se omitir a função de incidência $\Psi$, definindo o conjunto das arestas $E(G)$ como um subconjunto de pares de vértices.
+Para tal propósito, dado um conjunto $S$, definimos o conjunto de pares de elementos de $S$ por $\binom{S}{2}$; assim, podemos ver um grafo como um par $G = (V(G),E(G))$ no qual $E(G) \subset \binom{V(G)}{2}$. Em geral, denotamos o conjunto de todos os subconjuntos de $S$ com $k$ elementos por $\binom{S}{k}$, e temos a propriedade $\big| \binom{S}{k} \big| = \binom{\card{S}}{k}$.
 
 Para simplificar a notação, quando não houver ambiguidade, podemos nos referir ao conjunto de vértices apenas por $V$ e o conjunto de arestas por $E$ em um grafo $G = (V,E)$. A quantidade de vértices de um grafo é chamada de \indef{ordem} do grafo e costuma ser denotada por $n$ ou $v(G)$. Já a quantidade de arestas em um grafo é chamada de \indef{tamanho} do grafo, e é denotada por $m$ ou $e(G)$. Se $G$ é um grafo simples, observamos que $E \subset \binom{V}{2}$, o que implica que $m \leq \binom{n}{2} = O(n^2)$, isto é, um grafo simples tem uma quantidade de arestas limitada ao quadrado do seu número de vértices.
 
@@ -107,7 +107,7 @@ A primeira família de grafos a ser estudada é a dos grafos completos. Um grafo
 
 Uma outra família de grafos importante na Teoria de Ramsey é, surpreendentemente, a família dos \indef{grafos vazios}. Um grafo $G$ é vazio quando ele não possui nenhuma aresta. É importante notar que um grafo vazio ainda pode ter vértices.
 
-Uma maneira de relacionar os grafos completos e vazios é por meio da operação de complementação. Seja $G = (V,E)$ um grafo simples. O \indef{complemento} de $G$ é um grafo $\comp{G}$ com o mesmo conjunto de vértices $V$, no qual dois vértices são adjacentes em $\comp{G}$ se e somente se eles não são adjacentes em $G$. Em outras palavras, o conjunto de arestas de $\comp{G}$ é o complemento de $E$ em relação à $V^{(2)}$. Portanto, podemos escrever apenas $\comp{G} = (V,\comp{E})$ e notamos que para todo grafo simples $G$, $\comp{\comp{G}} = G$.
+Uma maneira de relacionar os grafos completos e vazios é por meio da operação de complementação. Seja $G = (V,E)$ um grafo simples. O \indef{complemento} de $G$ é um grafo $\comp{G}$ com o mesmo conjunto de vértices $V$, no qual dois vértices são adjacentes em $\comp{G}$ se e somente se eles não são adjacentes em $G$. Em outras palavras, o conjunto de arestas de $\comp{G}$ é o complemento de $E$ em relação à $\binom{V}{2}$. Portanto, podemos escrever apenas $\comp{G} = (V,\comp{E})$ e notamos que para todo grafo simples $G$, $\comp{\comp{G}} = G$.
 Temos então que o grafo vazio com $n$ vértices é o complemento de $K_n$, logo o denotamos por $\comp{K_n}$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,7 +129,7 @@ Note também que uma coloração de arestas pode ser vista como uma partição d
 
 \section{Números de Ramsey}
 
-No início do capítulo, vimos o problema das mesas, para o qual mostramos que em mesas de seis alunos, três alunos se conhecem ou três alunos não se conhecem. Consideremos, agora, um grafo $G$ no qual os vértices são os seis alunos na mesa e uma aresta conecta dois alunos quando eles se conhecem. Note que $\comp{G}$ é o grafo em que dois alunos são adjacentes quando não se conhecem. O problema das mesas, então, nos diz que se $G$ possui 6 vértices, então $G$ ou $\comp{G}$ possui um triângulo como subgrafo.
+No início do capítulo, vimos o problema das mesas, para o qual mostramos que em mesas de seis alunos, existem três alunos que se conhecem ou três alunos que não se conhecem. Consideremos, agora, um grafo $G$ no qual os vértices são os seis alunos na mesa e uma aresta conecta dois alunos quando eles se conhecem. Note que $\comp{G}$ é o grafo em que dois alunos são adjacentes quando não se conhecem. O problema das mesas, então, nos diz que se $G$ possui 6 vértices, então $G$ ou $\comp{G}$ possui um triângulo como subgrafo.
 
 Observar o mesmo fato em termos de colorações é ainda mais vantajoso. Novamente, considere $G$ como o grafo em que os vértices são as seis pessoas na festa, mas, desta vez, considere o grafo completo. Realizamos uma coloração das arestas de $G$ em duas cores, $c: E(G) \to \{ R,B \}$ ($R$ e $B$ denotam vermelho e azul, respectivamente\footnote{Estes símbolos estão sendo usados porque R e B são tradicionais na Teoria de Ramsey e referem-se aos nomes das cores vermelho (\emph{red}) e azul (\emph{blue}).}), de forma que $c(xy) = R$, se $x$ e $y$ são pessoas que se conheçem e $c(xy) = B$, se $x$ e $y$ são pessoas que não se conhecem.
 Assim, o objetivo é mostrar que $G$ possui um triângulo monocromático, isto é, um triângulo no qual todas as três arestas tem a mesma cor. Equivalentemente, podemos dizer que $G_R$ ou $G_B$ possuem um triângulo. Considerando esta formalização por colorações de arestas, podemos reformular o Fato~\ref{fact:intro:ramsey}.
@@ -141,7 +141,7 @@ Se $G$ é um grafo completo com 6 vértices e $c: E(G) \to \{ R,B\}$ é uma colo
 \end{proposition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proof}
-Seja $v \in V(G)$ um vértice arbitrário e seja $N(v)$ a sua vizinhança. O vértice $v$ se liga aos vértices de $N(v)$ utilizando arestas vermelhas ou azuis. Logo $N(v) = N_R(v) \union N_B(v)$. Como o grau de $v$ é 5, então $d_R(v) + d_B(v) = 5$. Pelo princípio das casas dos pombos, alguma cor dentre $R$ e $B$, digamos $R$, é tal que $d_R(v) \geq 3$. Agora, observe que se existem dois vizinhos de $v$ ligados por uma aresta vermelha, então eles formam um triângulo vermelho com $v$. Caso contrário, isto é, não existem dois vizinhos de $v$ ligados por aresta vermelhas, toda aresta com ambas as extremidades em $N_R(v)$ é azul, o que garante a existência de um triângulo azul em $G$. Desta forma, em ambos os casos, $G$ possui um triângulo monocromático.
+Seja $v \in V(G)$ um vértice arbitrário e seja $N(v)$ a sua vizinhança. O vértice $v$ se liga aos vértices de $N(v)$ utilizando arestas vermelhas ou azuis. Logo $N(v) = N_R(v) \union N_B(v)$. Como o grau de $v$ é 5, então $d_R(v) + d_B(v) = 5$. Pelo princípio das casas dos pombos, alguma cor dentre $R$ e $B$, digamos $R$, é tal que $d_R(v) \geq 3$. Agora, observe que se existem dois vizinhos de $v$ ligados por uma aresta vermelha, então eles formam um triângulo vermelho se unidos com $v$. Caso contrário, isto é, não existam dois vizinhos de $v$ ligados por aresta vermelhas, toda aresta com ambas as extremidades em $N_R(v)$ é azul, o que garante a existência de um triângulo azul em $G$. Desta forma, em ambos os casos, $G$ possui um triângulo monocromático.
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -156,7 +156,7 @@ Seja $v \in V(G)$ um vértice arbitrário e seja $N(v)$ a sua vizinhança. O vé
 
 Algo interessante de notar é que, com cinco vértices, este fato pode ser evitado: existe uma coloração das arestas do $K_5$ que não possui triângulos monocromáticos, como podemos observar na Figura~\ref{fig:intro:r33lb}. Com esta observação, concluímos que seis é o menor número de vértices que um grafo completo precisa ter de forma que qualquer coloração de suas arestas com duas cores possua um triângulo monocromático.
 
-Agora que entendemos em que condições uma coloração de arestas em duas cores necessariamente possui um triângulo monocromático, podemos estudar quando é possível evitar a existência de outros grafos completos como subgrafo monocromático, o que nos leva a definição dos números de Ramsey a seguir.
+Agora que entendemos em que condições uma coloração de arestas em duas cores necessariamente possui um triângulo monocromático, podemos estudar quando é possível evitar a existência de outros grafos completos como subgrafo monocromático. Isto nos leva a definição dos números de Ramsey a seguir.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{definition}
@@ -198,7 +198,7 @@ Seja $v_2 \in V(G^2)$. Repetindo o raciocínio usado para construir $G^2$, obtem
 Desta forma, obtemos: uma sequência de grafos $G^1, G^2, \dots, G^{l+1}$ tal que $|V(G^i)| \geq 2^{l+1-i}$; uma sequência de vértices $v_1, v_2, \dots, v_{l+1}$ com $v_i \in V(G^i)$; e cores $C_1, \dots, C_l$, com a propriedade de que o vértice $v_i$ se conecta a todos os outros vértices seguintes nesta sequência com a cor $C_i$, isto é, $C(v_i v_j) = C_i$ se $j > i$. A Figura~\ref{fig:intro:recursive} ilustra este processo.
 
 Finalmente, escolhendo $l = 2k - 2$, obtemos uma sequência de $2k - 1$ vértices e $2k - 2$ cores. Pelo Princípio da Casa dos Pombos, alguma cor aparece pelo menos $k - 1$ vezes, digamos que a cor $C$ ocorra nos índices $C_{a_1} =  C_{a_2} = \dots = C_{a_{k-1}}$. Isto implica que os vértices $v_{a_1}, v_{a_2}, \dots v_{a_{k-1}}$ formam um $K_{k-1}$ monocromático.
-No entanto, recorde que o último vértice $v_{l+1}$ recebe arestas de cor $C$ dos vértices $v_{a_{i}}$, portanto, podemos adicioná-lo ao $K_{k-1}$ para obter um $K_k$ monocromático, como queríamos. Com isto, concluímos que $R(k) \leq 2^{2k - 2} < 4^k$.
+No entanto, recorde que o último vértice $v_{l+1}$ recebe arestas de cor $C$ dos vértices $v_{a_{i}}$, portanto, podemos adicioná-lo ao $K_{k-1}$ para obter um $K_k$ monocromático. Com isto, concluímos que $R(k) \leq 2^{2k - 2} < 4^k$.
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

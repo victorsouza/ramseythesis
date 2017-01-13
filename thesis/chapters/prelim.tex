@@ -26,7 +26,7 @@ Note que esta definição contém a antiga pois $R(k) = R(k,k)$, que são chamad
 
 \section{Pequenos Números de Ramsey}
 
-Vamos analisar inicialmente alguns valores de números de Ramsey que são imediatos de determinar. Por exemplo $R(1,k) = 1$ para qualquer valor de $k$, uma vez que é impossível evitar um $K_1$ monocromático em qualquer cor quando o grafo possui vértices. Além disso, temos $R(2,k) = k$, dado que não possuir $K_2$ em alguma cor significa que ela não está presente na coloração. Como temos a simetria $R(k,s) = R(s,k)$, os valores realmente interessantes são obtidos para $k,s \geq 3$; o primeiro deles, $R(3,3) = 6$, já apresentado.
+Vamos analisar inicialmente alguns valores de números de Ramsey que são imediatos de determinar. Por exemplo $R(1,k) = 1$ para qualquer valor de $k$, uma vez que é impossível evitar um $K_1$ monocromático em qualquer cor quando o grafo possui vértices. Além disso, temos $R(2,k) = k$, dado que não possuir $K_2$ em alguma cor significa que ela não está presente na coloração. Como temos a simetria $R(k,s) = R(s,k)$, os valores realmente interessantes são obtidos para $k,s \geq 3$; o primeiro deles, $R(3,3) = 6$, já foi apresentado.
 
 Vamos agora estudar o número $R(3,4)$, utilizando um argumento semelhante ao do $R(3,3)$, porém ligeiramente mais sofisticado. O número $R(3,4)$ foi determinado em 1955, por Greenwood e Gleason~\cite{greenwood}, e está apresentado a seguir. Neste trabalho, os autores obtiveram outros resultados e alguns destes também estão apresentados a seguir.
 
@@ -39,7 +39,7 @@ $R(3,4) \leq 9$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proof}
 Seja $G$ um grafo completo com nove vértices e $c$ uma $RB$-coloração.
-Suponha que não exista $K_3$ vermelho ou $K_4$ azul. Seja $v \in V(G)$ um vértice qualquer. Considere as vizinhanças $N_R(v)$ e $N_B(v)$ de tamanhos $d_R(v)$ e $d_B(v)$, respectivamente. Assim, temos que $d_R(v) + d_B(v) = 8$. Suponha que $d_R(v) \geq 4$. Se existirem $x,y \in N_R(v)$ tais que $c(xy) = R$, então formamos um triângulo vermelho unindo as extremidades desta aresta com $v$, o que é absurdo. Por outro lado, se esta aresta for azul, temos um $K_4$ azul em $N_R(v)$. Concluímos que $d_R(v) \leq 3$, o que implica $d_B(v) \geq 5$.
+Suponha que não exista $K_3$ vermelho ou $K_4$ azul. Seja $v \in V(G)$ um vértice qualquer. Considere as vizinhanças $N_R(v)$ e $N_B(v)$ de tamanhos $d_R(v)$ e $d_B(v)$, respectivamente. Assim, temos que $d_R(v) + d_B(v) = 8$. Suponha que $d_R(v) \geq 4$. Se existirem $x,y \in N_R(v)$ tais que $c(xy) = R$, então formamos um triângulo vermelho unindo as extremidades desta aresta com $v$, o que é absurdo. Por outro lado, se todas estas arestas forem azuis, temos um $K_4$ azul em $N_R(v)$. Concluímos que $d_R(v) \leq 3$, o que implica $d_B(v) \geq 5$.
 
 Suponha que $d_B(v) \geq 6$. Como sabemos que $R(3,3) = 6$, $N_B(v)$ possui um triângulo monocromático. Como $G$ não possui $K_3$ vermelho, então $N_B(v)$ possui um $K_3$ azul. Contudo, isto nos dá uma contradição, pois unindo este $K_3$ com o vértice $v$, temos um $K_4$ azul. Portanto, podemos concluir que $d_B(v) = 5$ e $d_R(v) = 3$. Isto, no entanto, vale para qualquer vértice de $G$, em particular, implica que $G_R$ possui 9 vértices de grau ímpar.
 Entretanto, pelo \emph{handshaking lemma}, sabemos que a quantidade de vértices de grau ímpar em um grafo precisa ser par, e então chegamos num absurdo.
@@ -130,7 +130,7 @@ Se os números forem todos resíduos não-quadráticos, então $i^{-1}$ também 
 Isto se deve ao fato de que em $\Z{p}$, com $p$ primo, o produto de dois resíduos não-quadráticos é um resíduo quadrático\footnote{Lembre o síbolo de Legendre, se $p$ é um primo ímpar e $a$ não é multiplo de $p$, definimos $\legendre{a}{p} = 1$ se $a$ é resíduo quadrático em $\Z{p}$ e $\legendre{a}{p} = -1$ caso contrário.
 Como o símbolo de Legendre é uma função completamente multiplicativa, se $a$ e $b$ são resíduos não quadráticos, temos que $\legendre{ab}{p} = \legendre{a}{p} \legendre{b}{p} = (-1)(-1) = 1$, logo $ab$ é um resíduo quadrático. Veja mais no capítulo 5 do livro \emph{Introdução à Teoria dos Números} por José Plínio de Oliveira Santos~\cite{plinio}.}.
 
-Em ambos os casos, temos que $1$, $a$, $b$, $1 - a$, $1- b$, $a - b$ são resíduos quadráticos em $\Z{17}$. Os resíduos quadráticos são 1, 2, 4, 8, 9, 13, 15 e 16, e não é possível escolher $a$ e $b$ de maneira que todos os números sejam simultaneamente resíduos. Isto pode ser verificado pelo raciocínio a seguir. Suponha que $a = 4$, então $1 - a \equiv 14 \Mod{17}$, que não é resíduo quadrático.
+Em ambos os casos, temos que $1$, $a$, $b$, $1 - a$, $1- b$, $a - b$ são resíduos quadráticos em $\Z{17}$. Os resíduos quadráticos de $\Z{17}$ são 1, 2, 4, 8, 9, 13, 15 e 16, e não é possível escolher $a$ e $b$ de maneira que todos os números sejam simultaneamente resíduos. Isto pode ser verificado pelo raciocínio a seguir. Suponha que $a = 4$, então $1 - a \equiv 14 \Mod{17}$, que não é resíduo quadrático.
 O mesmo verificamos se $a = 8$, $a = 13$ e $a = 15$, obtendo $1 - a \equiv 10 \Mod{17}$, $1 - a \equiv 5 \Mod{17}$ e $1 - a \equiv 3 \Mod{17}$ respectivamente, todos os casos não sendo resíduos quadráticos. Se $a = 9$ então $1 - a \equiv a \Mod{17}$ e os índices não são distintos.
 Portanto, a única escolha restante é $a = 2$ e $b = 16$. Entretanto, $1 - a \equiv 16 \equiv b \Mod{17}$ e novamente não temos índices distintos.
 \end{proof}
@@ -193,7 +193,7 @@ $R(k,s) < R(k,s-1) + R(k-1,s)$.
 \begin{proof}
 Seja $R(k,s-1) = 2a$ e $R(k-1,s) = 2b$.
 Sejam $G$ um grafo completo com $n = 2a + 2b -1$ vértices e $c$ uma RB-coloração. Suponha que não exista $K_k$ vermelho e nem $K_s$ azul. Fixe um vértice $v$ arbitrário. Seguindo o raciocínio da prova anterior, temos que $d_B(v) \leq 2a - 1$ e $d_R(v) \leq 2b - 1$. Como $d(v) = n - 1 = 2a + 2b - 2$, temos que $d_B(v) = 2a - 1$ e $d_R(v) = 2b - 1$. Isto vale para qualquer vértice $v$.
-Consequentemente, os grafos $G_R$ e $G_B$ possuem uma quantidade ímpar de vértices de grau ímpar, o que é impossível pelo \emph{handshaking lemma}. Isto, então, contradiz a hipótese de que não existe $K_k$ vermelho e $K_s$ azul, concluindo que $R(k,s) \geq n = 2a + 2b -1$, o que finaliza a demonstração.
+Consequentemente, os grafos $G_R$ e $G_B$ possuem uma quantidade ímpar de vértices de grau ímpar, o que é impossível pelo \emph{handshaking lemma}. Isto, então, contradiz a hipótese de que não existe $K_k$ vermelho e $K_s$ azul, concluindo que $R(k,s) \leq n = 2a + 2b -1$, o que finaliza a demonstração.
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -232,7 +232,7 @@ R(k+1,k+1) &\leq \binom{2k}{k} = \frac{(2k)!}{k!^2} = (1 +o(1)) \frac{\sqrt{4 k 
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Note que este limitante é ligeiramente melhor que o obtido no Teorema~\ref{thm:intro:ramsey} por causa da presença do termo $\sqrt{k}$ no denominador. Isto nos indica que os números de Ramsey diagonais crescem no máximo exponencialmente e com expoente estritamente menor que 4. Poucas melhoras substanciais neste limitante são conhecidas, sendo o melhor atual
+Note que este limitante é ligeiramente melhor que o obtido no Teorema~\ref{thm:intro:ramsey} por causa da presença do termo $\sqrt{k}$ no denominador. Isto nos indica que os números de Ramsey diagonais crescem no máximo exponencialmente e com expoente menor ou igual a 4. Poucas melhoras substanciais neste limitante são conhecidas, sendo o melhor atual
 \[R(k+1,k+1) \leq k^{-\alpha\frac{\log k}{\log \log k}} \binom{2k}{k},\]
 para alguma constante $\alpha$ adequada, devido a David Conlon em 2009~\cite{conlon}. Note que o termo $k^{\alpha\frac{\log k}{\log \log k}}$ é subexponencial. Logo, este limitante não melhora a constante $4^k$ implicada pelo coeficiente binomial central $\binom{2k}{k}$.
 
@@ -263,7 +263,7 @@ Para todos os inteiros positivos $t_i$, $1 \leq i \leq k$,
 \begin{proof}
 Sejam $G$ um grafo completo com $n$ vértices e $c$ uma $k$-coloração de arestas nas cores $C_1, \dots, C_k$. Suponha que não exista $K_{t_i}$ da cor $C_i$ para todo $1 \leq i \leq k$. Seja $v \in V(G)$ um vértice qualquer. Consideramos as vizinhanças $N_{C_i}(v)$, que possuem $d_{C_i}(v)$ vértices. Assim, temos que $\sum_{i=1}^{k} d_{C_i}(v) = n-1$.
 
-Se $d_{C_i}(v) \geq R(t_1, \dots, t_i - 1, \dots, t_k)$ para algum $i$, então em $N_{C_i}(v)$ possui um $K_{t_i - 1}$ de cor $C_i$, pois $G$ não possui $K_{t_j}$ de cor $C_j$ para nenhum $j \neq i$. No entanto, unindo $v$ ao $K_{t_i - 1}$ de cor $C_i$ formamos um $K_{t_i}$ de cor $C_i$.
+Se $d_{C_i}(v) \geq R(t_1, \dots, t_i - 1, \dots, t_k)$ para algum $i$, então em $N_{C_i}(v)$ possui um $K_{t_i - 1}$ de cor $C_i$, pois $G$ não possui $K_{t_j}$ de cor $C_j$ para nenhum $j \neq i$. No entanto, unindo $v$ ao $K_{t_i - 1}$ de cor $C_i$, formamos um $K_{t_i}$ de cor $C_i$.
 Contradizemos, então, nossa hipótese e temos que $d_{C_i}(v) \leq R(t_1, \dots, t_i - 1, \dots, t_k) - 1$ para todo $i$. Portanto,
 \begin{align*}
 n = \sum_{i=1}^{k} d_{C_i}(v)  + 1 \leq \sum_{i=1}^{k} R(t_1, \dots, t_i - 1, \dots, t_k) - k + 1.
@@ -324,7 +324,7 @@ Esta coloração está bem definida pois os $S_i$ são disjuntos, cobrem todos o
 
 Agora vamos ver que a coloração $c$ não possui triângulos monocromáticos.
 Sejam $v_x, v_y, v_z$ os vértices de um triângulo qualquer. Suponha que duas das arestas sejam da mesma cor, digamos $c(v_x v_y) = c(v_x v_z)$. Vamos ver que a terceira aresta tem uma cor distinta. Temos para algum $i$, que $x + y, x + z \in S_i$. Utilizando a propriedade da soma de elementos de $S_i$,
-temos que $(x+y) + (x+z) \not\in S_i$. Entretanto, $(x+y) +(x+z) = 2x + y + z = y + z$. Isto implica que $c(v_x,v_y)\neq c_(v_y,v_z)$. Portanto, $c$ não possui triângulos monocromáticos.
+temos que $(x+y) + (x+z) \not\in S_i$. Entretanto, $(x+y) +(x+z) = 2x + y + z = y + z$. Isto implica que $c(v_x,v_y)\neq c(v_y,v_z)$. Portanto, $c$ não possui triângulos monocromáticos.
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
