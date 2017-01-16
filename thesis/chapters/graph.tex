@@ -12,7 +12,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Uma característica interessante da Teoria de Ramsey é sua capacidade ser generalizada de diversas maneiras. Até agora, sempre consideramos colorações que não tinham o grafo $K_r$ como subgrafo monocromático. Vamos relaxar esta condição e proibir grafos monocromáticos genéricos.
+Uma característica interessante da Teoria de Ramsey é sua possibilidade de diversas generalizações. Até agora, consideramos colorações que não tinham o grafo $K_r$ como subgrafo monocromático. Vamos relaxar esta condição e proibir outros grafos monocromáticos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{definition}
@@ -20,17 +20,17 @@ Sejam $G$ e $H$ grafos simples. Definimos $r(G,H)$ como o menor inteiro positivo
 \end{definition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Note que por esta definição, $R(k,s) = r(K_k, K_s)$. Também definimos $r(G) = r(G,G)$. Seque que se $G$ é subgrafo de $G'$ então $r(G,H) \leq r(G',H)$. Assim, estes números estão bem definidos pois $r(G,H) \leq r(K_{v(G)}, K_{v(H)}) = R(v(G), v(H)) < \infty$. De maneira analoga, podemos definir os números de Ramsey para várias cores, $r(G_1, \dots, G_k)$, e adaptar a notação $r_k(G) = r(G,\dots,G)$.
+Note que por esta definição, $R(k,s) = r(K_k, K_s)$. Também definimos $r(G) = r(G,G)$. Segue da definição que se $G$ é subgrafo de $G'$ então $r(G,H) \leq r(G',H)$. Assim, estes números estão bem definidos pois $r(G,H) \leq r(K_{v(G)}, K_{v(H)}) = R(v(G), v(H)) < \infty$. De maneira análoga, podemos definir os números de Ramsey para várias cores, $r(G_1, \dots, G_k)$, e adaptar a notação $r_k(G) = r(G,\dots,G)$.
 
-Agora vamos estudar algumas classes de grafos interessantes e seus números de Ramsey. Vale observar que mesmo famílias simples de grafos, os números de Ramsey associados podem ser bem difíceis de se determinar. Por este motivo, muitos dos resultados apresentados nesta seção não incluirão as demonstrações. O texto, no entanto, fornece uma base sólida o suficiente para que o leitor interessado, busque as referências e estudem tais demonstrações por si só.
+Neste capítulo, vamos estudar algumas classes de grafos interessantes e seus números de Ramsey. Vale observar que mesmo para famílias simples de grafos, os números de Ramsey associados podem ser bem difíceis de se determinar. Por este motivo, muitos dos resultados apresentados nesta seção não incluirão as demonstrações. O texto, no entanto, fornece uma base sólida o suficiente para que o leitor interessado, busque as referências e estudem tais demonstrações por si só.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Grafos Bipartidos}
 
-Seja $G = (V,E)$ um grafo simples. Dizemos que $G$ é um \indef{grafo bipartido} se o conjunto $V$ pode ser particionado em duas partes não vazias $X$ e $Y$ de tal forma que toda aresta em $E$ tem uma extremidade em $X$ e a outra em $Y$. Tal partição $(X,Y)$ é dita uma \indef{bipartição} do grafo $G$. Um grafo $G$ com bipartição $(X,Y)$ é denotado $G[X,Y]$.
+Seja $G = (V,E)$ um grafo simples. Dizemos que $G$ é um \indef{grafo bipartido} se o conjunto $V$ pode ser particionado em duas partes não vazias $X$ e $Y$ de tal forma que toda aresta em $E$ tem uma extremidade em $X$ e a outra em $Y$. Tal partição $\{ X,Y \}$ é dita uma \indef{bipartição} do grafo $G$. Um grafo $G$ com bipartição $\{X,Y\}$ é denotado $G[X,Y]$.
 
-Quando um grafo bipartido $G[X,Y]$ é tal que par de vértices $x \in X$ e $y \in Y$ é adjacente, dizemos que $G[X,Y]$ é um \indef{grafo bipartido completo}. Naturalmente, temos uma família de grafos associada. Denotamos por $K_{n,m}$ o grafo bipartido completo $G[X,Y]$ com $|X| = n$ e $|Y| = m$. Temos portanto que $v(K_{n,m}) = n + m$ e $e(K_{n,m}) = nm$.
+Quando um grafo bipartido $G[X,Y]$ é tal que todo par de vértices $x \in X$ e $y \in Y$ é adjacente, dizemos que $G[X,Y]$ é um \indef{grafo bipartido completo}. Naturalmente, temos uma família associada aos grafos com esta propriedade. Denotamos por $K_{m,n}$ o grafo bipartido completo $G[X,Y]$ com $|X| = m$ e $|Y| = n$. Por construção, note que $v(K_{m,n}) = m + n$ e $e(K_{m,n}) = mn$. A Figura~\ref{graph:fig:part} ilustra alguns exemplos de grafos bipartidos completos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht!]
@@ -41,55 +41,56 @@ Quando um grafo bipartido $G[X,Y]$ é tal que par de vértices $x \in X$ e $y \i
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Quando o conjunto de vértices de um grafo pode ser particionado em $k$ partes disjuntas e não vazias de tal forma que nenhuma aresta possui as duas extremidades em uma única parte, dizemos que o grafo é $k$-\emph{partido}. Um grafo bipartido é, portanto, 2-partido. Denotamos por $K_{a_1, \dots, a_k}$ o grafo completo $k$-partido com $n$ partes e cuja $i$-ésima parte possui $a_i$ vértices. Quando os $a_i$ são todos iguais, obtemos uma família de grafos conhecidas por \indef{grafos de Turán}. Denotamos os grafos de Turán por $T_r(k) = K_{k, \dots, k}$, ou seja, $T_r(k)$ é o grafo completo $r$-partido com partes de tamanho $k$ cada. Nas próximas seções, mostramos que estes grafos são bem interessantes para construir limitantes inferiores para números de Ramsey.
+Podemos generalizar o conceito de bipartição de um grafo. Se for possível particionar o conjunto de vértices em $k$ partes não vazias de maneira que toda aresta do grafo possui extremidades em partes distintas, dizemos que o grafo é $k$-\emph{partido}. Um grafo bipartido é, portanto, 2-partido. Denotamos por $K_{a_1, \dots, a_k}$ o grafo completo $k$-partido com $n$ partes, cuja $i$-ésima parte possui $a_i$ vértices. Quando $a_1 = a_2 = \dots = a_k$, obtemos grafos que fazem parte de uma família de grafos conhecida como \indef{grafos de Turán}\footnote{Os grafos de Turán são grafos completos $r$-partidos com as partes de tamanho mais próximas possíveis. Isto é, são grafos da forma $K_{a_1, \dots, a_r}$ com $|a_i - a_j| \leq 1$ para todo $1 \leq i,j \leq r$.}.
+Denotamos os grafos de Turán que possuem todas as partes iguals por $T_r(k) = K_{k, \dots, k}$, ou seja, $T_r(k)$ é o grafo completo $r$-partido com partes de tamanho $k$ cada. Nas próximas seções, mostramos que estes grafos são bem interessantes para construir limitantes inferiores para números de Ramsey.
 
-Um subcaso notável dos grafos bipartidos completos são os \indef{grafos estrela} $K_{1,n}$. O desenho do $K_{1,5}$ na Figura~\ref{graph:fig:part} evidencia a motivação por trás deste nome. Podemos caracterizar os números de Ramsey $r(K_{1,n}, K_{1,m})$ da seguinte forma.
+Um subcaso notável dos grafos bipartidos completos são os \indef{grafos estrela} $K_{1,n}$. O desenho do $K_{1,5}$,na Figura~\ref{graph:fig:part}, evidencia a motivação por trás deste nome. Podemos caracterizar os números de Ramsey $r(K_{1,n}, K_{1,m})$ da seguinte forma.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{theorem}[Harary~\cite{harary}]
-Sejam $n$ e $m$ inteiros positivos, temos que
-\[r(K_{1,n}, K_{1,m}) = \begin{cases}
-  n + m , & \text{se } n \text{ ou } m  \text{ forem ímpares;} \\
-  n + m - 1, & \text{se } m \text{ e } n \text{ forem pares.}
+Sejam $m$ e $n$ inteiros positivos, temos que
+\[r(K_{1,m}, K_{1,n}) = \begin{cases}
+  m + n , & \text{se } m \text{ ou } n  \text{ forem ímpares;} \\
+  m + n - 1, & \text{se } m \text{ e } n \text{ forem pares.}
 \end{cases}\]
 \end{theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proof}
-Primeiramente, note que em uma coloração de arestas, um $K_{1,n}$ monocromático na cor $C$ corresponde a um vértice $v$ tal que $d_C(v) \geq n$.
+Primeiramente, note que em uma coloração de arestas, um $K_{1,m}$ monocromático na cor $C$ corresponde a um vértice $v$ tal que $d_C(v) \geq m$.
 
-Considere uma $RB$-coloração qualquer de um grafo completo $G$ sem $K_{1,n}$ vermelho ou $K_{1,m}$ azul. Temos então que $d_R(v) \leq n-1$ e $d_B(v) \leq m-1$ para todo vértice $v \in V(G)$. Isto é impossível se $G = K_{n+m}$, logo $r(K_{1,n}, K_{1,m}) \leq n+m$.
-Se $m$ e $n$ são pares, considere $G = K_{n+m-1}$. Temos portanto que $d_R(v) = n-1$ e $d_B(v) = m-1$ para todo vértice $v \in V(G)$. Logo, o grafo $G_R$ possui todos os vértices de grau ímpar. Mas $v(G_R) = n + m -1$ também é ímpar. Pelo \emph{handshaking lemma}, não existe grafo com um número ímpar de vértices de grau ímpar. Portanto, $r(K_{1,n}, K_{1,m}) \leq n + m - 1$.
+Considere uma $RB$-coloração qualquer de um grafo completo $G$ sem $K_{1,m}$ vermelho ou $K_{1,n}$ azul. Então $d_R(v) \leq m-1$ e $d_B(v) \leq n-1$ para todo vértice $v \in V(G)$. Isto é impossível se $G = K_{m+n}$, logo $r(K_{1,m}, K_{1,n}) \leq m+n$.
+Se $m$ e $n$ são pares, considere $G = K_{m+n-1}$. Temos, portanto, que $d_R(v) = m-1$ e $d_B(v) = n-1$ para todo vértice $v \in V(G)$. Logo, o grafo $G_R$ possui todos os vértices de grau ímpar. Ademais, $v(G_R) = m + n -1$ também é ímpar. Pelo \emph{Handshaking Lemma}, não existe grafo com um número ímpar de vértices de grau ímpar. Portanto, $r(K_{1,m}, K_{1,n}) \leq m + n - 1$.
 
-No caso de algum entre $n$ e $m$ ser ímpar, considere sem perda de generalidade que $n$ é ímpar, com $n = 2k + 1$. Considere $G  = K_{n+m-1}$ com $V(G) = \{ v_0, \dots, v_{n+m-2} \}$. Defina uma $RB$-coloração $c$ da seguinte maneira.
+No caso de algum entre $m$ e $n$ ser ímpar, suponha, sem perda de generalidade, que $m$ seja ímpar, com $m = 2k + 1$. Considere $G  = K_{m+n-1}$ com $V(G) = \{ v_0, \dots, v_{m+n-2} \}$. Defina uma $RB$-coloração $c$ da seguinte maneira.
 \[c(v_i v_j) = \begin{cases}
-  \text{vermelho}, & \text{se }  |i - j| \in \{ 1, \dots, k\} \Mod{n+m-1}; \\
+  \text{vermelho}, & \text{se }  |i - j| \equiv 1, 2, \dots, \text{ou } k \Mod{m+n-1}; \\
   \text{azul}, & \text{caso contrário}.
 \end{cases}\]
-Note que nesta coloração, $d_R(v) = 2k = n - 1$ e $d_B(v) = m - 1$ para todo vértice $v \in V(G)$. Portanto, $c$ não possui $K_{1,n}$ vermelho nem $K_{1,m}$ azul, o que implica em $r(K_{1,n}, K_{1,m}) = n + m$.
+Note que nesta coloração, $d_R(v) = 2k = m - 1$ e $d_B(v) = n - 1$, para todo vértice $v \in V(G)$. Portanto, $c$ não possui $K_{1,m}$ vermelho nem $K_{1,n}$ azul, o que implica em $r(K_{1,m}, K_{1,n}) = m + n$.
 
-Suponha agora que ambos $n$ e $m$ são pares. Considere um grafo bipartido $G = G[X,Y]$, com $X = \{ x_i : i \in \Z{l} \}$ e $Y = \{ y_i : i \in \Z{l} \}$, tal que os vértices $x_i$ e $y_j$ são adjacentes se e somente se $i - j \in \{ 1, \dots, k\} \Mod{l}$. Note que $G$ é $k$-regular, e seu complemento é $(2l - k - 1)$-regular.
-Escolhendo $l = \frac{n + m -2}{2}$ e $k = n-1$, temos que $G$ é um grafo com $n + m - 2$ vértices que é $(n-1)$-regular com complementar $\comp{G}$ $(m-2)$-regular. Isto corresponde a uma coloração de $K_{n + m - 2}$ sem $K_{1,n}$ vermelho nem $K_{1,m}$ azul. Portanto, temos $r(K_{1,n}, K_{1,m}) = n + m - 1$.
+Suponha, agora, que ambos $m$ e $n$ sejam pares. Considere um grafo bipartido $G = G[X,Y]$, com $X = \{ x_i : i \in \Z{l} \}$ e $Y = \{ y_i : i \in \Z{l} \}$, tal que os vértices $x_i$ e $y_j$ são adjacentes se e somente se $i - j \equiv 1, 2, \dots, \text{ou } k \Mod{l}$. Note que $G$ é $k$-regular, e seu complemento é $(2l - k - 1)$-regular.
+Escolhendo $l = \frac{m + n -2}{2}$ e $k = m-1$, temos que $G$ é um grafo com $m + n - 2$ vértices que é $(m-1)$-regular com complementar $\comp{G}$ $(n-2)$-regular. Isto corresponde a uma coloração de $K_{m + n - 2}$ sem $K_{1,m}$ vermelho nem $K_{1,n}$ azul. Portanto, temos $r(K_{1,m}, K_{1,n}) = m + n - 1$.
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Este resultado pode ser generalizado com idéias parecidas para o número de Ramsey com diversas cores.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{theorem}[Burr, Roberts~\cite{burr1973ramsey}]
+\begin{noprooftheorem}[Burr, Roberts~\cite{burr1973ramsey}]
 Sejam $m_1, \dots, m_k$ inteiros positivos, $t$ dos quais são pares. Temos que
 \[r(K_{1,m_1}, \dotsc,  K_{1,m_k}) = \sum_{i=1}^{k} m_i  - k + \varepsilon,\]
-onde $\varepsilon = 1$ se $t$ é par e $\varepsilon = 2$ caso contrário.
-\end{theorem}
+onde $\varepsilon = 1$, se $t$ é par, e $\varepsilon = 2$, caso contrário.
+\end{noprooftheorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Outras classes de grafos bipartidos completos também já foram estudadas. Por exemplo, sabe-se que para todo $n\geq 2$,  $r(K_{2,n}, K_{2,n}) \leq 4n -2$~\cite{exoo}. Além disso, conjectura-se em~\cite{lortz2002ramsey} que $4n - 3 \leq r(K_{2,n}, K_{2,n}) \leq 4n -2$.
+Outras classes de grafos bipartidos completos também já foram estudadas. Por exemplo, sabe-se que, para todo $n\geq 2$, $r(K_{2,n}, K_{2,n}) \leq 4n -2$~\cite{exoo}. Além disso, conjectura-se que $4n - 3 \leq r(K_{2,n}, K_{2,n}) \leq 4n -2$~\cite{lortz2002ramsey}.
 O compêndio dinâmico de Radziszowski~\cite{small_ramsey} é uma excelente referência para encontrar outros resultados deste tipo.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Caminhos e Ciclos}
 
-Um \indef{caminho} é um grafo simples que pode ter seus vértices listados por uma sequência de modo que dois vértices são adjacentes, se e somente se, correspondem a elementos consecutivos na sequência. Similarmente, um \indef{ciclo} é um grafo simples com $n \geq 3$ que pode ter seus vértices listados por uma seqência cíclica de modo que dois vértices são adjacemtes, se e somente se, correspondem a elementos consecutivos na sequência.
+Um \indef{caminho} é um grafo simples que pode ter seus vértices arranjados em uma sequência linear, de modo que dois vértices são adjacentes, se e somente se, correspondem a elementos consecutivos na sequência. Similarmente, um \indef{ciclo} é um grafo simples com $n \geq 3$ que pode ter seus vértices arranjados em uma sequência linear cíclica, de modo que dois vértices são adjacentes, se e somente se, correspondem a elementos consecutivos na sequência.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht!]
@@ -100,12 +101,12 @@ Um \indef{caminho} é um grafo simples que pode ter seus vértices listados por 
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Estas definições evocam naturalmente uma família de grafos associada. Definimos os \indef{grafos caminhos} $P_n$ são os grafos com $n$ vértices e $n-1$ arestas que são isomorficos ao grafo $(\{v_1,\dots,v_n\}, \{v_iv_{i+1}: 1\leq i < n\})$. Adicionando a aresta $v_nv_1$ ao grafo anterior, obtemos os \indef{grafos ciclo} $C_n$, com $n$ vértices e $n$ arestas. Ambas as famílias estão exemplificadas na Figura~\ref{graph:fig:cyclepath}.
+Caminhos e ciclos também são agrupadas em famílias de grafos. Os \indef{grafos caminhos} são grafos simples com $n$ vértices e $n-1$ arestas, isomorfos ao grafo $(\{v_1,\dots,v_n\}, \{v_iv_{i+1}: 1\leq i < n\})$. Já os \emph{grafos ciclos} são grafos com $n$ vértices, $n\geq 3$, e $n$ arestas isomorfos ao grafo $(\{v_1,\dots,v_n\}, \{v_iv_{i+1}: 1\leq i < n\} \cup v_1v_n)$. Ambas as famílias estão exemplificadas na Figura~\ref{graph:fig:cyclepath}.
 Note que $P_2 \iso K_2$, $P_3 \iso K_{1,2}$, $C_3 \iso K_3$ e $C_4 \iso K_{2,2}$.
 
-Se $n > 1$, o grafo $P_n$ possui $2$ vértices de grau um, chamados de \indef{extremidades}, os demais $n-2$ vértices são ditos \indef{internos}, e possuem grau dois. Já o grafo $C_n$ é 2-regular, isto é, possui todos os vértices com grau igual a dois.
+Note que se $n>1$, o grafo $P_n$ possui dois vértices de grau um, chamados de \indef{extremidades}; os demais $n-2$ vértices são ditos \indef{internos} e possuem grau dois. Já o grafo $C_n$ é 2-regular, isto é, todos os seus vértices possuem grau dois e pode ser visto como um grafo obtido pela adição de uma aresta ligando as extremidades de um $P_n$.
 
-Os caminhos e ciclos são de importância fundamental para a Teoria de Grafos, sendo peças centrais em muitas de suas subáreas. Naturalmente, números de Ramsey que envolvam estes grafos foram intensamente estudados. Uma primeira família de números de Ramsey envolvendo caminhos e ciclos é a seguinte.
+Caminhos e ciclos são de importância fundamental para a Teoria de Grafos, sendo peças centrais em muitas de suas subáreas. Naturalmente, números de Ramsey que envolvem estes grafos foram intensamente estudados. Uma primeira família de números de Ramsey envolvendo caminhos e ciclos está explicitada a seguir.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proposition}
@@ -114,35 +115,36 @@ Os caminhos e ciclos são de importância fundamental para a Teoria de Grafos, s
 \end{proposition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proof}
-Note que o grafo $K_{k-1,k-1}$ não possui triângulo e que o seu complementar é formado por duas cópias disjuntas de $K_{k-1}$, e assim, não possui $P_k$. Dessa forma, este grafo induz uma $RB$-coloração do $K_{2k - 2}$ sem $K_3$ azul e sem $P_k$ vermelho. Isto nos mostra que $r(P_k, K_3) > 2k - 2$.
+Note que o grafo $K_{k-1,k-1}$ não possui triângulo e que o seu complementar é formado por duas cópias disjuntas de $K_{k-1}$, e assim, não possui $P_k$. Dessa forma, o grafo $K_{k-1,k-1}$ induz uma $RB$-coloração do $K_{2k - 2}$ sem $K_3$ azul e sem $P_k$ vermelho. Isto nos mostra que $r(P_k, K_3) > 2k - 2$.
 
-Agora, considere uma $RB$-coloração $c$ de $G=K_n$ com $n = 2k-1$. Seja $P$ um caminho vermelho maximal em $G$, isto é, um caminho de arestas vermelhas que não pode ser estendido. Se $P$ possui $k$ vértices, então a coloração $c$ possui um $P_k$ vermelho. Suponha que $P$ possui no máximo $k-1$ vérices. Seja $v$ uma das extremidades de $P$. Se $c(vu) = B$ para algum vértice $u$ que não está em $P$, então $P$ não é maximal. Portanto, $d_B(v) \geq k$, pois existem pelo menos $k$ vértices fora de $P$ e $v$ se conecta à todos eles por arestas azuis.
+Agora, considere uma $RB$-coloração $c$ de $G=K_n$, com $n = 2k-1$. Seja $P$ um caminho vermelho maximal em $G$, isto é, um subgrafo isomorfo a um grafo caminho, cujas arestas são todas vermelhas e que não pode ser estendido. Se $P$ possui $k$ vértices, então a coloração $c$ possui um $P_k$ vermelho. Suponha que $P$ possua no máximo $k-1$ vértices. Seja $v$ uma das extremidades de $P$.
+Como $P$ é maximal, todos os seus vizinhos que não pertencem a $P$ são ligados a ele por arestas azuis. Como $P$ possui no máximo $k$ vértices, concluímos que $d_R(v)\leq k-1$ e $d_B(v)\geq k$. Isto implica que existem pelo menos $k$ vértices em $V(G)\setminus V(P)$ ligados a $v$ por arestas azuis.
 
-Assim, a vizinhanca $N_B(v)$ possui pelo menos $k$ vértices. Seja $e$ uma aresta interna à $N_B(v)$. Se $c(e) = B$, então obtemos um $K_3$ azul unindo $v$ às extremidades de $e$. Por outro lado, se nenhuma aresta interna à $N_B(v)$ for azul, então $N_B(v)$ é um subgrafo completo vermelho com $k$ vértices, que, em particular, possui um $P_k$ vermelho. Finalmente, isto nos dá que em uma $RB$-coloração do $K_{2k-1}$, a presença de um $P_k$ vermelho ou um $K_3$ azul é inevitável, mostrando que $r(P_k, K_3) \leq 2k-1$.
+Assim, a vizinhanca $N_B(v)$ possui pelo menos $k$ vértices. Seja $e$ uma aresta com ambas as extremidades em $N_B(v)$. Se $c(e) = B$, então obtemos um $K_3$ azul unindo $v$ às extremidades de $e$. Por outro lado, se nenhuma aresta interna à $N_B(v)$ for azul, então $N_B(v)$ é um subgrafo completo vermelho com $k$ vértices, que, em particular, possui um $P_k$ vermelho. O que nos permite concluir que em uma $RB$-coloração do $K_{2k-1}$, a presença de um $P_k$ vermelho ou um $K_3$ azul é inevitável, mostrando que $r(P_k, K_3) \leq 2k-1$.
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Na próxima subseção veremos generalizações consideraveis deste resultado. Outros resultados envolvendo caminhos também são conhecidos. Abaixo apresentamos dois destes sem demonstrações. Embora o primeiro deles apresente uma demonstração simples, o segundo envolve a famosa e intricada técnica da Regularidade de Szemerédi.
+Algumas generalizações deste resultado podem ser encontradas na próxima seção. Outros resultados envolvendo caminhos também são conhecidos. Abaixo, apresentamos dois destes, sem demonstrações. Embora o primeiro deles apresente uma demonstração simples, o segundo envolve a famosa e intricada técnica da Regularidade de Szemerédi\footnote{O lema da Regularidade de Szemerédi é uma ferramenta importante em matemática discreta. Ela mostra, em certo sentido, que todos os grafos podem ser aproximados por grafos se parecem aleatórios~\cite{komlos1996szemeredi}}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{theorem}[Gerencsér, Gyárfás~\cite{gerencser1967ramsey}]
+\begin{noprooftheorem}[Gerencsér, Gyárfás~\cite{gerencser1967ramsey}]
 \label{graph:thm:path}
 Sejam $n \geq m \geq 2$ inteiros, então
-\[r(P_n, P_m) = n + \left \lfloor \frac{m}{2} \right \rfloor - 1.\]
-\end{theorem}
+\[r(P_n, P_m) = n + \left \lfloor \frac{m}{2} \right \rfloor - 1. \qedhere\]
+\end{noprooftheorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{theorem}[Gyárfás, Ruszinkó, Sárközy e Szemerédi~\cite{gyarfas2007three}]
+\begin{noprooftheorem}[Gyárfás, Ruszinkó, Sárközy e Szemerédi~\cite{gyarfas2007three}]
 Para todo $n$ grande o suficiente
 \[r_3(P_n) = r(P_n, P_n, P_n) = \begin{cases}
   2n - 1 , & \text{se } n \text{ é ímpar;} \\
   2n - 2, & \text{se } n \text{ é par.}
-\end{cases}\]
-\end{theorem}
+\end{cases} \qedhere\]
+\end{noprooftheorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Os números de Ramsey envolvendo ciclos foram extensivamente estudados e numéros da forma $r(C_n, G_m)$ são conhecidos para várias famílias de grafos $G_m$. Por exemplo, considerando ciclos contra ciclos, já temos que $r(C_3, C_3) = R(3,3) = 6$. Inesperadamente, seis vértices também são suficientes para encontrar um $C_4$ monocromático.
+Os números de Ramsey envolvendo ciclos foram extensivamente estudados e numéros da forma $r(C_n, H)$ são conhecidos para várias famílias de grafos $H$. Por exemplo, considerando $H$ como outro ciclo, já temos que $r(C_3, C_3) = R(3,3) = 6$. Inesperadamente, seis vértices também são suficientes para encontrar um $C_4$ monocromático.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{theorem}[Chvátal, Harary~\cite{chvatal1972generalized}]
@@ -172,12 +174,12 @@ Finalmente, a única configuração que nos resta é que cada $b_i$ pode ser ide
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-O caso geral para ciclos foi completamente determinado de forma independente por Rosta~\cite{rosta1973ramsey} e Faudree e Schelp~\cite{faudree1974all}, e está caracterizado no Teorema~\ref{graph:thm:cycle} abaixo. Em vista que estas demonstrações originais são bastantes envolvidas, uma simplificação recente foi desenvolvida por Károlyi e Rosta~\cite{karolyi2001generalized}.
+O caso geral para ciclos foi completamente determinado, de forma independente, por Rosta~\cite{rosta1973ramsey} e Faudree e Schelp~\cite{faudree1974all}, e está caracterizado no Teorema~\ref{graph:thm:cycle} abaixo. Tendo em vista que estas demonstrações originais são bastantes envolvidas, uma simplificação recente foi desenvolvida por Károlyi e Rosta~\cite{karolyi2001generalized}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{theorem}
 \label{graph:thm:cycle}
-Sejam $3 \leq m \leq n$ inteiros. Então
+Sejam $3 \leq m \leq n$ inteiros. Então,
 \[r(C_m, C_n) = \begin{cases}
   6, & \text{se }m = n = 3 \text{ ou } 4;\\
   n + m/2 - 1, & \text{se }  n \text{ e } m \text{ pares}; \\
@@ -187,7 +189,7 @@ Sejam $3 \leq m \leq n$ inteiros. Então
 \end{theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Como $P_n$ é subgrafo de $C_n$, temos que $r(P_m, P_n) \leq r(C_m, P_n) \leq r(C_m, C_n)$ para todo $n$ e $m$ inteiros. Como temos determinados os números de Ramsey $r(P_m, P_n)$ no Teorema~\ref{graph:thm:path} e o número $r(C_m, C_n)$ no Teorema~\ref{graph:thm:cycle}, obtemos diretamente limitantes para $r(C_m, P_n)$. Resultados precisos, no entanto, foram obtidos por Faudree, Lawrence, Parsons e Schelp~\cite{faudree1974path}, e estão enunciados abaixo.
+Como $P_n$ é um subgrafo de $C_n$, temos que $r(P_m, P_n) \leq r(C_m, P_n) \leq r(C_m, C_n)$ para todo $n$ e $m$ inteiros. Como os números de Ramsey $r(P_m, P_n)$ estão determinados no Teorema~\ref{graph:thm:path} e o número $r(C_m, C_n)$, no Teorema~\ref{graph:thm:cycle}, obtemos, imediatamente, limitantes para $r(C_m, P_n)$. Resultados precisos, no entanto, foram obtidos por Faudree, Lawrence, Parsons e Schelp~\cite{faudree1974path}, e estão enunciados abaixo.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{theorem}

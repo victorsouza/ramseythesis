@@ -83,6 +83,15 @@ Supervisora: Christiane Neme Campos \samethanks}
 \newtheorem{observation}[theorem]{Observação}
 \newtheorem{openproblem}[theorem]{Problema em Aberto}
 \newtheorem{example}[theorem]{Exemplo}
+\newtheorem{_noprooftheorem}[theorem]{Teorema}
+\newenvironment{noprooftheorem}
+  {\pushQED{\qed}\begin{_noprooftheorem}}
+  {\popQED\end{_noprooftheorem}}
+\newtheorem{_noproofcorollary}[theorem]{Corolário}
+\newenvironment{noproofcorollary}
+  {\pushQED{\qed}\begin{_noproofcorollary}}
+  {\popQED\end{_noproofcorollary}}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MATH OPERATORS
