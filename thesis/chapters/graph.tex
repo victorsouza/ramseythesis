@@ -177,7 +177,7 @@ Finalmente, a única configuração que nos resta é que cada $b_i$ pode ser ide
 O caso geral para ciclos foi completamente determinado, de forma independente, por Rosta~\cite{rosta1973ramsey} e Faudree e Schelp~\cite{faudree1974all}, e está caracterizado no Teorema~\ref{graph:thm:cycle} abaixo. Tendo em vista que estas demonstrações originais são bastantes envolvidas, uma simplificação recente foi desenvolvida por Károlyi e Rosta~\cite{karolyi2001generalized}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{theorem}
+\begin{noprooftheorem}
 \label{graph:thm:cycle}
 Sejam $3 \leq m \leq n$ inteiros. Então,
 \[r(C_m, C_n) = \begin{cases}
@@ -185,14 +185,14 @@ Sejam $3 \leq m \leq n$ inteiros. Então,
   n + m/2 - 1, & \text{se }  n \text{ e } m \text{ pares}; \\
   \max\{n + m/2 - 1, 2n - 1\}, & \text{se } n \text{ ímpar e } m \text{ par};\\
   2n - 1 , & \text{se } m \text{ ímpar}.
-\end{cases}\]
-\end{theorem}
+\end{cases} \qedhere \]
+\end{noprooftheorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Como $P_n$ é um subgrafo de $C_n$, temos que $r(P_m, P_n) \leq r(C_m, P_n) \leq r(C_m, C_n)$ para todo $n$ e $m$ inteiros. Como os números de Ramsey $r(P_m, P_n)$ estão determinados no Teorema~\ref{graph:thm:path} e o número $r(C_m, C_n)$, no Teorema~\ref{graph:thm:cycle}, obtemos, imediatamente, limitantes para $r(C_m, P_n)$. Resultados precisos, no entanto, foram obtidos por Faudree, Lawrence, Parsons e Schelp~\cite{faudree1974path}, e estão enunciados abaixo.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{theorem}
+\begin{noprooftheorem}
 \label{graph:thm:pathcycle}
 Sejam $m$ e $n$ inteiros. Então
 \[r(C_m, P_n) = \begin{cases}
@@ -200,8 +200,8 @@ Sejam $m$ e $n$ inteiros. Então
   n + m/2 - 1, & \text{se }4 \leq m \leq n, m \text{ par}; \\
   \max\{m + \lfloor n/2 \rfloor - 1, 2n - 1\}, & \text{se } 2 \leq n \leq m, m \text{ ímpar};\\
   m + \lfloor n/2 \rfloor -1 , & \text{se } 2 \leq n \leq m, m \text{ par}.
-\end{cases}\]
-\end{theorem}
+\end{cases} \qedhere\]
+\end{noprooftheorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Em particular, se $m$ e $n$ são pares e pelo menos um deles for maior que 4, então $r(P_m, P_n) = r(C_m, P_n) = r(C_m, C_n)$.
