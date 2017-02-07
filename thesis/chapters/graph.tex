@@ -210,7 +210,7 @@ Em particular, se $m$ e $n$ são pares e pelo menos um deles for maior que 4, en
 
 \section{Árvores}
 
-Seja $G$ um grafo simples. Dizemos que dois vértices $x$ e $y$ estão \indef{conectados} se existe um caminho em $G$ com uma extremidade em $x$ e outra em $y$. Note que esta relação é uma relação de equivalência no conjunto $V(G)$. Chamamos as classes de equivalência desta relação de \indef{componentes}. Dizemos que $G$ é \indef{conexo} se quaisquer dois vértices de $G$ estão conectados, ou seja, $G$ possui apenas uma componente.
+Seja $G$ um grafo simples. Dizemos que dois vértices $x$ e $y$ estão \indef{conectados} se existe um caminho em $G$ com um extremo em $x$ e outro em $y$. Note que esta relação é uma relação de equivalência no conjunto $V(G)$. Chamamos as classes de equivalência desta relação de \indef{componentes conexas}. Dizemos que $G$ é \indef{conexo} se quaisquer dois vértices de $G$ estão conectados, ou seja, $G$ possui apenas uma componente conexa.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht!]
@@ -224,7 +224,7 @@ Seja $G$ um grafo simples. Dizemos que dois vértices $x$ e $y$ estão \indef{co
 Um grafo que não possui ciclos como subgrafo é dito \indef{acíclico}.
 Um grafo $G$ é chamado de \indef{árvore} se ele é conexo e acíclico. A Figura~\ref{graph:fig:tree} exemplifica uma árvore com dezesseis vértices. Árvores são grafos conexos minimais, isto é, a remoção de qualquer aresta de uma árvore a desconecta. Os grafos $P_n$ e $K_{1,n}$ são árvores.
 
-Os vértices de uma árvore que possuem grau um são chamados de \indef{folhas}. A árvore da Figura~\ref{graph:fig:tree}, por exemplo, possui dez folhas. Pode ser mostrado que qualquer árvore com pelo menos dois vértices possui pelo menos duas folhas. A árvore $P_n$, por exemplo, possui exatamente duas folhas se $n \geq 2$.
+Os vértices de uma árvore que possuem grau um são chamados de \indef{folhas}. A árvore da Figura~\ref{graph:fig:tree}, por exemplo, possui dez folhas. Pode ser mostrado que qualquer árvore com pelo menos dois vértices possui pelo menos duas folhas. A árvore $P_n$, por exemplo, possui exatamente duas folhas quando $n \geq 2$.
 
 Existem diversas maneiras equivalentes de se definir árvores. A seguir, listamos algumas propriedades de árvores que também podem ser tomadas como definições. De fato, se $G$ é um grafo simples com $n$ vértices, as seguintes proposições são equivalentes.
 
@@ -245,7 +245,7 @@ Existem diversas maneiras equivalentes de se definir árvores. A seguir, listamo
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Para determinar números de Ramsey envolvendo árvores, precisamos de critérios para encontrar árvores como subgrafos de um grafo fixo. É de particular interesse que encontremos critérios não dependam da estrutura da árvore, mas apenas da quantidade de vértices. Nota-se pela Figura~\ref{graph:fig:tree6} que árvores com uma mesma quantidade de vértices podem ter estruturas radicalmente distintas. Mesmo assim, se $T$ é uma árvore de $n$ vértices, sempre encontramos $T$ como subgrafo de $K_n$, por exemplo. Podemos fazer ainda melhor com a seguinte proposição.
+Para determinar números de Ramsey envolvendo árvores, precisamos de critérios para encontrar árvores como subgrafos de um grafo fixo. É de particular interesse que encontremos critérios que não dependam da estrutura da árvore, mas apenas da quantidade de vértices. Nota-se pela, Figura~\ref{graph:fig:tree6}, que árvores com uma mesma quantidade de vértices podem ter estruturas radicalmente distintas. Mesmo assim, se $T$ é uma árvore com $n$ vértices, $T$ é subgrafo do $K_n$. Podemos fazer ainda melhor com a seguinte proposição.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proposition}
@@ -254,9 +254,9 @@ Seja $T$ uma árvore com $n$ vértices e $G$ um grafo com $\delta(G) \geq n-1$. 
 \end{proposition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proof}
-Vamos provar por indução em $n$. Se $n = 2$, então $T \iso K_2$, logo o grafo $G$ possui uma cópia de $T$ se e somente se $G$ possui alguma aresta. Mas $\delta(G) \geq 1$, e assim, concluimos que $G$ possui uma aresta.
+Vamos provar por indução em $n$. Se $n = 2$, então $T \iso K_2$, logo o grafo $G$ possui uma cópia de $T$ se e somente se $G$ possui alguma aresta. Mas $\delta(G) \geq 1$, e assim, concluímos que $G$ possui uma aresta.
 
-Considere agora que $n > 2$. Seja $G$ um grafo com $\delta(G) \geq n-1$. Seja $v \in V(T)$ uma folha. Como $d_T(v) =1$, existe apenas um vértice adjacente à $v$ em $T$; denote-o por $u \in V(T)$. Note que o grafo $T' = T - v$ também é uma árvore, uma vez que a remoção de uma folha não cria ciclos e não desconecta $T$. A árvore $T'$, no entanto, possui $n-1$ vértices. Por hipótese de indução, existe uma cópia de $T'$ em $G$. Seja $x \in V(G)$ o vértice que corresponde ao vértice $u \in V(T')$.
+Considere agora que $n > 2$. Seja $G$ um grafo com $\delta(G) \geq n-1$. Seja $v \in V(T)$ uma folha. Como $d_T(v) =1$, existe apenas um vértice adjacente a $v$ em $T$; denote-o por $u$. Note que o grafo $T' = T - v$ também é uma árvore, uma vez que a remoção de uma folha não cria ciclos e não desconecta $T$. A árvore $T'$, no entanto, possui $n-1$ vértices. Por hipótese de indução, existe uma cópia de $T'$ em $G$. Seja $x \in V(G)$ o vértice que corresponde ao vértice $u \in V(T')$.
 Por hipótese, temos que $d_G(x) \geq n-1$. Como existem apenas outros $n-2$ vértices em $T'$, isto implica que existe um vértice $y \in V(G)$ adjacente a $x$ que não foi utilizado na cópia de $T'$ em $G$. Unindo a cópia de $T'$ com a aresta $xy$, obtemos uma cópia de $T$ em $G$.
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -266,7 +266,7 @@ Com este resultado, podemos generalizar a Proposição~\ref{graph:thm:rpt} da se
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proposition}
 \label{graph:thm:ramseytree}
-Seja $T$ uma árvore com $n$ vértices. Então
+Seja $T$ uma árvore com $n$ vértices. Então,
 \[r(T,K_3) = 2n - 1.\]
 \end{proposition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -283,29 +283,30 @@ Finalmente, podemos obter os números de Ramsey de árvores contra grafos comple
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{theorem}[Chvátal~\cite{chvatal1977tree}]
 \label{graph:thm:chvatal}
-Seja $T$ uma árvore com $n$ vértices. Então
+Seja $T$ uma árvore com $n$ vértices. Então,
 \[r(T,K_s) = (s-1)(n-1) + 1.\]
 \end{theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proof}
-Observe que o grafo de Turán $T_{s-1}(n-1)$ não possui $K_s$ como subgrafo. Além disso, o seu complementar consiste de $s-1$ cópias disjuntas de $K_{n-1}$, que não possuem $T$ como subgrafo. Isto nos dá que $r(T,K_s) > v(T_{s-1}(n-1)) = (s-1)(t-1)$.
+Observe que o grafo de Turán $T_{s-1}(n-1)$ não possui $K_s$ como subgrafo. Além disso, o seu complementar consiste em $s-1$ cópias disjuntas de $K_{n-1}$, que não possuem $T$ como subgrafo. Isto nos dá que $r(T,K_s) > v(T_{s-1}(n-1)) = (s-1)(t-1)$.
 
 Para o limitante superior, vamos proceder por indução em $s$. O caso $s = 3$ está demonstrado na Proposição~\ref{graph:thm:ramseytree}. Agora, suponha que $c$ seja uma $RB$-coloração de $G = K_{(s-1)(n-1) + 1}$ sem $T$ vermelho e sem $K_s$ azul.
-Pela Proposição~\ref{graph:thm:treesub}, se $\delta(G_R) \geq n-1$, então $c$ possui $T$ vermelho, logo, existe um vértice $v$ com $d_R(v) \leq n - 2$. Portanto $d_B(v) \geq (s-1)(n-1) - n + 2 = (s-2)(n-1) + 1$.
-Como $N_B(v)$ possui pelo menos $(s-2)(n-1) + 1$ vértices, pela hipótese de indução, $N_B(v)$ possui um $T$ vermelho ou um $K_{s-1}$ azul. Mas como $c$ não possui $T$ vermelho, $N_B(v)$ possui um $K_{s-1}$ azul. No entanto, unindo o vértice $v$ à cópia azul de $K_{s-1}$, obtemos um $K_s$ azul, o que é absurdo. Portanto, $r(T,K_s) \geq (s-1)(n-1) + 1$.
+Pela Proposição~\ref{graph:thm:treesub}, se $\delta(G_R) \geq n-1$, então $c$ possui $T$ vermelho. Logo, existe um vértice $v$ com $d_R(v) \leq n - 2$. Portanto $d_B(v) \geq (s-1)(n-1) - n + 2 = (s-2)(n-1) + 1$.
+Como $N_B(v)$ possui pelo menos $(s-2)(n-1) + 1$ vértices, pela hipótese de indução, $N_B(v)$ possui um $T$ vermelho ou um $K_{s-1}$ azul. Por outro lado, como $c$ não possui $T$ vermelho, $N_B(v)$ possui um $K_{s-1}$ azul. No entanto, unindo o vértice $v$ à cópia azul de $K_{s-1}$, obtemos um $K_s$ azul, o que é absurdo. Portanto, $r(T,K_s) \geq (s-1)(n-1) + 1$.
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Tendo em vista este teorema e outros resultados similares, Burr e Erdös~\cite{burr1983generalizations} conjecturaram em 1983 que
 \[ r(H,K_s) = (s-1)(v(H) - 1) + 1\]
-para todo $s$ fixo e $H$ suficientemente esparso. Um grafo pode ser considerado esparso de diversas maneiras diferentes. De fato, pelo mesmo argumento utilizado acima no Teorema de Chvátal, se $H$ é um grafo conexo, então $r(H,K_s) \geq (s-1)(v(H) - 1) + 1$ . Um grafo $H$ para o qual vale a igualdade é dito $s$-bom.
+para todo $s$ fixo e $H$ suficientemente esparso. Um grafo pode ser considerado esparso de diversas maneiras diferentes, por exemplo, se ele possui poucas arestas ou se o grau médio for pequeno. Pelo mesmo argumento utilizado acima no Teorema de Chvátal, se $H$ é um grafo conexo, então $r(H,K_s) \geq (s-1)(v(H) - 1) + 1$ . Um grafo $H$ para o qual vale a igualdade é dito $s$-bom.
 Burr e Erdös conjecturaram que se $H$ é uma família de grafos com grau médio limitado, então $H$ é $s$-bom.
 
-Esta conjectura foi desprovada por Brandt~\cite{brandty1996expanding}, mas resultados similares valem para grafos esparsos em outros sentidos. Por exemplo, Burr e Erdös mostraram que se $H$ possui largura de banda\footnote{A largura de banda de um grafo $G$ é o menor inteiro positivo $l$ tal que existe uma ordenação $v_1, \dots, v_n$ dos vértices de $G$ de forma que toda aresta $v_i v_j$ satisfaz $|i - j| \leq l$.} limitada, então $H$ é $s$-bom. Este resultado foi estendido por Allen, Brightwell e Skokan~\cite{allen2013ramsey} para grafos com largura de banda até $o(\log n / \log \log n)$ e grafos com grau médio limitado e largura de banda $o(n)$.
+Brandt~\cite{brandty1996expanding} provou que esta conjectura é falsa em geral, mas resultados similares valem para grafos esparsos em outros sentidos. Por exemplo, Burr e Erdös mostraram que se $H$ possui largura de banda\footnote{A largura de banda de um grafo $G$ é o menor inteiro positivo $l$ tal que existe uma ordenação $v_1, \dots, v_n$ dos vértices de $G$ de forma que toda aresta $v_i v_j$ satisfaz $|i - j| \leq l$.} limitada, então $H$ é $s$-bom. Este resultado foi estendido por Allen, Brightwell e Skokan~\cite{allen2013ramsey} para grafos com largura de banda até $o(\log n / \log \log n)$ e grafos com grau médio limitado e largura de banda $o(n)$.
 
-Outros resultados foram obtidos para famílias específicas. Por exemplo, Pontiveiros, Griffiths, Morris, Saxton e Skokan~\cite{pontiveros2014ramsey} estudaram o caso do hipercubo $Q_n$, isto é, o grafo com conjunto de vértices $\{ 0, 1 \}^n$ e arestas entre pares de vértices que diferem em exatamente uma coordenada. O hipercubo possui $N=2^n$ vértices, grau médio $\log_2(N)$ e largura de banda aproximadamante $N/\sqrt{\log N}$, e portanto, não está coberto pelos resultados mais genéricos menciodados.
-Foi mostrado em~\cite{pontiveros2014ramsey} que $r(Q_n, K_s) = (s-1)(2^n -1) + 1$ para $n$ suficientemente grande.
+Outros resultados foram obtidos para famílias específicas. Por exemplo, Pontiveiros, et al.~\cite{pontiveros2014ramsey} estudaram o caso do hipercubo $Q_n$, isto é, o grafo com conjunto de vértices $\{ 0, 1 \}^n = \{ (x_1, \dots, x_n) : x_i \in \{ 0,1 \} \}$ e arestas entre pares de vértices que diferem em exatamente uma coordenada. O hipercubo possui $2^n$ vértices, grau médio $n$ e largura de banda aproximadamante $2^n/\sqrt{n}$, e portanto, não está coberto pelos resultados mais genéricos menciodados.
+Foi mostrado que $r(Q_n, K_s) = (s-1)(2^n -1) + 1$ para $n$ suficientemente grande.
 
+Mesmo com todos estes resultados desenvolvidos, encontrar as condições corretas de esparsidade que garantem que um grafo é $s$-bom continua sendo uma importante direção de pesquisa na Teoria de Ramsey.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
