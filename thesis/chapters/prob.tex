@@ -12,18 +12,18 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-O \indef{método probabilístico} é uma técnica não construtiva para demonstração da existência de objetos matemáticos com alguma propriedade específica. Como o próprio nome indica, o argumento tem natureza probabilística, e ele consiste em mostrar que, ao escolher um objeto de maneira aleatória, a probabilidade deste objeto ter a propriedade desejada é positiva. Isto garante a existência deste objeto.
+O \indef{método probabilístico} é uma técnica não construtiva para demonstração da existência de objetos matemáticos com alguma propriedade específica. Como o próprio nome indica, o argumento tem natureza probabilística e consiste em mostrar que, ao escolher um objeto de maneira aleatória, a probabilidade deste objeto ter a propriedade desejada é positiva. Isto garante a existência deste objeto.
 
-Cabe, então, antes de entramos nos detalhes desta técnica, fazer uma breve revisão de conceitos de probabilidade, em particular, espaços discretos de probabilidade. Referências adicionais recomendadas incluem as notas de aula do Leonardo Rolla \cite{rolla} e o livro do Barry James \cite{barryjames}.
+Cabe, então, antes de entra nos detalhes desta técnica, fazer uma breve revisão de conceitos de probabilidade, em particular, espaços discretos de probabilidade. Referências adicionais recomendadas incluem as notas de aula do Leonardo Rolla \cite{rolla} e o livro do Barry James \cite{barryjames}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Probabilidade Discreta}
 
-Para formalizar a probabilidade em matemática, introduzimos o conceito de um \indef{modelo probabilístico}, que será o ambiente natural no qual podemos falar de probabilidade.
-Um modelo probabilístico possui três componentes básicas: um espaço amostral, uma classe de eventos e uma medida de probabilidade. O \indef{espaço amostral} é um conjunto não vazio $\Omega$, cujos elementos representam os resultados possíveis para um experimento. Uma realização deste experimento consiste na escolha aleatória de um elemento $\omega \in \Omega$. Estamos interessados exclusivamente no caso em que $\Omega$ é um conjunto finito.
+Para formalizar a probabilidade em matemática, introduzimos o conceito de um modelo probabilístico, que será o ambiente natural no qual podemos falar de probabilidade.
+Um \indef{modelo probabilístico} possui três componentes básicas: um espaço amostral, uma classe de eventos e uma medida de probabilidade.
 
-Em conjunto com um espaço amostral $\Omega$, se associa uma classe $\mathcal{F}$ apropriada de subconjuntos de $\Omega$. Os elementos de $\mathcal{F}$ são subconjuntos $A \subseteq \Omega$ aos quais atribuímos uma probabilidade, e são denominados \indef{eventos} ou \indef{conjuntos mensuráveis}. Definiremos probabilidade apenas para elementos desta classe. Para que isto seja feito de maneira adequada, a classe $\mathcal{F}$ precisa satisfazer algumas propriedades. Mais precisamente, $\mathcal{F}$ precisa formar uma $\sigma$-álgebra sobre $\Omega$~\cite{barryjames}.
+O \indef{espaço amostral} é um conjunto não vazio $\Omega$, cujos elementos representam os resultados possíveis para um experimento. Uma realização deste experimento consiste na escolha aleatória de um elemento $\omega \in \Omega$. Estamos interessados exclusivamente no caso em que $\Omega$ é um conjunto finito. Ao espaço amostral $\Omega$, associa-se uma classe $\mathcal{F}$ apropriada de subconjuntos de $Omega$. Os elementos de $\mathcal{F}$ são subconjuntos $A \subseteq \Omega$ aos quais atribuímos uma probabilidade, e são denominados \indef{eventos} ou \indef{conjuntos mensuráveis}. Definiremos probabilidade apenas para elementos desta classe. Para que isto seja feito de maneira adequada, a classe $\mathcal{F}$ precisa satisfazer algumas propriedades. Mais precisamente, $\mathcal{F}$ precisa formar uma $\sigma$-álgebra sobre $\Omega$~\cite{barryjames}.
 No entanto, esta formalidade é facilmente contornada no caso discreto, uma vez que o conjunto de todos os subconjuntos de $\Omega$ é uma $\sigma$-álgebra sobre $\Omega$ quando $\Omega$ é finito. O par $(\Omega, \mathcal{F})$ é dito um \indef{espaço mensurável}.
 
 Finalmente, uma \indef{medida de probabilidade}, ou simplesmente \indef{probabilidade}, é uma medida sobre o espaço mensurável $(\Omega, \mathcal{F})$, ou seja, uma função $\prob : \mathcal{F} \to \mathbb{R}$ com as seguintes propriedades:
@@ -37,26 +37,26 @@ Finalmente, uma \indef{medida de probabilidade}, ou simplesmente \indef{probabil
 Um \indef{espaço de probabilidade} é uma tripla $(\Omega, \mathcal{F}, \prob)$ no qual $\Omega$ é um espaço amostral, $\mathcal{F}$ é uma classe de eventos e $\prob$ é uma medida de probabilidade sobre $(\Omega, \mathcal{F})$. Para um espaço de probabilidade, também valem as seguintes propriedades:
 
 \begin{enumerate}[label=\arabic*.,itemindent=*]
-  \item $\prob(\emptyset) = 0$
-  \item $\prob(\comp{A}) = 1 - \prob(A)$ onde $\comp{A} = \Omega \setminus A$.
-  \item Se $A$ e $B \in \mathcal{F}$ e $A \subseteq B$, então $\prob(A) \leq \prob(B)$.
-  \item Se $A$ e $B \in \mathcal{F}$ e $A \subseteq B$, então $\prob(B \setminus A) = \prob(B) - \prob(A)$.
-  \item Para todo $A \in \mathcal{F}$, temos $0 \leq \prob(A) \leq 1$.
-  \item Se $A_1, A_2, \dots \in \mathcal{F}$, então $\prob( \bigcup_{i} A_i ) \leq \sum_i \prob(A_i)$.
+  \item $\prob(\emptyset) = 0$;
+  \item $\prob(\comp{A}) = 1 - \prob(A)$ onde $\comp{A} = \Omega \setminus A$;
+  \item Se $A$ e $B \in \mathcal{F}$ e $A \subseteq B$, então $\prob(A) \leq \prob(B)$;
+  \item Se $A$ e $B \in \mathcal{F}$ e $A \subseteq B$, então $\prob(B \setminus A) = \prob(B) - \prob(A)$;
+  \item Para todo $A \in \mathcal{F}$, temos $0 \leq \prob(A) \leq 1$;
+  \item Se $A_1, A_2, \dots \in \mathcal{F}$, então $\prob( \bigcup_{i} A_i ) \leq \sum_i \prob(A_i)$;
   \item Se $A$ e $B \in \mathcal{F}$, então $\prob(A \cup B) = \prob(A) + \prob(B) - \prob(A \cap B)$.
 \end{enumerate}
 
-Existem diversas maneiras de construir espaços de probabilidade, cada uma se adequando a uma situação. Para nossos propósitos, o espaço dos resultados \indef{equiprováveis} é de grande interesse e é construído da seguinte maneira:
-seja $\Omega$ um conjunto finito e $\mathcal{F}$ o conjunto de todos os subconjuntos de $\Omega$. Para $A \in \mathcal{F}$, definiremos a probabilidade de $A$ por $\prob(A) = \frac{\card{A}}{\card{\Omega}}$. Esta definição satisfaz as propriedades (P1), (P2) e (P3), portanto, é uma medida de probabilidade. Medidas de probabilidade sobre espaços finitos que satisfazem $\prob(A) = \frac{\card{A}}{\card{\Omega}}$ também são ditas \indef{uniformes}.
+Existem diversas maneiras de construir espaços de probabilidade, cada uma se adequando a uma situação. Para nossos propósitos, o espaço dos resultados \indef{equiprováveis} é de grande interesse e construído da seguinte maneira:
+seja $\Omega$ um conjunto finito e $\mathcal{F}$ o conjunto de todos os subconjuntos de $\Omega$; para $A \in \mathcal{F}$, definimos a probabilidade de $A$ por $\prob(A) = \frac{\card{A}}{\card{\Omega}}$. Esta definição satisfaz as propriedades (P1), (P2) e (P3), portanto, é uma medida de probabilidade. Medidas de probabilidade sobre espaços finitos que satisfazem $\prob(A) = \frac{\card{A}}{\card{\Omega}}$ também são ditas \indef{uniformes}.
 
-Dado um espaço de probabilidade $(\Omega, \mathcal{F}, \prob)$ e $A, B \in \mathcal{F}$, definimos a \indef{probabilidade condicional} de $A$, dado que $B$ ocorre, $\prob(A | B)$, por
+Dado um espaço de probabilidade $(\Omega, \mathcal{F}, \prob)$ e $A, B \in \mathcal{F}$, definimos a \indef{probabilidade condicional de $A$, dado que $B$ ocorre}, $\prob(A | B)$, por
 \[ \prob(A|B) = \frac{\prob(A \cap B)}{\prob(B)}. \]
 Quando $\prob(B) = 0$, definimos $\prob(A|B) = \prob(A)$. Desta forma, a função $\prob(\; \cdot \;| B) : \mathcal{F} \to \mathbb{R}$ é uma medida de probabilidade em $(\Omega, \mathcal{F})$ para qualquer $B \in \mathcal{F}$.
 
-Dois eventos $A$ e $B$ são ditos \indef{independentes} se $\prob(A \cap B) = \prob(A) \prob(B)$. Intuitivamente, dois eventos são independentes quando a ocorrência ou não de um deles não influencia a probabilidade da ocorrência do outro evento.
+Dois eventos $A$ e $B$ são ditos \indef{independentes} se $\prob(A \cap B) = \prob(A) \cdot \prob(B)$. Intuitivamente, dois eventos são independentes quando a ocorrência ou não de um deles não influencia a probabilidade de ocorrência do outro evento.
 
 \Needspace*{4\baselineskip}
-As proposições a seguir são todas equivalentes:
+As proposições a seguir são todas equivalentes.
 \begin{enumerate}[label=\arabic*.,itemindent=*]
   \item $A$ e $B$ são independentes.
   \item $A$ e $\comp{B}$ são independentes.
@@ -66,25 +66,25 @@ As proposições a seguir são todas equivalentes:
   \item $\prob(B|A) = \prob(B)$.
 \end{enumerate}
 
-Seja $\{ A_i : i \in I\}$ uma família de eventos, onde $I$ é um conjunto qualquer de índices. A família $\{ A_i : i \in I\}$ é dita \indef{independente dois a dois} se $A_i$ é independente de $A_j$ para todo $i,j \in I$, $i \neq j$. A mesma família é dita \indef{mutuamente independente} se para qualquer subconjunto $J \subset I$ de índices, vale
 \[ \prob\left(\bigcap_{j \in J} A_j \right) = \prod_{j \in J}\prob(A_j).\]
+Seja $\{ A_i : i \in I\}$ uma família de eventos, para a qual $I$ é um conjunto qualquer de índices. A família $\{ A_i : i \in I\}$ é dita \indef{independente dois a dois} se $A_i$ e $A_j$ são independentes para todo $i,j \in I$, $i \neq j$. A mesma família é dita \indef{mutuamente independente} se, para qualquer subconjunto $J \subset I$ de índices, vale
 
 Uma \indef{variável aleatória} é uma função $X: \Omega \to \mathbb{R}$ que associa a cada elemento do espaço amostral um valor real. Formalmente, também é requerido que o conjunto $\{ \omega \in \Omega : X(\omega) \leq x \}$ seja mensurável para todo $x$ real, ou seja, $X^{-1}( (-\infty,x]) \in \mathcal{F}$ para todo $x$. Quando $\Omega$ é finito e $\mathcal{F}$ é a classe de todos os subconjuntos de $\Omega$, este requisito sempre é satisfeito. Quando uma variável aleatória $X$ assume uma quantidade finita de valores, ela é dita \indef{simples}.
 
-Utilizaremos variáveis aleatórias para realizar contagens. Chamaremos  variáveis aleatórias que só assumem valores inteiros não negativos de \indef{naturais}. Uma classe de variáveis aleatórias naturais bastante importante é a das \indef{funções indicadoras}. Fixado $A \subset \Omega$, definimos a função indicadora de $A$, $\ind{A}$, por
+Utilizamos variáveis aleatórias para realizar contagens. Variáveis aleatórias que só assumem valores inteiros não negativos são chamadas de \indef{naturais}. Uma classe de variáveis aleatórias naturais bastante importante é a das \indef{funções indicadoras}. Fixado $A \subset \Omega$, definimos a função indicadora de $A$, $\ind{A}$, por
 \[ \ind{A}(\omega) = \begin{cases}
   1, & \text{se } \omega \in A; \\
   0, & \text{se } \omega \not\in A.
 \end{cases}\]
 
-Dado uma variável aleatória natural $X$ sobre $(\Omega, \mathcal{F}, \prob)$, definimos a \indef{esperança} de $X$, denotada $\expec[X]$, por
+Dada uma variável aleatória natural $X$ sobre $(\Omega, \mathcal{F}, \prob)$, definimos a \indef{esperança} de $X$, denotada $\expec[X]$, por
 \[ \expec[X] = \sum_{n = 0}^{\infty} n \prob(\{X = n\}).\]
 Note que para funções indicadoras, temos $\expec[\ind{A}] = \prob(A)$.
 
 A esperança é um operador \indef{linear} no seguinte sentido: sejam $X_1, \dots, X_n$ variáveis aleatórias sobre um mesmo espaço de probabilidade, e sejam $\alpha_1, \dots, \alpha_n \in \mathbb{R}$. Temos que
 \[ \expec\left[ \sum_{i=1}^n \alpha_i X_i \right] = \sum_{i = 1}^{n} \alpha_i \expec[X_i]. \]
 
-A esperança é \indef{monótona}, isto é, se $X$ e $Y$ são variáveis aleatórias em um mesmo espaço com $X(\omega) \geq Y(\omega)$ para todo $\omega \in \Omega$, então $\expec[X] \geq \expec[Y]$.
+A esperança é \indef{monótona}, isto é, se $X$ e $Y$ são variáveis aleatórias em um mesmo espaço $\Omega$ com $X(\omega) \geq Y(\omega)$ para todo $\omega \in \Omega$, então $\expec[X] \geq \expec[Y]$.
 
 A \indef{desigualdade de Markov} é uma importante ferramenta dentro do método probabilístico. Ela enuncia que se $X$ é uma variável aleatória não negativa, então
 \[ \prob(X \geq a) \leq \frac{\expec[X]}{a}. \]
@@ -95,11 +95,11 @@ Este apanhado de resultados é suficiente para finalmente introduzirmos o métod
 
 \section{Limitantes Inferiores}
 
-Os limitantes inferiores para os números de Ramsey vistos no Capítulo~\ref{chap:prelim} são construtivos, isto é, a demonstração de que $R(4,4) > 17$, por exemplo, se passou pela construção de uma coloração de arestas do grafo $K_{17}$. Para encontrar bons limitantes inferiores de maneira mais genérica, precisamos de uma abordagem um pouco diferente. Vamos começar pelos números de Ramsey diagonais.
+Os limitantes inferiores para os números de Ramsey vistos no Capítulo~\ref{chap:prelim} são construtivos, isto é, a demonstração de que $R(4,4) > 17$, por exemplo, passou pela construção de uma coloração de arestas do grafo $K_{17}$. Para encontrar bons limitantes inferiores de maneira mais genérica, precisamos de uma abordagem um pouco diferente. Vamos começar pelos números de Ramsey diagonais.
 
-O nosso objetivo é encontrar colorações de arestas de $K_n$ sem $K_k$ monocromáticos com $k$ fixado e $n$ maior possível. Assim, podemos concluir que $R(k,k) > n$. Note que não precisamos necessariamente construir tal coloração, basta sabermos que alguma coloração que satisfaz estas propriedades existe. Vamos introduzir agora o \indef{método probabilístico} para resolver este tipo de problema. O nosso objetivo é provar que uma estrutura com certas propriedades existe. Definimos, então, um espaço de probabilidade sobre o conjunto destas estruturas de maneira adequada e mostramos que, com probabilidade positiva, a propriedade de interesse é satisfeita. Isto nos mostra que o conjunto dos elementos cuja propriedade é satisfeita não pode ser vazio, caso contrário, a probabilidade seria zero, e mostramos a existência de uma estrutura com esta propriedade.
+O nosso objetivo é encontrar colorações de arestas de $K_n$ sem $K_k$ monocromáticos com $k$ fixado e $n$ maior possível. Assim, podemos concluir que $R(k,k) > n$. Note que não precisamos necessariamente construir tal coloração, basta sabermos que alguma coloração que satisfaz estas propriedades existe. Vamos introduzir agora o \indef{método probabilístico} para resolver este tipo de problema. Para isso, queremos provar que uma estrutura com certas propriedades existe. Definimos, então, um espaço de probabilidade sobre o conjunto destas estruturas de maneira adequada e mostramos que, com probabilidade positiva, a propriedade de interesse é satisfeita. Isto nos mostra que o conjunto dos elementos cuja propriedade é satisfeita não pode ser vazio, caso contrário, a probabilidade seria zero, e mostramos a existência de uma estrutura com esta propriedade.
 
-Esta técnica, embora aplicada pela primeira vez por Szele \cite{szele1943kombinatorikai}, foi vastamente explorada pelo matemático Paul Erdös, que utilizou desta técnica para encontrar justamente um limitante inferior para os números de Ramsey diagonais $R(k,k)$~\cite{erdos47}. Estamos interessados em escolher uma $RB$-coloração do $K_n$ de maneira aleatória e uniforme. O nosso espaço amostral $\Omega$ é, portanto, o conjunto de todas as colorações de arestas em duas cores do $K_n$. Seja $(\Omega, \mathcal{F}, \prob)$ o espaço de probabilidade com medida uniforme. Como temos que $|\Omega| = 2^{\binom{n}{2}}$, dado $A \in \mathcal{F}$, temos:
+Esta técnica, embora aplicada pela primeira vez por Szele \cite{szele1943kombinatorikai}, foi vastamente explorada por Erdös, que utilizou esta técnica para encontrar justamente um limitante inferior para os números de Ramsey diagonais $R(k,k)$~\cite{erdos47}. Estamos interessados em escolher uma $RB$-coloração do $K_n$ de maneira aleatória e uniforme. O nosso espaço amostral $\Omega$ é, portanto, o conjunto de todas as colorações de arestas em duas cores do $K_n$. Seja $(\Omega, \mathcal{F}, \prob)$ o espaço de probabilidade com medida uniforme. Como temos que $|\Omega| = 2^{\binom{n}{2}}$, dado $A \in \mathcal{F}$, temos:
 \[ \prob(A) = \frac{|A|}{2^{\binom{n}{2}}}.\]
 
 Suponha que escolhemos uma coloração $c \in \Omega$ de maneira aleatória e uniforme, de acordo com o espaço de probabilidade acima. Queremos saber qual é a probabilidade desta coloração possuir uma dada propriedade. Seja $\mathcal{P} \subset \Omega$ o conjunto das colorações que satisfazem a dada propriedade. Temos, então, que $\prob(c \text{ possui a propriedade}) = \prob(c \in \mathcal{P}) = \card{\mathcal{P}} / \card{\Omega}$, onde $\prob$ é a medida de probabilidade.
@@ -135,13 +135,13 @@ quando $n \geq 3$. Assim, temos $R(k,k) > \lfloor 2^{k/2} \rfloor$ quando $n \ge
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Este tipo de ideia pode ser refinado para obter resultados melhores para o limitante inferior. No entanto, não se conhece algum limitante inferior cuja ordem exponencial seja superior à $\sqrt{2}^k$. Vimos anteriormente que o melhor limitante superior conhecido possui ordem exponencial $4^k$. Um dos problemas abertos mais importantes em Combinatória é determinar a ordem exponencial correta para o crescimento dos números de Ramsey diagonais. Em particular, não se sabe se o seguinte limite existe~\cite{chung1983survey}:
+Este tipo de ideia pode ser refinado para obter resultados melhores para o limitante inferior. No entanto, não se conhece algum limitante inferior cuja ordem exponencial seja superior à $(\sqrt{2})^k$. Vimos anteriormente que o melhor limitante superior conhecido possui ordem exponencial $4^k$. Um dos problemas abertos mais importantes da Teoria de Ramsey é determinar a ordem exponencial correta para o crescimento dos números de Ramsey diagonais. Em particular, não se sabe se o seguinte limite existe~\cite{chung1983survey}:
 \[ \lim_{k \to \infty} \left(R(k,k)  \right)^{1/k}. \]
 Já mostramos que, se este limite existir, ele está entre $\sqrt{2}$ e $4$.
 
 A diferença entre as ordens de crescimento do limitante inferior e do limitante superior nos mostra o quanto ainda não se sabe sobre estes números. O melhor que podemos fazer para encontrar um $K_k$ monocromático consiste em jogar fora metade do grafo a cada passo, como foi feito no Teorema~\ref{thm:intro:ramsey}, o que provavelmente é destrutivo demais. A melhor construção que encontramos para uma coloração sem $K_k$ monocromático é uma coloração aleatória. Toda construção explícita conhecida é sub-exponencial. De fato, um importante problema em aberto da Teoria de Ramsey é encontrar uma demonstração construtiva de que $R(k,k) \geq (1+c)^k$ para alguma constante $c > 0$.
 
-Outro aspecto interessante desta demonstração é que ao alterar a desigualdade da condição de $\binom{n}{k} 2^{1 - \binom{k}{2}} < 1$ para $\binom{n}{k} 2^{1 - \binom{k}{2}} \ll 1$, garantimos que $\prob(X = 0) \to 1$. Com efeito, isso ocorre quando $n = \lfloor 2^{k/2} \rfloor$. Isto possui implicações algorítmicas interessantes. Podemos encontrar, de fato, uma coloração do $K_n$ sem $K_{2\log n}$ monocromático com alta probabilidade apenas colorindo as arestas de maneira aleatória. Realmente, quanto maior $n$, menor a probabilidade de uma coloração aleatória do $K_n$ possuir um $K_{2\log n}$ monocromático.
+Outro aspecto interessante desta demonstração é que ao alterar a desigualdade da condição de $\binom{n}{k} 2^{1 - \binom{k}{2}} < 1$ para $\binom{n}{k} 2^{1 - \binom{k}{2}} \ll 1$, garantimos que $\prob(X = 0) \to 1$. Com efeito, isso ocorre quando $n = \lfloor 2^{k/2} \rfloor$, o que possui implicações algorítmicas interessantes. Podemos encontrar, de fato, uma coloração do $K_n$ sem $K_{2\log n}$ monocromático com alta probabilidade apenas colorindo as arestas de maneira aleatória. Realmente, quanto maior $n$, menor a probabilidade de uma coloração aleatória do $K_n$ possuir um $K_{2\log n}$ monocromático.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
