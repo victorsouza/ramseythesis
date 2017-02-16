@@ -147,7 +147,7 @@ Outro aspecto interessante desta demonstração é que ao alterar a desigualdade
 
 \section{Pequenas Alterações}
 
-Na aplicação do método probabilístico da seção anterior, mostramos a existência de configurações em que alguma estrutura indesejada não ocorre. Algumas vezes, não conseguimos garantir que estas estruturas não apareçam, mas podemos encontrar configurações em que não existam muitas dessas estruturas ruins. O que podemos fazer, em seguida, é alterar esta configuração a fim de remover estas estruturas indesejadas. Este procedimento de realizar alterações nos grafos é bastante utilizado e geralmente permitirá refinar ligeiramente o nosso limitante inferior.
+Na aplicação do método probabilístico da seção anterior, mostramos a existência de configurações em que alguma estrutura indesejada não ocorre. Algumas vezes, não conseguimos garantir que estas estruturas não apareçam, mas podemos encontrar configurações em que não existam muitas dessas estruturas ruins. O que podemos fazer, em seguida, é alterar esta configuração a fim de remover estas estruturas indesejadas. Este procedimento de realizar alterações nos grafos é bastante utilizado e geralmente permite refinar ligeiramente o nosso limitante inferior.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{theorem}
@@ -156,15 +156,15 @@ Para todo inteiro $n$, temos $\displaystyle R(k,k) > n - \binom{n}{k}2^{1 - \bin
 \end{theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proof}
-Considere uma $RB$-coloração $c$ do grafo completo $G = (V,E) \iso K_n$ obtida pintando cada aresta de maneira aleatória, uniforme e independente. Procedendo de maneira idêntica ao Teorema~\ref{thm:prob:method}, definimos a variável aleatória $X$ que conta a quantidade de $K_k$ monocromáticos em $K_n$. Calculamos o valor esperado de $X$ e obtivemos:
-\[ \expec[X] = \binom{n}{k} 2^{1 - \binom{k}{2}} \]
+Considere uma $RB$-coloração $c$ do grafo completo com $n$ vértices obtida pintando cada aresta de maneira aleatória, uniforme e independente. Procedendo de maneira idêntica ao Teorema~\ref{thm:prob:method}, definimos a variável aleatória $X$ que conta a quantidade de $K_k$ monocromáticos no $K_n$. Calculamos o valor esperado de $X$ e obtivemos:
+\[ \expec[X] = \binom{n}{k} 2^{1 - \binom{k}{2}}. \]
 
-Isto é suficiente para garantir que existe uma coloração $c$ de $K_n$ com no máximo $\expec[X]$ cópias monocromáticas de $K_k$. Remova do $K_n$ um vértice de cada uma das cópias monocromáticas $K_k$ e, assim, obtemos um grafo livre de $K_k$ moncromático. Removemos no máximo $\expec[X]$ vértices e, assim, sobram pelo menos $n - \expec[X]$ vértices no grafo. Portanto
+Isto é suficiente para garantir que existe uma coloração $c$ do $K_n$ com no máximo $\expec[X]$ cópias monocromáticas de $K_k$. Remova do $K_n$ um vértice de cada uma das cópias monocromáticas $K_k$ e, assim, obtemos um grafo livre de $K_k$ moncromático. Removemos no máximo $\expec[X]$ vértices e, assim, sobram pelo menos $n - \expec[X]$ vértices no grafo. Portanto
 \[ R(k,k) \geq n - \expec[X] = n - \binom{n}{k} 2^{1 - \binom{k}{2}}.  \qedhere\]
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Fazendo uma análise cuidadosa desta desigualdade \cite{spencer2014asymptopia}, podemos escolher $n$ de forma a maximizar $n - \binom{n}{k}2^{1 - \binom{k}{2}}$ e obter o resultado apresentado a seguir.
+J. Spencer~\cite{spencer2014asymptopia} fez uma análise cuidadosa deste desigualdade e obteve o resultado apresentado a seguir.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{noproofcorollary}
@@ -174,9 +174,9 @@ Para $k \to \infty$, temos $\displaystyle R(k,k) > (1+o(1))\frac{1}{e}k\sqrt{2}^
 
 Até agora, vimos como utilizar o método probabilístico para encontrar limitantes para os números de Ramsey diagonais. Se desejarmos encontrar limitantes para outros números de Ramsey, precisamos alterar o nosso espaço de probabilidade.
 
-Seja $\Omega$ o conjunto de todas as $RB$-colorações de $G = (V,E) \iso K_n$ e $\mathcal{F}$ o conjunto de todos os subconjuntos de $\Omega$. Vamos construir uma medida de probabilidade que não é uniforme em $\Omega$. Fixe $0 \leq p \leq 1$ e pinte cada aresta de maneira aleatória e independente, com $\prob(c(e) = R) = p$ e $\prob(c(e) = B) = 1 - p$. Para uma coloração $c \in \Omega$ qualquer, temos então
+Sejam $\Omega$ o conjunto de todas as $RB$-colorações do $K_n$ e $\mathcal{F}$ o conjunto de todos os subconjuntos de $\Omega$. Vamos construir uma medida de probabilidade que não é uniforme em $\Omega$. Fixe $0 \leq p \leq 1$ e pinte cada aresta de maneira aleatória e independente, com $\prob(c(e) = R) = p$ e $\prob(c(e) = B) = 1 - p$. Para uma coloração $c \in \Omega$ qualquer, temos
 \[ \prob(c) =  p^{e(G_R)}(1-p)^{e(G_B)}.\]
-Assim, $(\Omega, \mathcal{F}, \prob)$ consiste de um espaço de probabilidade. O espaço uniforme que tínhamos antes é o caso particular em que $p = 1/2$. Podemos generalizar o Teorema~\ref{thm:prob:alter} para números $R(k,s)$ da seguinte maneira.
+Assim, $(\Omega, \mathcal{F}, \prob)$ forma um espaço de probabilidade. O espaço uniforme que tínhamos antes é o caso particular em que $p = 1/2$. Podemos generalizar o Teorema~\ref{thm:prob:alter} para números $R(k,s)$ conforme estabele o Teorema~\ref{thm:prob:alter_off}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{theorem}
@@ -192,7 +192,7 @@ Definimos a variável aleatória $X$ como a quantidade de cópias vermelhas de $
 \expec[Y] &= \binom{n}{s}(1-p)^{\binom{s}{2}}
 \end{align*}
 
-Consideramos um grafo proibido como uma cópia vermelha de $K_k$ ou uma cópia azul de $K_s$. Defina $Z = X + Y$ como a quantidade de grafos proibidos. Note que $\expec[Z] = \expec[X] + \expec[Y]$. Existe, portanto, uma coloração $c$ de $K_n$ com no máximo $\expec[Z]$ grafos proibidos. Remova do $K_n$ um vértice de cada um dos grafos proibidos, e obtemos um grafo livre de $K_k$ vermelho e de $K_s$ azul. Removemos no máximo $\expec[Z]$ vértices, logo, sobram pelo menos $n - \expec[Z] $ vértices no grafo. Portanto
+Consideramos um \indef{grafo proibido} como uma cópia vermelha de $K_k$ ou uma cópia azul de $K_s$. Defina $Z = X + Y$ como a quantidade de grafos proibidos. Note que $\expec[Z] = \expec[X] + \expec[Y]$. Existe, portanto, uma coloração $c$ de $K_n$ com no máximo $\expec[Z]$ grafos proibidos. Removendo do $K_n$ um vértice de cada um dos grafos proibidos, obtemos um grafo livre de $K_k$ vermelho e de $K_s$ azul. Removemos no máximo $\expec[Z]$ vértices. Logo, sobram pelo menos $n - \expec[Z] $ vértices no grafo. Portanto,
 \[ R(k, s) > n - \binom{n}{k}p^{\binom{k}{2}} - \binom{n}{s}(1-p)^{\binom{s}{2}}.  \qedhere\]
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -217,31 +217,42 @@ O número de Ramsey $R(4,k)$ satisfaz $\displaystyle R(4,k) \geq  \Omega\left( \
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Nas aplicações do método probabilístico apresentadas até agora, mostramos a existência de um objeto com determinada propriedade através da demonstração de que uma probabilidade é maior que zero. Em todos os casos que vimos, nós ainda provamos algo mais forte, vimos que a probabilidade deste evento é bastante alta. Em alguns casos, no entanto, o evento de interesse possui probabilidade baixa, mas positiva. Para lidar com este cenário, precisamos de técnicas mais refinadas.
+Nas aplicações do método probabilístico apresentadas até agora, mostramos a existência de um objeto com determinada propriedade provando que a probabilidade da sua existência é maior do que zero. Em todos os casos que vimos, nós ainda provamos algo mais forte, vimos que a probabilidade deste evento é bastante alta. Em alguns casos, no entanto, o evento de interesse possui probabilidade baixa, mas positiva. Para lidar com este cenário, precisamos de técnicas mais refinadas.
 
-Suponha que o objeto que queremos encontrar foi codificado pela não ocorrência de alguns eventos raros. Sejam $\{E_i; i = 1,\dots,n\}$ estes eventos. Desejamos provar que existe a possibilidade de esses eventos não ocorrerem simultaneamente, isto é,  $\prob(\bigcap_{i=1}^n \comp{E_i}) > 0$. Um caso bem simples em que obtemos probabilidades bem pequenas é quando os $n$ eventos são mutuamente independentes, cada um com probabilidade $0 \leq p<1$. A probabilidade de todos os eventos não acontecerem simultaneamente é $(1-p)^n > 0$, e fica bem pequena à medida que $n$ cresce. A técnica do \indef{Lema Local de Lovász} (LLL) nos permite obter um resultado similar para eventos que não são mutuamente independentes, mas possuem dependências fracas entre si.
+Suponha que o objeto que estamos gerando aleatoriamente é o que queremos encontrar quando alguns eventos raros não ocorrem. Sejam $\{E_i; i = 1,\dots,n\}$ estes eventos. Desejamos provar que existe a possibilidade de esses eventos não ocorrerem simultaneamente, isto é,  $\prob(\bigcap_{i=1}^n \comp{E_i}) > 0$. Um caso bem simples em que obtemos probabilidades bem pequenas é quando os $n$ eventos são mutuamente independentes, cada um com probabilidade $0 \leq p<1$. A probabilidade de todos os eventos não acontecerem simultaneamente é $(1-p)^n > 0$, e fica bem pequena à medida que $n$ cresce. A técnica do \indef{Lema Local de Lovász} (LLL) nos permite obter um resultado similar para eventos que não são mutuamente independentes, mas possuem dependências fracas entre si.
 
-Para enunciar o LLL, precisamos introduzir o conceito de digrafo simples, que generaliza ligeiramente o conceito de grafo. Um \indef{digrafo} é um par ordenado $(V(D), A(D))$, que consiste em um conjunto $V(D)$ de \indef{vértices} e um conjunto $A(D)$ de \indef{arcos}, disjunto de $V(D)$, acompanhado de uma função de incidência $\Psi_D$ que associa cada arco de $A(D)$ a um par ordenado de vértices de $V(D)$, não necessariamente distintos. Diferentemente das arestas em grafos, os arcos dos digrafos são ordenados e, portanto, sugerem uma orientação. Se $a \in A(D)$ e $\Psi_D(a) = (u,v)$ dizemos que $u$ se liga à $v$. Além disso, dizemos que $u$ é a \indef{cauda} de $a$ e $v$ é a \indef{cabeça} de $a$.
+Para enunciar o LLL, precisamos introduzir o conceito de digrafo simples, que generaliza ligeiramente o conceito de grafo. Um \indef{digrafo} é um par ordenado $(V(D), A(D))$, que consiste em um conjunto $V(D)$ de \indef{vértices} e um conjunto $A(D)$ de \indef{arcos}, disjunto de $V(D)$, acompanhado de uma função de incidência $\Psi_D$ que associa cada arco de $A(D)$ a um par ordenado de vértices de $V(D)$, não necessariamente distintos. Diferentemente das arestas em grafos, os arcos dos digrafos são ordenados e, portanto, sugerem uma orientação. Se $a \in A(D)$ e $\Psi_D(a) = (u,v)$ dizemos que $u$ se liga a $v$. Além disso, dizemos que $u$ é a \indef{cauda} de $a$ e $v$ é a \indef{cabeça} de $a$.
 
-Analogamente ao grafo simples, \indef{digrafo simples} é um digrafo no qual não existem arcos paralelos, isto é, $a$ e $b$ distintos em $A(D)$ com $\Psi_D(a) = \Psi_D(b)$. Portanto, um arco pode ser unicamente identificado com um par de elementos em $V(D) \times V(D)$, e a função de incidência fica implícita. Assim, podemos definir um digrafo simples como um par $D = (V,A)$ onde $A \subset V\times V$.
+Analogamente ao grafo simples, \indef{digrafo simples} é um digrafo no qual não existem arcos paralelos, isto é, $a$ e $b$ distintos em $A(D)$ com $\Psi_D(a) = \Psi_D(b)$. Portanto, um arco pode ser unicamente identificado com um par de elementos em $V(D) \times V(D)$, e a função de incidência fica implícita. Assim, podemos definir um digrafo simples como um par $D = (V,A)$ tal que $A \subset V\times V$.
 
-Uma definição central ao LLL é a de digrafo de dependência, que caracteriza a estrutura de dependência entre variáveis aleatórias. Sejam $E_1, \dots, E_n$ eventos em um espaço de probabilidade $(\Omega, \mathcal{F}, \prob)$. Um digrafo simples $D = (V,A)$ é dito um \indef{digrafo de dependência} dos eventos $E_1, \dots, E_n$ quando $V = \{1, \dots, n\}$ e o evento $E_i$ é mutuamente independente dos eventos no conjunto $\{ E_j : (i,j) \not\in A\}$.
+Uma definição central para o LLL é a de digrafo de dependência, que caracteriza a estrutura de dependência entre variáveis aleatórias. Sejam $E_1, \dots, E_n$ eventos em um espaço de probabilidade $(\Omega, \mathcal{F}, \prob)$. Um digrafo simples $D = (V,A)$ é dito um \indef{digrafo de dependência} dos eventos $E_1, \dots, E_n$ quando $V = \{1, \dots, n\}$ e o evento $E_i$ é mutuamente independente dos eventos no conjunto $\{ E_j : (i,j) \not\in A, j \neq i\}$.
 
-Note que não existe apenas um digrafo de dependência para um conjunto de variáveis aleatórias $\{E_i\}$. De fato, considere duas moedas justas lançadas independentemente com resultados cara ($H$) ou coroa ($T$). Considere os seguintes eventos:
+Por exemplo, considerede duas moedas justas lançadas independentemente com resultados cara ($H$) ou coroa ($T$). Considere os seguintes eventos:
 \begin{align*}
   E_1 &= \{ (H,H) , (H,T) \} && \text{Cara no primeiro lançamento;}\\
   E_2 &= \{ (H,H) , (T,H) \} && \text{Cara no segundo lançamento;}\\
   E_3 &= \{ (H,H) , (T,T) \} && \text{Lançamentos iguais.}
 \end{align*}
 
-Na Figura~\ref{prob:fig:ddigraph}, vemos dois possíveis digrafos de dependência para os eventos $E_1$, $E_2$ e $E_3$.
+Note que todos esses eventos tem probabilidade $\prob(E_i) = 1/2$ e, se $i \neq j$, temos $\prob(E_i | E_j) = 1/2$. Portanto, os eventos $E_i$ e $E_j$ são independentes. Note também que para todo $i,j,k$ distintos, $\prob(E_i | E_j \cap E_k) = 1$, logo $E_i$ não é mutuamente independente de $E_j$ e $E_k$. Desta forma, o digrafo da Figura~\ref{prob:fig:ddigraph} é um digrafo de dependência para estes eventos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht!]
 \centering
 \includegraphics{figures/4_prob_1_ddigraph}
-\caption{Dois digrafos de dependência distintos para os mesmos eventos.}
+\caption{Um digrafo de dependência para os eventos $E_1$, $E_2$ e $E_3$.}
 \label{prob:fig:ddigraph}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Note também que outras escolhas de arcos são possíveis para este mesmo exemplo. De fato, o digrafo apresentado na Figura~\ref{prob:fig:ddigraph2} também é um digrafo de dependência para os eventos $E_1$, $E_2$ e $E_3$. Portanto, o digrafo de dependência não é único.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[ht!]
+\centering
+\includegraphics{figures/4_prob_2_ddigraph_2}
+\caption{Outro digrafos de dependência para os mesmos eventos.}
+\label{prob:fig:ddigraph2}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -285,7 +296,7 @@ Finalmente, vamos voltar ao enunciado original do lema:
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Um caso particular de bastante interesse e mais fácil de aplicar é o chamado de caso simétrico, que está enunciado em seguida.
+Um caso particular de bastante interesse e mais fácil de aplicar é o chamado caso simétrico, que está enunciado em seguida.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{lemma}[Lema Local de Lovász; Versão Simétrica]
@@ -321,16 +332,16 @@ temos $\prob \left( \bigcap_{S \in \binom{V}{2}} \comp{M_S} \right) > 0$ e, assi
 
 Fazendo uma análise detalhada deste resultado e escolhendo $n$ de forma adequada, é possível obter que
 \[R(k,k) > (1+o(1))\frac{\sqrt{2}}{e}k\sqrt{2}^k.\]
-Este limitante inferior possui a constante ligeiramente melhor que o apresentado anteriormente, é o melhor limitante inferior conhecido para os números de Ramsey diagonais.
+Este limitante inferior possui a constante ligeiramente melhor que o apresentado anteriormente; é o melhor limitante inferior conhecido para os números de Ramsey diagonais.
 
-Uma análise similar pode ser feita para números de Ramsey fora da diagonal, mas para isso, a versão geral do LLL é necessária. De fato, temos eventos de dois tipos, se $T \in \binom{V}{3}$, então definimos $A_T$ como o evento em que $T$ é um triângulo azul, e se $S \in \binom{V}{k}$, $B_S$ é o evento em que $S$ é um $K_k$ vermelho.
+Uma análise similar pode ser feita para números de Ramsey não-diagonais, mas para isso, a versão geral do LLL é necessária. De fato, temos eventos de dois tipos, se $T \in \binom{V}{3}$, então definimos $A_T$ como o evento em que $T$ é um triângulo azul e, se $S \in \binom{V}{k}$, $B_S$ é o evento em que $S$ é um $K_k$ vermelho.
 Temos $\prob(A_T) = p^3$ e $\prob(B_S) = (1-p)^{\binom{k}{2}}$.
-Cada evento $A_T$ é dependente de no máximo $3(n-3) < 3n$ eventos $A_{T'}$ e $\binom{n}{k}$ eventos $B_{S'}$. E cada evento $B_S$ é dependente de no máximo $\binom{k}{2}(n-2) < nk^2/2$ eventos $A_{T'}$ e $\binom{n}{k}$ eventos $B_{S'}$.
-Segue, então, do Lema~\ref{thm:prob:lll} que se existem $0 < p < 1$ e dois reais $0 \leq x,y < 1$, tais que
+Cada evento $A_T$ é dependente de no máximo $3(n-3) < 3n$ eventos $A_{T'}$ e $\binom{n}{k}$ eventos $B_{S'}$. Alem disso, cada evento $B_S$ é dependente de no máximo $\binom{k}{2}(n-2) < nk^2/2$ eventos $A_{T'}$ e $\binom{n}{k}$ eventos $B_{S'}$.
+Segue, então, do Lema~\ref{thm:prob:lll}, que se existem $0 < p < 1$ e dois reais $0 \leq x,y < 1$, tais que
 \begin{align*} p^3 \leq x(1-x)^{3n}(1-y)^{\binom{n}{k}} && \text{e} &&
 (1-p)^{\binom{k}{2}} \leq y(1-x)^{nk^2/2}(1-y)^{\binom{n}{k}},
 \end{align*}
-então temos que $R(3,k) > n$.
+temos que $R(3,k) > n$.
 
 A melhor escolha possível para os parâmetros $p$, $x$ e $y$ é difícil de se encontrar, mas ela nos permite concluir que $R(3,k) > Ck^2/\log^2(k)$, para uma constante $C > 0$. A ordem de crescimento deste número foi determinada por Kim~\cite{kim1995ramsey}, que mostrou que
 \[ R(3,k) = \Theta\left( \frac{k^2}{\log k}\right). \]
