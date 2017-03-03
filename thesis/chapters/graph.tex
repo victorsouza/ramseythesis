@@ -124,7 +124,7 @@ Assim, a vizinhanca $N_B(v)$ possui pelo menos $k$ vértices. Seja $e$ uma arest
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Algumas generalizações deste resultado podem ser encontradas na próxima seção. Outros resultados envolvendo caminhos também são conhecidos. Abaixo, apresentamos dois destes, sem demonstrações. Embora o primeiro deles apresente uma demonstração simples, o segundo envolve a famosa e intricada técnica da Regularidade de Szemerédi\footnote{O lema da Regularidade de Szemerédi é uma ferramenta importante em matemática discreta. Ela mostra, em certo sentido, que todos os grafos podem ser aproximados por grafos se parecem aleatórios~\cite{komlos1996szemeredi}}.
+Algumas generalizações deste resultado podem ser encontradas na próxima seção. Outros resultados envolvendo caminhos também são conhecidos. Abaixo, apresentamos dois destes, sem demonstrações. Embora o primeiro deles apresente uma demonstração simples, o segundo envolve a famosa e intricada técnica da Regularidade de Szemerédi\footnote{O lema da Regularidade de Szemerédi é uma ferramenta importante em matemática discreta. Ela mostra, em certo sentido, que todos os grafos podem ser aproximados por grafos se parecem aleatórios~\cite{komlos1996szemeredi}.}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{noprooftheorem}[Gerencsér, Gyárfás~\cite{gerencser1967ramsey}]
@@ -152,13 +152,13 @@ $r(C_4,C_4) = 6$.
 \end{theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proof}
-A coloração do $K_5$ dada na Figura~\ref{fig:intro:r33lb} também não possui $C_4$ monocromático, logo $r(C_4,C_4) > 5$.
+A coloração do $K_5$, dada na Figura~\ref{fig:intro:r33lb}, também não possui $C_4$ monocromático. Logo $r(C_4,C_4) > 5$.
 
 Seja $c$ uma $RB$-coloração de $G = K_6$. Suponha que $c$ não possua $C_4$ monocromático. Como $R(3,3) = 6$, existe um $K_3$ monocromático, digamos vermelho, que utiliza os vértices $a_1,a_2,a_3 \in V(G)$. Sejam $b_1,b_2,b_3 \in V(G)$ os demais vértices.
 
-Suponha que algum vértice $b_i$ possua mais de uma aresta vermelha para os vértices $a_i$. Sem perda de generalidade, considere que $c(b_ia_1) = c(b_ia_2) = R$. Então os vértices $b_i a_1 a_3 a_2 b_i$ formam um ciclo $C_4$ monocromático. Portanto, os vértices $b_i$ tem no máximo uma aresta vermelha que incide nos vértices $a_i$. Vamos mostrar agora que vértice $b_i$ possui exatamente uma aresta vermelha que incide nos vértices $a_i$. De fato, suponha que as arestas $b_i a_1$, $b_i a_2$ e $b_i a_3$ sejam azuis. Como $b_j$ tem no máximo uma aresta vermelha que incide nos $a_i$, pelo menos duas das arestas $b_j a_1$, $b_j a_2$ e $b_j a_3$ são azuis, digamos $b_j a_1$ e $b_j a_2$.
-Portanto, os vértices $b_i a_1 b_j a_2 b_i$ formam um ciclo $C_4$ azul.
+Suponha que algum vértice $b_i$ possua mais de uma aresta vermelha para os vértices $a_i$. Sem perda de generalidade, considere que $c(b_ia_1) = c(b_ia_2) = R$. Então, os vértices $b_i a_1 a_3 a_2 b_i$ formam um ciclo $C_4$ monocromático. Portanto, os vértices $b_i$ tem no máximo uma aresta vermelha que incide nos vértices $a_i$.
 
+Vamos mostrar, agora, que vértice $b_i$ possui exatamente uma aresta vermelha que incide nos vértices $a_i$. De fato, suponha que as arestas $b_i a_1$, $b_i a_2$ e $b_i a_3$ sejam azuis. Como $b_j$ tem no máximo uma aresta vermelha que incide nos $a_i$, pelo menos duas das arestas $b_j a_1$, $b_j a_2$ e $b_j a_3$ são azuis, digamos $b_j a_1$ e $b_j a_2$. Consequentemente, os vértices $b_i a_1 b_j a_2 b_i$ formam um ciclo $C_4$ azul.
 Dessa forma, temos que todo vértice $b_i$ tem exatamente uma aresta vermelha que incide aos vértices $a_i$. Suponha que mais de uma dessas arestas incidam em um mesmo vértice $a_i$. Digamos, por exemplo, que $c(b_1 a_2) = c(b_3 a_2) = R$. Isso nos dá que $c(b_1 a_1) = c(b_3 a_1) = c(b_3 a_3) = c(b_1 a_3) = B$. Portanto, os vértices $b_1 a_1 b_3 a_3 b_1$ fomam um ciclo $C_4$ azul.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -170,7 +170,7 @@ Dessa forma, temos que todo vértice $b_i$ tem exatamente uma aresta vermelha qu
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Finalmente, a única configuração que nos resta é que cada $b_i$ pode ser identificado por uma aresta vermelha a um único $a_i$ e vice-versa. Sem perda de generalidade, podemos considerar que $c(b_1 a_1) = c(b_2 a_2) = c(b_3 a_3) = R$. Se alguma aresta $b_i b_j$ for vermelha, então $b_i b_j a_j a_i b_i$ forma um ciclo $C_4$ vermelho. Portanto, todas as arestas $b_i b_j$ são azuis, e temos a coloração dada na Figura~\ref{graph:fig:cycle4}, que possui um ciclo $C_4$ azul $b_2 b_1 a_2 b_3 b_2$. Portanto $r(C_4,C_4) \leq 6$.
+Finalmente, a única configuração que nos resta é que cada $b_i$ pode ser identificado por uma aresta vermelha a um único $a_i$ e vice-versa. Sem perda de generalidade, podemos considerar que $c(b_1 a_1) = c(b_2 a_2) = c(b_3 a_3) = R$. Se alguma aresta $b_i b_j$ for vermelha, então $b_i b_j a_j a_i b_i$ forma um ciclo $C_4$ vermelho. Portanto, todas as arestas $b_i b_j$ são azuis, e temos a coloração dada na Figura~\ref{graph:fig:cycle4}, que possui um ciclo $C_4$ azul $b_2 b_1 a_2 b_3 b_2$. Concluímos que $r(C_4,C_4) \leq 6$.
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

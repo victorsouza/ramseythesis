@@ -66,8 +66,8 @@ As proposições a seguir são todas equivalentes.
   \item $\prob(B|A) = \prob(B)$.
 \end{enumerate}
 
-\[ \prob\left(\bigcap_{j \in J} A_j \right) = \prod_{j \in J}\prob(A_j).\]
 Seja $\{ A_i : i \in I\}$ uma família de eventos, para a qual $I$ é um conjunto qualquer de índices. A família $\{ A_i : i \in I\}$ é dita \indef{independente dois a dois} se $A_i$ e $A_j$ são independentes para todo $i,j \in I$, $i \neq j$. A mesma família é dita \indef{mutuamente independente} se, para qualquer subconjunto $J \subset I$ de índices, vale
+\[ \prob\left(\bigcap_{j \in J} A_j \right) = \prod_{j \in J}\prob(A_j).\]
 
 Uma \indef{variável aleatória} é uma função $X: \Omega \to \mathbb{R}$ que associa a cada elemento do espaço amostral um valor real. Formalmente, também é requerido que o conjunto $\{ \omega \in \Omega : X(\omega) \leq x \}$ seja mensurável para todo $x$ real, ou seja, $X^{-1}( (-\infty,x]) \in \mathcal{F}$ para todo $x$. Quando $\Omega$ é finito e $\mathcal{F}$ é a classe de todos os subconjuntos de $\Omega$, este requisito sempre é satisfeito. Quando uma variável aleatória $X$ assume uma quantidade finita de valores, ela é dita \indef{simples}.
 
@@ -164,7 +164,7 @@ Isto é suficiente para garantir que existe uma coloração $c$ do $K_n$ com no 
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-J. Spencer~\cite{spencer2014asymptopia} fez uma análise cuidadosa deste desigualdade e obteve o resultado apresentado a seguir.
+J. Spencer~\cite{spencer2014asymptopia} fez uma análise cuidadosa desta desigualdade e obteve o resultado apresentado a seguir.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{noproofcorollary}
@@ -188,8 +188,8 @@ Para todo inteiro $n$ e $p \in [0,1]$, temos $\displaystyle R(k, s) > n - \binom
 Considere uma $RB$-coloração $c$ do grafo completo $G = (V,E) \iso K_n$ obtida pintando cada aresta de maneira aleatória e independente de forma que cada aresta é vermelha com probabilidade $p$ e azul com probabilidade $1-p$.
 Definimos a variável aleatória $X$ como a quantidade de cópias vermelhas de $K_k$ em $c$ e $Y$ como a quantidade de cópias azuis de $K_s$ em $c$. Computando as esperanças de $X$ e $Y$, obtemos:
 \begin{align*}
-\expec[X] &= \binom{n}{k}p^{\binom{k}{2}} \\
-\expec[Y] &= \binom{n}{s}(1-p)^{\binom{s}{2}}
+\expec[X] &= \binom{n}{k}p^{\binom{k}{2}}; \\
+\expec[Y] &= \binom{n}{s}(1-p)^{\binom{s}{2}}.
 \end{align*}
 
 Consideramos um \indef{grafo proibido} como uma cópia vermelha de $K_k$ ou uma cópia azul de $K_s$. Defina $Z = X + Y$ como a quantidade de grafos proibidos. Note que $\expec[Z] = \expec[X] + \expec[Y]$. Existe, portanto, uma coloração $c$ de $K_n$ com no máximo $\expec[Z]$ grafos proibidos. Removendo do $K_n$ um vértice de cada um dos grafos proibidos, obtemos um grafo livre de $K_k$ vermelho e de $K_s$ azul. Removemos no máximo $\expec[Z]$ vértices. Logo, sobram pelo menos $n - \expec[Z] $ vértices no grafo. Portanto,
@@ -219,7 +219,7 @@ O número de Ramsey $R(4,k)$ satisfaz $\displaystyle R(4,k) \geq  \Omega\left( \
 
 Nas aplicações do método probabilístico apresentadas até agora, mostramos a existência de um objeto com determinada propriedade provando que a probabilidade da sua existência é maior do que zero. Em todos os casos que vimos, nós ainda provamos algo mais forte, vimos que a probabilidade deste evento é bastante alta. Em alguns casos, no entanto, o evento de interesse possui probabilidade baixa, mas positiva. Para lidar com este cenário, precisamos de técnicas mais refinadas.
 
-Suponha que o objeto que estamos gerando aleatoriamente é o que queremos encontrar quando alguns eventos raros não ocorrem. Sejam $\{E_i; i = 1,\dots,n\}$ estes eventos. Desejamos provar que existe a possibilidade de esses eventos não ocorrerem simultaneamente, isto é,  $\prob(\bigcap_{i=1}^n \comp{E_i}) > 0$. Um caso bem simples em que obtemos probabilidades bem pequenas é quando os $n$ eventos são mutuamente independentes, cada um com probabilidade $0 \leq p<1$. A probabilidade de todos os eventos não acontecerem simultaneamente é $(1-p)^n > 0$, e fica bem pequena à medida que $n$ cresce. A técnica do \indef{Lema Local de Lovász} (LLL) nos permite obter um resultado similar para eventos que não são mutuamente independentes, mas possuem dependências fracas entre si.
+Suponha que o objeto que estamos gerando aleatoriamente seja o que queremos encontrar quando alguns eventos raros não ocorrem. Sejam $\{E_i; i = 1,\dots,n\}$ estes eventos. Desejamos provar que existe a possibilidade de esses eventos não ocorrerem simultaneamente, isto é,  $\prob(\bigcap_{i=1}^n \comp{E_i}) > 0$. Um caso bem simples em que obtemos probabilidades bem pequenas é quando os $n$ eventos são mutuamente independentes, cada um com probabilidade $0 \leq p<1$. A probabilidade de todos os eventos não acontecerem simultaneamente é $(1-p)^n > 0$, e fica bem pequena à medida que $n$ cresce. A técnica do \indef{Lema Local de Lovász} (LLL) nos permite obter um resultado similar para eventos que não são mutuamente independentes, mas possuem dependências fracas entre si.
 
 Para enunciar o LLL, precisamos introduzir o conceito de digrafo simples, que generaliza ligeiramente o conceito de grafo. Um \indef{digrafo} é um par ordenado $(V(D), A(D))$, que consiste em um conjunto $V(D)$ de \indef{vértices} e um conjunto $A(D)$ de \indef{arcos}, disjunto de $V(D)$, acompanhado de uma função de incidência $\Psi_D$ que associa cada arco de $A(D)$ a um par ordenado de vértices de $V(D)$, não necessariamente distintos. Diferentemente das arestas em grafos, os arcos dos digrafos são ordenados e, portanto, sugerem uma orientação. Se $a \in A(D)$ e $\Psi_D(a) = (u,v)$ dizemos que $u$ se liga a $v$. Além disso, dizemos que $u$ é a \indef{cauda} de $a$ e $v$ é a \indef{cabeça} de $a$.
 
@@ -227,7 +227,7 @@ Analogamente ao grafo simples, \indef{digrafo simples} é um digrafo no qual nã
 
 Uma definição central para o LLL é a de digrafo de dependência, que caracteriza a estrutura de dependência entre variáveis aleatórias. Sejam $E_1, \dots, E_n$ eventos em um espaço de probabilidade $(\Omega, \mathcal{F}, \prob)$. Um digrafo simples $D = (V,A)$ é dito um \indef{digrafo de dependência} dos eventos $E_1, \dots, E_n$ quando $V = \{1, \dots, n\}$ e o evento $E_i$ é mutuamente independente dos eventos no conjunto $\{ E_j : (i,j) \not\in A, j \neq i\}$.
 
-Por exemplo, considerede duas moedas justas lançadas independentemente com resultados cara ($H$) ou coroa ($T$). Considere os seguintes eventos:
+Por exemplo, considere duas moedas justas lançadas independentemente com resultados cara ($H$) ou coroa ($T$). Considere os seguintes eventos:
 \begin{align*}
   E_1 &= \{ (H,H) , (H,T) \} && \text{Cara no primeiro lançamento;}\\
   E_2 &= \{ (H,H) , (T,H) \} && \text{Cara no segundo lançamento;}\\
@@ -245,7 +245,7 @@ Note que todos esses eventos tem probabilidade $\prob(E_i) = 1/2$ e, se $i \neq 
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Note também que outras escolhas de arcos são possíveis para este mesmo exemplo. De fato, o digrafo apresentado na Figura~\ref{prob:fig:ddigraph2} também é um digrafo de dependência para os eventos $E_1$, $E_2$ e $E_3$. Portanto, o digrafo de dependência não é único.
+Note também que outras escolhas de arcos são possíveis para este mesmo exemplo. De fato, o digrafo apresentado na Figura~\ref{prob:fig:ddigraph2} também é um digrafo de dependência para os eventos $E_1$, $E_2$ e $E_3$, mostrando a não unicidade do digrafo de dependencia para um mesmo conjunto de eventos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht!]
@@ -266,7 +266,7 @@ Sejam $E_1, \dots, E_n$ eventos em um espaço de probabilidade $(\Omega, \mathca
 \end{lemma}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proof}
-Vamos mostrar por indução em $s$ que para qualquer $S \subset \{1, \dots, n\}$, $|S| = s < n$, temos a seguinte desigualdade para todo $i \not\in S$:
+Vamos mostrar por indução em $s$ que, para qualquer $S \subset \{1, \dots, n\}$ com $|S| = s < n$ e para todo $i \not\in S$, temos a seguinte desigualdade:
 \[ \prob\bigg( E_i \bigg| \bigcap_{j \in S} \comp{E_j} \bigg) \leq x_i.\]
 
 Para $s = 0$, não condicionamos em nenhum evento, logo $\prob(E_i) \leq x_i \prod_{(i,j) \in A}(1-x_j) \leq x_i$. Para o passo de indução, considere $S_1 = \{ j \in S : (i,j) \in A\}$ e $S_2 = \{ l \in S : (i,l) \not\in A \}$. Utilizando a definição de probabilidade condicional, obtemos
@@ -288,7 +288,7 @@ Portanto, obtemos
   \prob\bigg( E_i \bigg| \bigcap_{j \in S} \comp{E_j} \bigg) = \frac{\prob\left( E_i \cap \left(\bigcap_{j \in S_1} \comp{E_j} \right) \middle| \bigcap_{l \in S_2} \comp{E_l} \right)}{\prob\left( \bigcap_{j \in S_1} \comp{E_j} \middle| \bigcap_{l \in S_2} \comp{E_l} \right)} \leq \frac{x_i\prod_{(i,j) \in A}(1-x_j)}{\prod_{(i,j) \in A}(1-x_j)} = x_i.
 \end{align*}
 
-Finalmente, vamos voltar ao enunciado original do lema:
+Finalmente, voltando ao enunciado original do lema, obtemos:
 \begin{align*}
 \prob \left( \bigcap_{i = 1}^n \comp{E_i} \right) &= \prob (\comp{E_1}) \prob (\comp{E_2} | \comp{E_1} ) \cdots \prob( \comp{E_n} | \comp{E_1} \cap \dots \cap \comp{E_{n-1}}) \\
 &\geq (1 - x_1)(1 - x_2)\cdots(1-x_n) = \prod_{i=1}^n(1 - x_1) > 0. \qedhere
@@ -308,7 +308,7 @@ então $\prob \left( \bigcap_{i = 1}^n \comp{E_i} \right) > 0$. (A constante ``$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proof}
 Se $r = 0$, então $p < 1$ e os eventos são independentes. Caso contrário, construímos um digrafo de dependência $D = (V,A)$ para os eventos $E_1, \dots, E_n$ no qual, para cada $i$, $|\{j, (i,j) \in A\}| \leq r$. Escolhemos $x_i = \frac{1}{r+1}$ e vamos mostrar que $\prob (E_i) \leq x_i \prod_{(i,j) \in A}(1-x_j)$.
-Com isso, estaremos dentro das condições do caso geral no Lema~\ref{thm:prob:lll} e, assim, concluímos que $\prob \left( \bigcap_{i = 1}^n \comp{E_i} \right) > 0$. De fato, lembrando que para todo $r$, $\frac{1}{e} < (1 - \frac{1}{r+1})^r$, temos
+Com isso, satisfazemos as hipóteses do caso geral no Lema~\ref{thm:prob:lll} e, assim, concluímos que $\prob \left( \bigcap_{i = 1}^n \comp{E_i} \right) > 0$. De fato, lembrando que para todo $r$, $\frac{1}{e} < (1 - \frac{1}{r+1})^r$, temos
 \[ \prob(E_i) \leq p \leq \frac{1}{e(r+1)} < \frac{1}{r+1}\left(1 - \frac{1}{r+1} \right)^r \leq x_i \prod_{\mathclap{(i,j) \in A}}(1-x_j). \qedhere\]
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -322,10 +322,10 @@ Se $\displaystyle e \binom{k}{2}\binom{n-2}{k-2} 2^{1 - \binom{k}{2}} < 1$ entã
 \end{theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proof}
-Considere uma $RB$-coloração $c$ do grafo completo $G = (V,E) \iso K_n$ obtida pintando cada aresta de maneira aleatória, uniforme e independente. Fixado um subconjunto $A \in \binom{V}{k}$, defina o evento $M_A = \{G[A] \text{ é monocromático em } c\}$. Temos $\prob(M_A) = 2^{1- \binom{k}{2}}$. Se $S, T \subset V$ e $|S \cap T| \leq 1$, então os eventos $M_S$ e $M_T$ são independentes.
-Além disso, se $|S \cap T| \geq 2$, então $M_S$ e $M_T$ são dependentes. Fixado $S$, vamos estimar a quantidade de conjuntos $T$ de $k$ vértices que satisfazem $|S \cap T| \geq 2$. Primeiramente, escolhemos dois vértices desta interseção, obtendo $\binom{k}{2}$ possibilidades. Os $k-2$ vértices restantes podem ser quaisquer vértices que não foram escolhidos anteriormente, assim, temos $\binom{n-2}{k-2}$. Desta forma, contamos mais de uma vez alguns conjuntos $T$, mas estimamos que no máximo $\binom{k}{2}\binom{n-2}{k-2}$ destes conjuntos existem.
+Considere uma $RB$-coloração $c$ do grafo completo com $n$ vértices obtida pintando cada aresta de maneira aleatória, uniforme e independente. Fixado um subconjunto $A \in \binom{V}{k}$, defina o evento $M_A = \{G[A] \text{ é monocromático em } c\}$. Temos $\prob(M_A) = 2^{1- \binom{k}{2}}$. Se $S, T \subset V$ e $|S \cap T| \leq 1$, então os eventos $M_S$ e $M_T$ são independentes.
+Além disso, se $|S \cap T| \geq 2$, então $M_S$ e $M_T$ são dependentes. Fixado $S$, vamos estimar a quantidade de conjuntos $T$ de $k$ vértices que satisfazem $|S \cap T| \geq 2$. Primeiramente, escolhemos dois vértices desta interseção, obtendo $\binom{k}{2}$ possibilidades. Os $k-2$ vértices restantes podem ser quaisquer vértices que não foram escolhidos anteriormente, o que implica em $\binom{n-2}{k-2}$ possibilidades. Desta forma, contamos mais de uma vez alguns conjuntos $T$, mas estimamos que no máximo $\binom{k}{2}\binom{n-2}{k-2}$ destes conjuntos existem.
 
-Portanto, aplicando o Lema~\ref{thm:prob:llls} com $p = 2^{1 - \binom{k}{2}}$ e $r < \binom{k}{2}\binom{n-2}{k-2}$, e sabendo por hipótese que $ep(r+1) \leq 1$,
+Portanto, aplicando o Lema~\ref{thm:prob:llls} com $p = 2^{1 - \binom{k}{2}}$ e $r < \binom{k}{2}\binom{n-2}{k-2}$, e sabendo, por hipótese, que $ep(r+1) \leq 1$,
 temos $\prob \left( \bigcap_{S \in \binom{V}{2}} \comp{M_S} \right) > 0$ e, assim, existe uma coloração de arestas de $K_n$ sem $K_k$ monocromáticos. Concluímos que $R(k,k) > n$.
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
